@@ -1,4 +1,7 @@
-var input  = require('./names.json');
+var path   = require('path');
+var source = './' + path.normalize(process.argv[2] || 'names.json');
+
+var input  = require(source);
 var output = [];
 
 for (var i = 0, l = input.length; i < l; i++) {
