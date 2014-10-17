@@ -43,4 +43,6 @@ Country specific results:
 This project was initiated and is being maintained by [@thomweerd](http://twitter.com/thomweerd).
 
 ### Credit
-This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support! Special thanks go out to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
+This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support!
+
+Special thanks go out to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
