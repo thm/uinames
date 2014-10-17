@@ -115,7 +115,7 @@
     },
     {
         "country": "India",
-        "male": ["Aarav", "Aaryan", "Abhinav", "Aditya", "Arjun", "Arnav", "Ayaan", "Devansh", "Dhruv", "Ishan", "Muhammad", "Pranav", "Reyansh", "Sai", "Shaurya", "Tejas", "Vihaan", "Vivaan"],
+        "male": ["Aarav", "Aaryan", "Abhinav", "Adhityan", "Arjun", "Arnav", "Ayaan", "Devansh", "Dhruv", "Ishan", "Muhammad", "Pranav", "Reyansh", "Sai", "Shaurya", "Tejas", "Vihaan", "Vivaan"],
         "female": ["Aadhya", "Aanya", "Aaradhya", "Ananya", "Angel", "Anika", "Aradhya", "Diya", "Harini", "Navya", "Pari", "Ridhi", "Rishika", "Saanvi", "Sanvi", "Shreya", "Trisha"],
         "surnames": ["Balasubramanium", "Banerjee", "Bhatnagar", "Bose", "Chatterjee", "Chattopadhyay", "Chauhan", "Chavan", "Chopra", "Das", "Dasgupta", "Dutta", "Gavde", "Gupta", "Jaiteley", "Jayaraman", "Jhadav", "Kadam", "Kapoor", "Kapur", "Khan", "Lobo", "Malhotra", "Malik", "Mehra", "Mehta", "Mistry", "Mukopadhyay", "Nair", "Patel", "Patil", "Pawar", "Pillai", "Powar", "Rangan", "Rangarajan", "Rao", "Rodrigues", "Sarin", "Saxena", "Sen", "Sengupta", "Shah", "Sharma", "Singh", "Subramanium", "Tambe", "Venkatesan", "Verma", "Yadav"]
     },
