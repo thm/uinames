@@ -17,4 +17,30 @@ When the option to pick a country at random is selected, a country will be picke
       [etc]
     ]
 
-Just a little project by [@thomweerd](http://twitter.com/thomweerd).
+### The API
+All responses are returned as JSON, and there is no request limit. Please keep the amount of calls to a minimum though, and cache responses whenever possible.
+
+#### Basic usage
+	http://api.uinames.com
+	---
+	{
+	  "name":"John",
+	  "surname":"Doe",
+	  "gender":"male",
+	  "country":"United States"
+	}
+#### Optional Parameters
+The amount of names to return:
+<pre>http://api.uinames.com/<strong>?amount=25</strong></pre>
+
+The gender of names to return (male or female):
+<pre>http://api.uinames.com/<strong>?gender=female</strong></pre>
+
+Country specific results:
+<pre>http://api.uinames.com/<strong>?country=germany</strong></pre>
+
+### Author
+This project was initiated and is being maintained by [@thomweerd](http://twitter.com/thomweerd).
+
+### Credit
+This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support! Special thanks go out to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
