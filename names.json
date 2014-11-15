@@ -31,9 +31,9 @@
     },
     {
         "country": "Bangladesh",
-        "male": ["Apurba", "Shafin", "Ashraf", "Sabbir", "Atique", "Mamun", "Ehsan", "Fuad"],
+        "male": ["Apurba", "Shafin", "Ashraf", "Sabbir", "Atique", "Mamun", "Ehsan", "Fuad", "Anwar", "Fahad", "Faisal", "Rabbi", "Shohag", "Mahfuj", "Mahfuz", "Mahfujul", "Kamrul", "Billal", "Washim", "Joynul", "Jubayer", "Tahsan", "Ashik", "Badal", "Nurul", "Saiful", "Shuvo", "Sohel", "Hasan", "Rashed", "Al Rayhan", "Abbas", "Jakir", "Emon", "Mizanur", "Abir", "Asif", "Badruddoza", "Hamidur", "Ariful", "Arif", "Shuhas", "Abid", "Al-Mamun", "Jamal", "Mahbub", "Masud", "Mohsin", "Monsur", "Murshed", "Alam", "Rafuque", "Rajeeb", "Habib"],
         "female": ["Nargis", "Ayesha", "Yasmin", "Sanjida", "Samia", "Afsana", "Nazmin"],
-        "surnames": ["Khan", "Chowdhury", "Rahman", "Ahmed", "Haque"]
+        "surnames": ["Khan", "Chowdhury", "Rahman", "Ahmed", "Haque", "Hussain", "Hossain", "Islam", "Mia", "Talukdar", "Sikdar", "Hadi", "Uddin", "Mahmud"]
     },
     {
         "country": "Belgium",
