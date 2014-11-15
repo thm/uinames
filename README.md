@@ -8,13 +8,13 @@ When the option to pick a country at random is selected, a country will be picke
 
 ### The Layout (JSON)
     [
-      [
-        {"country":"Example"},
-        ["Male","Names"],
-        ["Female","Names"],
-        ["Last","Names"]
-      ],
-      [etc]
+      {
+        "country": "Country",
+        "male": ["Male", "First", "Names"],
+        "female": ["Female", "First", "Names"],
+        "surnames": ["Last", "Names"]
+      },
+      {etc}
     ]
 
 ### The API
@@ -40,7 +40,7 @@ Country specific results:
 <pre>http://api.uinames.com/<strong>?country=germany</strong></pre>
 
 ### Author
-This project was initiated and is being maintained by [@thomweerd](http://twitter.com/thomweerd).
+This project is initiated and maintained by [@thomweerd](http://twitter.com/thomweerd).
 
 ### Credit
 This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support!
