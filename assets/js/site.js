@@ -86,7 +86,13 @@ function hasClass(elem, klass) {
 						 last += 'a';
 					}
 					
-					h1.innerHTML = first + ' ' + last;
+					// set name order as per http://en.wikipedia.org/wiki/Personal_name#Name_order
+					if (data[country]['country'].match(/(Japan|Hungary|China|Korea|Singapore|Taiwan|Vietnam)/)) {
+						h1.innerHTML = last + ' ' + first;
+					} else {
+						h1.innerHTML = first + ' ' + last;
+					}
+					
 					h1.style.display = '';
 					
 					var specs = document.getElementById('specs'),
