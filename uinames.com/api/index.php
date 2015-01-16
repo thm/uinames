@@ -79,7 +79,7 @@ function generate_name ($database, $country = ANY, $language = ANY, $gender = AN
             }
         }
 
-        if (!$found) throw new Exception('No matching country or language found');
+        if (!$found) throw new Exception('No matching pool found');
     }
 
     if ($gender === ANY) {
