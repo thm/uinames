@@ -67,7 +67,7 @@ function generate_name ($database, $country = ANY, $language = ANY, $gender = AN
             if (strtolower($pool->country) === strtolower($country)) $matches[] = $pool;
         }
 
-        if ($language === ANY) {
+        if ($language === ANY && count($matches)) {
             $pool  = get_random_pool($matches);
             $found = true;
         } else {
