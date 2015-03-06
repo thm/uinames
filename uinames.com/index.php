@@ -72,9 +72,9 @@
 			<h2>About</h2>
 			<p><a href="http://uinames.com">uinames.com</a> is a simple tool to generate names for use in designs and mockups. Made by <a href="http://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
 			<h2>Elsewhere</h2>
-			<p>Numerous websites and blogs have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="http://speckyboy.com/2014/01/30/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="http://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="http://www.cssauthor.com/weekly-web-development-resources-tools-35/" target="_blank">CSS Author</a>, <a href="http://www.producthunt.co/posts/1906" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a> and <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a>.</p>
+			<p>Numerous websites and blogs have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="http://speckyboy.com/2014/01/30/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="http://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="http://www.cssauthor.com/weekly-web-development-resources-tools-35/" target="_blank">CSS Author</a>, <a href="http://www.producthunt.co/posts/1906" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
 			<h2>Contribute</h2>
-			<p>You can contribute to the project through <a href="http://github.com/thm/uinames" target="_blank">Github</a>, and feedback can be tweeted to <a href="http://twitter.com/thomweerd" target="_blank">@thomweerd</a> directly.</p>
+			<p>You can contribute to the project through <a href="http://github.com/thm/uinames" target="_blank">Github</a>. Feedback can be tweeted to <a href="http://twitter.com/thomweerd" target="_blank">@thomweerd</a> directly.</p>
 			<h2>Other</h2>
 			<p>Check out <a href="http://uifaces.com" target="_blank">uifaces.com</a> as well!</p>
 		</div>
@@ -133,9 +133,9 @@
 					
 					$fav = '';
 					if (in_array($country, $favCountries)) {
-						$fav = '';
+						$fav = ' fav';
 						if ($country == $favCountries[0]) {
-							$fav = ' active';
+							$fav = ' fav active';
 						}
 					}
 					
