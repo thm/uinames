@@ -101,8 +101,10 @@
 			<br />
 			<p>Country specific results:</p>
 			<pre><span>http://api.uinames.com/</span>?country=germany</pre>
+			<br />
 			<p>Require a minimum number of characters in a name:</p>
 			<pre><span>http://api.uinames.com/</span>?minlen=25</pre>
+			<br />
 			<p>Require a maximum number of characters in a name:</p>
 			<pre><span>http://api.uinames.com/</span>?maxlen=75</pre>
 			<!--
