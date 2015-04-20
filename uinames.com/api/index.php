@@ -140,7 +140,10 @@ $amount   = isset($_GET['amount']) ? (int) $_GET['amount'] : 1;
 $country  = @$_GET['country'];
 $language = @$_GET['language'];
 $gender   = @$_GET['gender'];
+$minlen   = isset($_GET['minlen']) ? (int) $_GET['minlen'] : 1;
+$maxlen   = isset($_GET['maxlen']) ? (int) $_GET['maxlen'] : 1000;
 $results  = array();
+$count    = 0;
 
 function send ($content) { //, $code = 200) {
     $type = (!empty($_GET['callback'])) ? 'application/javascript' : 'application/json';
@@ -164,8 +167,14 @@ function send ($content) { //, $code = 200) {
 }
 
 try {
-    for ($i = 0; $i < $amount; $i++) {
-        $results[] = generate_name($database, $country, $language, $gender);
+    while ($count < $amount) {
+        $name = generate_name($database, $country, $language, $gender);
+        $name_length = iconv_strlen($name['name'] . ' ' . $name['surname']);
+        if ($name_length >= $minlen && $name_length <= $maxlen)
+        {
+            $results[] = $name;
+            $count++;
+        }
     }
 
     if (!isset($_GET['amount'])) {
