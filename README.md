@@ -39,6 +39,12 @@ The gender of names to return (male or female):
 Country specific results:
 <pre>http://api.uinames.com/<strong>?country=germany</strong></pre>
 
+Require a minimum number of characters in a name:
+<pre>http://api.uinames.com/<strong>?minlen=25</strong></pre>
+
+Require a maximum number of characters in a name:
+<pre>http://api.uinames.com/<strong>?maxlen=75</strong></pre>
+
 ### Author
 This project is initiated and maintained by [@thomweerd](http://twitter.com/thomweerd).
 

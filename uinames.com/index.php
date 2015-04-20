@@ -123,20 +123,20 @@
 		<ul>
 			<li class="pos-0">Randomize</li>
 			<?php
-
-				$newCountries = array("Japan");
+				
+				$newCountries = array("Spain","Turkey");
 				$favCountries = array("United States");
-
+				
 				$total = count($names);
-
+				
 				for ($i = 0; $i < $total; $i++) {
 					$country = $names[$i]['country'];
-
+					
 					$new = '';
 					if (in_array($country, $newCountries)) {
 						$new = ' new';
 					}
-
+					
 					$fav = '';
 					if (in_array($country, $favCountries)) {
 						$fav = ' fav';
@@ -144,23 +144,23 @@
 							$fav = ' fav active';
 						}
 					}
-
+					
 					$oddLastFix = '';
 					if (($i + 1) == $total && $total % 2 == 0) {
 						$oddLastFix = ' oddLastFix';
 					}
-
+					
 					echo '<li class="pos-' . ($i + 1) . $new . $fav . $oddLastFix . '">' . $country . '</li>';
-
+					
 					if ($i == floor((count($names)/2) - 1)) {
 						echo '</ul><ul>';
 					}
 				}
-
+				
 			?>
 		</ul>
 	</div>
-
+	
 	<div id="options">
 		<span id="genderSelect">
 			<a class="icon random active" href="#random" title="Random Gender"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span><span class="r7"></span></a>
@@ -171,20 +171,20 @@
 			<a class="icon country" href="#country" title="Select Country"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span></a>
 		</span>
 	</div>
-
+	
 	<div id="details">
 		<a class="icon info" href="#info" title="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span></a>
 	</div>
-
+	
 	<div id="share-box">
 		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://uinames.com" data-text="Generate random names for use in designs and mockups on" data-via="thomweerd" data-count="horizontal" data-size="small" data-related="thomweerd" data-dnt="true">Tweet</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
+		
 		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fuinames.com&amp;width=100px&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:20px;" allowTransparency="true"></iframe>
-
-		<iframe src="http://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="84" height="20"></iframe>
+		
+		<iframe src="http://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
 	</div>
-
+	
 	<script src="assets/js/site.js"></script>
 	<script src="assets/js/fastclick.min.js"></script>
 
