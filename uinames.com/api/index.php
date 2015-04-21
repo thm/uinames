@@ -55,7 +55,7 @@ function get_random_pool_by_size ($database) {
     return $database[$index];
 }
 
-function generate_name ($database, $country = ANY, $language = ANY, $gender = ANY) {
+function generate_name ($database, $country = ANY, $language = ANY, $gender = ANY, $family = ANY) {
     if ($country === ANY) {
         $pool = get_random_pool_by_size($database);
     } else {
@@ -100,7 +100,10 @@ function generate_name ($database, $country = ANY, $language = ANY, $gender = AN
     // find random surname and apply exceptions
     $surname_index = mt_rand(0, count($pool->surnames) - 1);
     $surname       = $pool->surnames[$surname_index];
-
+	
+	// if family parameter is given, override random surname with specified one
+	if ($family !== ANY) {$surname = ucfirst($family); }
+	
     $subject = $name . ' ' . $surname;
 
     // do magic exception stuff, don't ever ask about this
@@ -140,6 +143,7 @@ $amount   = isset($_GET['amount']) ? (int) $_GET['amount'] : 1;
 $country  = @$_GET['country'];
 $language = @$_GET['language'];
 $gender   = @$_GET['gender'];
+$family   = @$_GET['family'];
 $minlen   = isset($_GET['minlen']) ? (int) $_GET['minlen'] : 1;
 $maxlen   = isset($_GET['maxlen']) ? (int) $_GET['maxlen'] : 1000;
 $results  = array();
@@ -168,7 +172,7 @@ function send ($content) { //, $code = 200) {
 
 try {
     while ($count < $amount) {
-        $name = generate_name($database, $country, $language, $gender);
+        $name = generate_name($database, $country, $language, $gender, $family);
         $name_length = iconv_strlen($name['name'] . ' ' . $name['surname']);
         if ($name_length >= $minlen && $name_length <= $maxlen)
         {
