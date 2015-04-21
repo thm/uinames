@@ -101,8 +101,16 @@ function generate_name ($database, $country = ANY, $language = ANY, $gender = AN
     $surname_index = mt_rand(0, count($pool->surnames) - 1);
     $surname       = $pool->surnames[$surname_index];
 	
-	// if family parameter is given, override random surname with specified one
-	if ($family !== ANY) {$surname = ucfirst($family); }
+	// if 'family' parameter is given, override random surname with specified one
+	if ($family !== ANY) {
+		$surname = ucfirst($family);
+	}
+	else {
+		// find random surname and apply exceptions
+		$surname_index = mt_rand(0, count($pool->surnames) - 1);
+		$surname       = $pool->surnames[$surname_index];
+	}
+	
 	
     $subject = $name . ' ' . $surname;
 
