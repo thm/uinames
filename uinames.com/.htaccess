@@ -1,0 +1,11 @@
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Methods: "GET"
+
+RewriteEngine On
+
+# prevent directory listing
+Options -Indexes
+
+# redirect www domain to the non-www domain
+RewriteCond %{HTTP_HOST} ^www\.uinames\.com$ [NC]
+RewriteRule ^(.*)$ http://uinames.com/$1 [R=301,L]

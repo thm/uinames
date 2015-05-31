@@ -170,8 +170,7 @@ try {
     while ($count < $amount) {
         $name = generate_name($database, $country, $language, $gender);
         $name_length = iconv_strlen($name['name'] . ' ' . $name['surname']);
-        if ($name_length >= $minlen && $name_length <= $maxlen)
-        {
+        if ($name_length >= $minlen && $name_length <= $maxlen) {
             $results[] = $name;
             $count++;
         }
