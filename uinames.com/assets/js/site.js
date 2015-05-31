@@ -37,7 +37,7 @@ function hasClass(elem, klass) {
 				this.className += ' active';
 				
 				countrySelect.className = countrySelect.className.replace(/\b ?active\b/g, '');
-				localStorage.setItem('country', this.innerHTML);
+				localStorage.setItem('country', this.getElementsByClassName('country-label')[0].innerHTML);
 				
 				setTimeout(function() {
 					body.removeAttribute('data-popup');
@@ -49,10 +49,10 @@ function hasClass(elem, klass) {
 			}
 			
 			// select country from local storage if saved
-			var storedcountry = localStorage.getItem('country');
-			if (storedcountry != null) {
-				for (var i = 1, n = availableCountries.length; i < n; i++) {
-					if (availableCountries[i].innerHTML == storedcountry) {
+			var storedCountry = localStorage.getItem('country');
+			if (storedCountry) {
+				for (var i = 0, n = availableCountries.length; i < n; i++) {
+					if (storedCountry == availableCountries[i].getElementsByClassName('country-label')[0].innerHTML) {
 						availableCountries[i].click();
 						break;
 					}
@@ -98,7 +98,7 @@ function hasClass(elem, klass) {
 					var specs = document.getElementById('specs'),
 						help = document.getElementById('help');
 					
-					specs.innerHTML = '<span>' + gender.charAt(0).toUpperCase() + gender.slice(1) + '</span> from <span>' + data[country]['country'] + '</span><a class="bg-check" href="http://duckduckgo.com/?q=' + first + '+' + last + '" target="_blank">Background Check</a>';
+					specs.innerHTML = '<span>' + gender.charAt(0).toUpperCase() + gender.slice(1) + '</span> from <span>' + data[country]['country'] + '</span>';
 					
 					body.removeAttribute('data-popup');
 					
@@ -118,6 +118,7 @@ function hasClass(elem, klass) {
 			
 			addListener(document, 'keyup', getName);
 			addListener(h1, 'touchend', getName);
+			addListener(document.getElementById('specs'), 'touchend', getName);
 			
 			function select(e) {
 				if (e.keyCode == 67 || e.which == 67) {
@@ -177,6 +178,9 @@ function hasClass(elem, klass) {
 			body.removeAttribute('data-popup');
 		} else {
 			body.setAttribute('data-popup', hash);
+			if (hash == 'country') {
+				document.getElementsByTagName('input')[0].focus();
+			}
 		}
 	}
 	
@@ -202,6 +206,38 @@ function hasClass(elem, klass) {
     for (var i = 0; i < tabs.length; i++) {
     	addListener(tabs[i], 'click', toggleTab);
     }
+    
+    // COUNTRY SEARCH
+    var countries = countryBox.getElementsByTagName('li'),
+    	searchInput = document.getElementsByTagName('input')[0],
+    	countryCount = countryBox.getElementsByClassName('countryCount')[0],
+    	contribute = countryBox.getElementsByClassName('contribute')[0];
+    
+    function search(e) {
+    	var countryMatches = countries.length;
+    	for (var i = 0; i < countries.length; i++) {
+    		var country = countries[i],
+    			countryValue = country.getElementsByClassName('country-label')[0].innerHTML.toLowerCase();
+    		
+    		if (countryValue.indexOf(searchInput.value.toLowerCase(), 0) == 0) {
+    			country.style.display = '';
+    			countryMatches = countryMatches + 1;
+    		} else {
+    			country.style.display = 'none';
+    			countryMatches = countryMatches - 1;
+    		}
+    	}
+    	
+		countryCount.innerHTML = countryMatches / 2 + '/' + countries.length;
+		
+		if (countryMatches == 0) {
+			contribute.style.display = '';
+		} else {
+			contribute.style.display = 'none';
+		}
+    }
+    
+    addListener(searchInput, 'keyup', search);
 	
 })();
 	

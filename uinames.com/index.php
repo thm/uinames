@@ -121,11 +121,13 @@
 
 	<div id="country" class="clearfix">
 		<ul>
-			<li class="pos-0">Randomize</li>
+			<span class="countryCount"><?php echo (count($names) + 1) . '/' . (count($names) + 1); ?></span>
+			<input class="search" type="text" placeholder="Type to search..." />
+			<li class="pos-0"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="country-label">Random</span></li>
 			<?php
 				
-				$newCountries = array("Spain","Turkey");
-				$favCountries = array("United States");
+				$newCountries = array("Norway");
+				$favCountries = array("United States","Germany","France");
 				
 				$total = count($names);
 				
@@ -150,14 +152,11 @@
 						$oddLastFix = ' oddLastFix';
 					}
 					
-					echo '<li class="pos-' . ($i + 1) . $new . $fav . $oddLastFix . '">' . $country . '</li>';
-					
-					if ($i == floor((count($names)/2) - 1)) {
-						echo '</ul><ul>';
-					}
+					echo '<li class="pos-' . ($i + 1) . $new . $fav . '"><span class="flag"><img src="assets/img/flags/' . str_replace(' ', '-', strtolower($country)) . '.png" /></span><span class="country-label">' . $country . '</span></li>';
 				}
 				
 			?>
+			<span class="contribute" style="display: none;"><p>No country could be found. Consider contributing to uinames.com on <a href="https://github.com/thm/uinames" target="_blank">Github</a>!</p></span>
 		</ul>
 	</div>
 	
@@ -186,7 +185,6 @@
 	</div>
 	
 	<script src="assets/js/site.js"></script>
-	<script src="assets/js/fastclick.min.js"></script>
 
 </body>
 </html>
