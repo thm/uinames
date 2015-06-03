@@ -18,24 +18,10 @@
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
-	
-	-webkit-font-smoothing: antialiased;
-	   -moz-font-smoothing: antialiased;
-	        font-smoothing: antialiased;
 }
 
 ol, ul {
 	list-style: none;	
-}
-
-::selection {
-	color: #fff;
-	background: #161616;
-}
-
-::-moz-selection {
-	color: #fff;
-	background: #161616;
 }
 
 html {
@@ -57,16 +43,15 @@ body {
 h1 {
 	width: 80%;
 	top: 50%;
-	margin: -65px 10% 0;
+	margin: -36px 10% 0;
 	font-size: 72px;
 	line-height: 100%;
 	position: absolute;
 }
 
 h1 em {
-	margin-top: 20px;
 	display: block;
-	opacity: .6;
+	color: #d3e5c6;
 }
 
 [data-popup="info"] h1, [data-popup="country"] h1 {
@@ -133,9 +118,9 @@ code {
 	width: 80%;
 	top: 50%;
 	margin: 0 10%;
-	padding-top: 15px;
+	padding-top: 56px;
 	line-height: 100%;
-	opacity: .6;
+	color: #d3e5c6;
 	position: absolute;
 }
 
@@ -149,11 +134,11 @@ code {
 
 /*--HELP--*/
 
-p#help {
+#help {
 	width: 80%;
 	bottom: 32px;
 	margin: 0 10%;
-	opacity: .6;
+	color: #d3e5c6;
 	line-height: 100%;
 	position: absolute;
 	
@@ -162,20 +147,20 @@ p#help {
 	        transition: bottom .15s ease-out, opacity .15s ease-out;
 }
 
-[data-popup="info"] p#help, [data-popup="country"] p#help {
+[data-popup="info"] #help, [data-popup="country"] #help {
 	display: none;
 }
 
-p#help.animate {
+#help.animate {
 	bottom: 42px;
 	opacity: 1;
 }
 
-p#help strong {
-	font-weight: 700;
+#help span {
+	color: #fff;
 }
 
-body.touch-device p#help {display: none}
+body.touch-device #help {display: none}
 
 /*--INFO & COUNTRY POPUPS--*/
 
@@ -326,11 +311,22 @@ body.touch-device p#help {display: none}
 }
 
 #country li, #country .contribute {
+	max-height: 100px;
 	text-align: left;
 	line-height: 100%;
-	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 	position: relative;
 	overflow: hidden;
+	
+	-webkit-transition: max-height .25s linear, opacity .25s linear, border-width .25s linear;
+	   -moz-transition: max-height .25s linear, opacity .25s linear, border-width .25s linear;
+	        transition: max-height .25s linear, opacity .25s linear, border-width .25s linear;
+}
+
+#country li.inactive {
+	max-height: 0;
+	border-width: 0;
+	opacity: 0;
 }
 
 #country li .flag {
@@ -432,6 +428,7 @@ body.touch-device p#help {display: none}
 #country input {
 	width: 100%;
 	padding: 8px 13px;
+	border-bottom: 1px solid #eee;
 }
 
 #country a.random {
@@ -730,18 +727,13 @@ body.touch-device p#help {display: none}
 span.no-js {display: none}
 body.no-js span.no-js {display: inline}
 
-body.no-js h1 {
-	margin-top: -10px;
-	font-size: 20px;
-}
-
 body.no-js h1:after {
 	content: 'JavaScript is disabled :(';
 }
 
 body.no-js h1 em,
 body.no-js #specs,
-body.no-js p#help,
+body.no-js #help,
 body.no-js #info,
 body.no-js #country,
 body.no-js #options,
@@ -752,14 +744,18 @@ body.no-js #share-box {
 
 /*--RESPONSIVE--*/
 
-@media (max-width: 880px) {
+@media (max-width: 900px) {
 
 	h1 {
 		font-size: 48px;
-		margin-top: -48px;
+		margin-top: -24px;
 	}
 	
-	p#help {display: none}
+	#specs {
+		padding-top: 44px;
+	}
+	
+	#help {display: none}
 	
 	#share-box {
 		left: 50%;
@@ -772,7 +768,11 @@ body.no-js #share-box {
 
 	h1 {
 		font-size: 36px;
-		margin-top: -36px;
+		margin-top: -18px;
+	}
+	
+	#specs {
+		padding-top: 38px;
 	}
 
 }
@@ -781,7 +781,11 @@ body.no-js #share-box {
 
 	h1 {
 		font-size: 28px;
-		margin-top: -28px;
+		margin-top: -14px;
+	}
+	
+	#specs {
+		padding-top: 34px;
 	}
 
 }

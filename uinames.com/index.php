@@ -45,7 +45,7 @@
 
 	<script>
 		var body = document.getElementsByTagName('body')[0],
-			action = 'Press Spacebar', c = 'ctrl+c';
+			action = 'Press Spacebar', c = 'CTRL + C';
 		
 		body.className = body.className.replace(/no\-js/, '');
 		
@@ -55,13 +55,13 @@
 		}
 		
 		if (navigator.appVersion.indexOf('Mac')!=-1) {
-			c = 'cmd+c';
+			c = '&#8984; + C';
 		}
 	</script>
 
 	<h1><em><script>document.write(action)</script></em></h1>
 	<p id="specs" style="display: none"></p>
-	<p id="help" style="display: none">press <strong>c</strong> to select, then <strong><script>document.write(c)</script></strong> to copy</p>
+	<p id="help" style="display: none">Press <span>C</span> to select, then <span><script>document.write(c)</script></span> to copy!</p>
 	
 	<div id="info" class="clearfix" data-tab="info">
 		<div id="tabs">
@@ -145,11 +145,6 @@
 						if ($country == $favCountries[0]) {
 							$fav = ' fav active';
 						}
-					}
-					
-					$oddLastFix = '';
-					if (($i + 1) == $total && $total % 2 == 0) {
-						$oddLastFix = ' oddLastFix';
 					}
 					
 					echo '<li class="pos-' . ($i + 1) . $new . $fav . '"><span class="flag"><img src="assets/img/flags/' . str_replace(' ', '-', strtolower($country)) . '.png" /></span><span class="country-label">' . $country . '</span></li>';

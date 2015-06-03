@@ -98,9 +98,7 @@ function hasClass(elem, klass) {
 					var specs = document.getElementById('specs'),
 						help = document.getElementById('help');
 					
-					specs.innerHTML = '<span>' + gender.charAt(0).toUpperCase() + gender.slice(1) + '</span> from <span>' + data[country]['country'] + '</span>';
-					
-					body.removeAttribute('data-popup');
+					specs.innerHTML = gender.charAt(0).toUpperCase() + gender.slice(1) + ' from ' + data[country]['country'];
 					
 					infoToggle.className = infoToggle.className.replace(/\b ?active\b/g, '');
 					countrySelect.className = countrySelect.className.replace(/\b ?active\b/g, '');
@@ -175,11 +173,12 @@ function hasClass(elem, klass) {
 	    var hash = this.hash.substr(1);
 		
 		if (body.getAttribute('data-popup') == hash) {
+			countryBox.getElementsByTagName('input')[0].blur();
 			body.removeAttribute('data-popup');
 		} else {
 			body.setAttribute('data-popup', hash);
 			if (hash == 'country') {
-				document.getElementsByTagName('input')[0].focus();
+				countryBox.getElementsByTagName('input')[0].focus();
 			}
 		}
 	}
@@ -220,10 +219,12 @@ function hasClass(elem, klass) {
     			countryValue = country.getElementsByClassName('country-label')[0].innerHTML.toLowerCase();
     		
     		if (countryValue.indexOf(searchInput.value.toLowerCase(), 0) == 0) {
-    			country.style.display = '';
+    			country.className = country.className.replace(/\b ?inactive\b/g, '');
     			countryMatches = countryMatches + 1;
     		} else {
-    			country.style.display = 'none';
+    			if (!country.className.match(/inactive/)) {
+	    			country.className += ' inactive';
+	    		}
     			countryMatches = countryMatches - 1;
     		}
     	}
