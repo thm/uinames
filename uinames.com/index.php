@@ -126,7 +126,7 @@
 			<li class="pos-0"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="country-label">Random</span></li>
 			<?php
 				
-				$newCountries = array("");
+				$newCountries = array("Pakistan");
 				$favCountries = array("United States","Germany","France");
 				
 				$total = count($names);
