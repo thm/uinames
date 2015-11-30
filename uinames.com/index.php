@@ -72,7 +72,7 @@
 			<h2>About</h2>
 			<p><a href="http://uinames.com">uinames.com</a> is a simple tool to generate names for use in designs and mockups. Made by <a href="http://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
 			<h2>Elsewhere</h2>
-			<p>Numerous websites and blogs have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="http://speckyboy.com/2014/01/30/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="http://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="http://www.cssauthor.com/weekly-web-development-resources-tools-35/" target="_blank">CSS Author</a>, <a href="http://www.producthunt.co/posts/1906" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
+			<p>Numerous websites and blogs have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="http://speckyboy.com/2014/01/30/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="http://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="http://www.cssauthor.com/weekly-web-development-resources-tools-35/" target="_blank">CSS Author</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
 			<h2>Contribute</h2>
 			<p>You can contribute to the project through <a href="http://github.com/thm/uinames" target="_blank">Github</a>. Feedback can be tweeted to <a href="http://twitter.com/thomweerd" target="_blank">@thomweerd</a> directly.</p>
 			<h2>Other</h2>
@@ -126,7 +126,7 @@
 			<li class="pos-0"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="country-label">Random</span></li>
 			<?php
 				
-				$newCountries = array("Norway");
+				$newCountries = array("");
 				$favCountries = array("United States","Germany","France");
 				
 				$total = count($names);
@@ -151,9 +151,16 @@
 				}
 				
 			?>
-			<span class="contribute" style="display: none;"><p>No country could be found. Consider contributing to uinames.com on <a href="https://github.com/thm/uinames" target="_blank">Github</a>!</p></span>
+			<span class="contribute" style="display: none;">
+				<a href="https://github.com/thm/uinames" target="_blank" class="clearfix">
+					<?php echo file_get_contents('assets/img/crying-octocat.svg'); ?>
+					<p>No country could be found. Consider contributing on Github!</p>
+				</a>
+			</span>
 		</ul>
 	</div>
+	
+	<div id="overlay"></div>
 	
 	<div id="options">
 		<span id="genderSelect">
@@ -171,12 +178,12 @@
 	</div>
 	
 	<div id="share-box">
-		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://uinames.com" data-text="Generate random names for use in designs and mockups on" data-via="thomweerd" data-count="horizontal" data-size="small" data-related="thomweerd" data-dnt="true">Tweet</a>
+		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fuinames.com&amp;width=100px&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow: hidden; width: 86px; height: 20px;" allowTransparency="true"></iframe>
+		
+		<iframe src="http://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="87" height="20"></iframe>
+		
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://uinames.com" data-text="Generate random names for use in designs and mockups on" data-via="thomweerd" data-size="small" data-related="thomweerd" data-dnt="true" data-lang="en"></a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-		
-		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fuinames.com&amp;width=100px&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:20px;" allowTransparency="true"></iframe>
-		
-		<iframe src="http://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
 	</div>
 	
 	<script src="assets/js/site.js"></script>

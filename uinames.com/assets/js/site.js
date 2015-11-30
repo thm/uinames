@@ -41,7 +41,7 @@ function hasClass(elem, klass) {
 				
 				setTimeout(function() {
 					body.removeAttribute('data-popup');
-				}, 300);
+				}, 250);
 			}
 			
 			for (var i = 0; i < availableCountries.length; i++) {
@@ -60,7 +60,7 @@ function hasClass(elem, klass) {
 			}
 						
 			function getName(e) {
-				if (e.keyCode == 32 || e.which == 32 || e.type == 'touchend') {
+				if (e.keyCode == 32 || e.which == 32 || e.type.match(/(click|touchend)/)) {
 					
 					var country = countryBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
 						gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1);
@@ -114,9 +114,12 @@ function hasClass(elem, klass) {
 				}
 			}
 			
-			addListener(document, 'keyup', getName);
-			addListener(h1, 'touchend', getName);
-			addListener(document.getElementById('specs'), 'touchend', getName);
+			addListener(document, 'keyup', function(e) {
+				if (!body.getAttribute('data-popup')) getName(e);
+			});
+			
+			addListener(h1, 'click touchend', getName);
+			addListener(document.getElementById('specs'), 'click touchend', getName);
 			
 			function select(e) {
 				if (e.keyCode == 67 || e.which == 67) {
@@ -167,20 +170,34 @@ function hasClass(elem, klass) {
 	
 	// POPUP TOGGLE
 	function togglePopup(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	    
-	    var hash = this.hash.substr(1);
+		e.preventDefault();
+		e.stopPropagation();
 		
-		if (body.getAttribute('data-popup') == hash) {
+		var hash = this.hash.substr(1),
+			overlay = document.getElementById('overlay');
+		
+		function closePopup() {
 			countryBox.getElementsByTagName('input')[0].blur();
 			body.removeAttribute('data-popup');
+		}
+
+		if (body.getAttribute('data-popup') == hash) {
+			closePopup();
 		} else {
 			body.setAttribute('data-popup', hash);
 			if (hash == 'country') {
 				countryBox.getElementsByTagName('input')[0].focus();
 			}
 		}
+		
+		addListener(window, 'keyup', function(e) {
+			if (e.keyCode == 27 || e.which == 27) {
+				closePopup();
+			}
+		});
+		
+		addListener(overlay, 'click', closePopup);
+		
 	}
 	
 	addListener(infoToggle, 'click', togglePopup);
@@ -242,7 +259,7 @@ function hasClass(elem, klass) {
 	
 })();
 	
-// GOOGLE'S STALKING CODE
+// STALKING CODE
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-46677803-1']);
 _gaq.push(['_trackPageview']);
