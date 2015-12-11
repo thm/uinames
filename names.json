@@ -12,6 +12,12 @@
         "surnames":["González","Rodríguez","Gómez","Fernández","López","Díaz","Martínez","Pérez","García","Sánchez","Romero","Álvarez","Torres","Ruiz","Ramírez","Flores","Acosta","Medina","Suárez","Herrera","Aguirre","Giménez","Molina","Castro","Rojas","Ortiz","Núñez","Juárez","Ríos","Godoy","Moreno","Peralta","Castillo","Ledesma","Ojeda","Villalba","Hernández","Ramos","Arias","Maidana","Moyano","Campos","Soto","Montenegro","Leguizamón","Blanco"]
     },
     {
+        "country":"Armenia",
+        "male":["Արման","Արմեն","Խաչիկ","Վազգեն","Նարեկ","Դավիթ","Հայկ","Տիգրան","Սամվել","Արթուր","Արամ","Աշոտ","Գեւորգ","Վահե","Վահան","Արսեն","Գագիկ","Լեւոն","Կարեն","Սուրեն","Ռուբեն","Մհեր","Գարիկ","Հակոբ","Անդրանիկ","Ռազմիկ"],
+        "female":["Մանե","Միլենա","Մարի","Նարե","Անի","Անահիտ","Մարիամ","Գայանե","Լիլիթ","Հասմիկ","Սուսաննա","Սոնա","Գոհար","Կարինե","Անուշ","Լուսինե","Յանա","Մարինե","Էլինա","Սոֆի","Կարինա","Էմմա","Լինա"],
+        "surnames":["Շահինյան","Նազարյան","Առաքելյան","Հարությունյան","Գեւորգյան","Կարապետյան","Հովսեփյան","Հովհաննիսյան","Գուլբենկյան","Հակոբյան","Խաչատրյան","Մանուկյան","Մարգարյան","Մարտիրոսյան","Մխիթարյան","Մովսեսյան","Նալբանդյան","Օհանյան","Պետրոսյան","Պողոսյան","Սահակյան","Սարգսյան","Սիմոնյան","Թումանյան","Վարդանյան"]
+    },
+    {
         "country":"Australia",
         "male":["Benjamin","Charlie","Cooper","Daniel","Ethan","Harriso","Harrison","Harry","Henry","Jack","Jacob","James","Joshua","Lachlan","Levi","Liam","Lucas","Mason","Max","Michael","Noah","Oliver","Riley","Ryan","Samuel","Thomas","Tyler","William"],
         "female":["Amelia","Ava","Charlotte","Chloe","Ella","Emily","Grace","Isabella","Jasmine","Lily","Lucy","Matilda","Mia","Olivia","Ruby","Sienna","Sophia","Sophie","Summer","Zoe"],
