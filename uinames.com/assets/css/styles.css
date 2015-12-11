@@ -92,7 +92,7 @@ pre {
 }
 
 pre > span {
-	color: #848484;
+	color: #999;
 }
 
 code {
@@ -175,11 +175,11 @@ body.touch-device #help {display: none}
 }
 
 #tabs > a:hover {
-	color: #848484;
+	color: #999;
 }
 
 #tabs > a.active {
-	color: #848484;
+	color: #999;
 	border-bottom: none;
 	background: #fff;
 	cursor: default;
@@ -244,7 +244,7 @@ body.touch-device #help {display: none}
 
 #info h2 {
 	margin: 20px 0 10px 0;
-	color: #848484;
+	color: #999;
 }
 
 #info h2:first-child {
@@ -301,13 +301,10 @@ body.touch-device #help {display: none}
 	max-height: 150px;
 	text-align: left;
 	line-height: 100%;
-	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	cursor: pointer;
 	position: relative;
 	overflow: hidden;
-	
-	-webkit-transition: max-height .2s linear, border-width .2s linear;
-	   -moz-transition: max-height .2s linear, border-width .2s linear;
-	        transition: max-height .2s linear, border-width .2s linear;
 }
 
 #country li.inactive {
@@ -355,7 +352,7 @@ body.touch-device #help {display: none}
 }
 
 #country li.active {
-	color: #848484;
+	color: #999;
 }
 
 #country li:hover,
@@ -385,7 +382,7 @@ body.touch-device #help {display: none}
 }
 
 #country li.active:after {
-	background: #848484;
+	background: #999;
 }
 
 #countrySelect:before {
@@ -430,6 +427,7 @@ body.touch-device #help {display: none}
 	top: 0;
 	right: 12px;
 	line-height: 260%;
+	color: #999;
 	position: absolute;
 }
 
@@ -438,7 +436,6 @@ body.touch-device #help {display: none}
 #country input {
 	width: 100%;
 	padding: 8px 13px;
-	border-bottom: 1px solid #eee;
 }
 
 #country a.random {
