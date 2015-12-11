@@ -20,9 +20,9 @@ function hasClass(elem, klass) {
 		h1 = document.getElementsByTagName('h1')[0],
 		genders = document.getElementById('genderSelect').getElementsByTagName('a'),
 		infoToggle = document.getElementsByClassName('info')[0],
-		countrySelect = document.getElementsByClassName('icon country')[0],
-		countryBox = document.getElementById('country'),
-		availableCountries = countryBox.getElementsByTagName('li'),
+		regionSelect = document.getElementsByClassName('icon region')[0],
+		regionBox = document.getElementById('region'),
+		availableRegions = regionBox.getElementsByTagName('li'),
 		infoBox = document.getElementById('info');
 	
 	// NAME RANDOMIZER
@@ -30,30 +30,30 @@ function hasClass(elem, klass) {
 		if (req.readyState == 4) {
 			var data = eval('(' + req.responseText + ')');
 			
-			function countryToggle() {
-				for (var j = 0; j < availableCountries.length; j++) {
-					availableCountries[j].className = availableCountries[j].className.replace(/\b ?active\b/g, '');
+			function regionToggle() {
+				for (var j = 0; j < availableRegions.length; j++) {
+					availableRegions[j].className = availableRegions[j].className.replace(/\b ?active\b/g, '');
 				}
 				this.className += ' active';
 				
-				countrySelect.className = countrySelect.className.replace(/\b ?active\b/g, '');
-				localStorage.setItem('country', this.getElementsByClassName('country-label')[0].innerHTML);
+				regionSelect.className = regionSelect.className.replace(/\b ?active\b/g, '');
+				localStorage.setItem('region', this.getElementsByClassName('region-label')[0].innerHTML);
 				
 				setTimeout(function() {
 					body.removeAttribute('data-popup');
 				}, 250);
 			}
 			
-			for (var i = 0; i < availableCountries.length; i++) {
-				addListener(availableCountries[i], 'click', countryToggle);
+			for (var i = 0; i < availableRegions.length; i++) {
+				addListener(availableRegions[i], 'click', regionToggle);
 			}
 			
-			// select country from local storage if saved
-			var storedCountry = localStorage.getItem('country');
-			if (storedCountry) {
-				for (var i = 0, n = availableCountries.length; i < n; i++) {
-					if (storedCountry == availableCountries[i].getElementsByClassName('country-label')[0].innerHTML) {
-						availableCountries[i].click();
+			// select region from local storage if saved
+			var storedRegion = localStorage.getItem('region');
+			if (storedRegion) {
+				for (var i = 0, n = availableRegions.length; i < n; i++) {
+					if (storedRegion == availableRegions[i].getElementsByClassName('region-label')[0].innerHTML) {
+						availableRegions[i].click();
 						break;
 					}
 				}
@@ -62,11 +62,11 @@ function hasClass(elem, klass) {
 			function getName(e) {
 				if (e.keyCode == 32 || e.which == 32 || e.type.match(/(click|touchend)/)) {
 					
-					var country = countryBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
+					var region = regionBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
 						gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1);
 					
-					if (country < 0) {
-						country = Math.floor(Math.random() * data.length);
+					if (region < 0) {
+						region = Math.floor(Math.random() * data.length);
 					}
 					
 					if (gender == 'random') {
@@ -78,16 +78,16 @@ function hasClass(elem, klass) {
 					}
 					
 					// generating html
-					var first = data[country][gender][Math.floor(Math.random() * data[country][gender].length)],
-						last = data[country]['surnames'][Math.floor(Math.random() * data[country]['surnames'].length)];
+					var first = data[region][gender][Math.floor(Math.random() * data[region][gender].length)],
+						last = data[region]['surnames'][Math.floor(Math.random() * data[region]['surnames'].length)];
 					
 					// russian exceptions
-					if (gender == 'female' && data[country]['country'].toLowerCase() == 'russia' && /[в|н]/.test(last[last.length - 1])) {
+					if (gender == 'female' && data[region]['region'].toLowerCase() == 'russia' && /[в|н]/.test(last[last.length - 1])) {
 						 last += 'a';
 					}
 					
 					// set name order as per http://en.wikipedia.org/wiki/Personal_name#Name_order
-					if (data[country]['country'].match(/(Japan|Hungary|China|Korea|Singapore|Taiwan|Vietnam)/)) {
+					if (data[region]['region'].match(/(Japan|Hungary|China|Korea|Singapore|Taiwan|Vietnam)/)) {
 						h1.innerHTML = last + ' ' + first;
 					} else {
 						h1.innerHTML = first + ' ' + last;
@@ -98,10 +98,10 @@ function hasClass(elem, klass) {
 					var specs = document.getElementById('specs'),
 						help = document.getElementById('help');
 					
-					specs.innerHTML = gender.charAt(0).toUpperCase() + gender.slice(1) + ' from ' + data[country]['country'];
+					specs.innerHTML = gender.charAt(0).toUpperCase() + gender.slice(1) + ' from ' + data[region]['region'];
 					
 					infoToggle.className = infoToggle.className.replace(/\b ?active\b/g, '');
-					countrySelect.className = countrySelect.className.replace(/\b ?active\b/g, '');
+					regionSelect.className = regionSelect.className.replace(/\b ?active\b/g, '');
 					
 					specs.style.display = '';
 					help.style.display = '';
@@ -177,7 +177,7 @@ function hasClass(elem, klass) {
 			overlay = document.getElementById('overlay');
 		
 		function closePopup() {
-			countryBox.getElementsByTagName('input')[0].blur();
+			regionBox.getElementsByTagName('input')[0].blur();
 			body.removeAttribute('data-popup');
 		}
 
@@ -185,8 +185,8 @@ function hasClass(elem, klass) {
 			closePopup();
 		} else {
 			body.setAttribute('data-popup', hash);
-			if (hash == 'country') {
-				countryBox.getElementsByTagName('input')[0].focus();
+			if (hash == 'region') {
+				regionBox.getElementsByTagName('input')[0].focus();
 			}
 		}
 		
@@ -201,7 +201,7 @@ function hasClass(elem, klass) {
 	}
 	
 	addListener(infoToggle, 'click', togglePopup);
-	addListener(countrySelect, 'click', togglePopup);
+	addListener(regionSelect, 'click', togglePopup);
 	
 	// INFO TABS TOGGLE
 	var tabs = document.getElementById('tabs').getElementsByTagName('a');
@@ -223,32 +223,32 @@ function hasClass(elem, klass) {
     	addListener(tabs[i], 'click', toggleTab);
     }
     
-    // COUNTRY SEARCH
-    var countries = countryBox.getElementsByTagName('li'),
+    // region SEARCH
+    var regions = regionBox.getElementsByTagName('li'),
     	searchInput = document.getElementsByTagName('input')[0],
-    	countryCount = countryBox.getElementsByClassName('countryCount')[0],
-    	contribute = countryBox.getElementsByClassName('contribute')[0];
+    	regionCount = regionBox.getElementsByClassName('regionCount')[0],
+    	contribute = regionBox.getElementsByClassName('contribute')[0];
     
     function search(e) {
-    	var countryMatches = countries.length;
-    	for (var i = 0; i < countries.length; i++) {
-    		var country = countries[i],
-    			countryValue = country.getElementsByClassName('country-label')[0].innerHTML.toLowerCase();
+    	var regionMatches = regions.length;
+    	for (var i = 0; i < regions.length; i++) {
+    		var region = regions[i],
+    			regionValue = region.getElementsByClassName('region-label')[0].innerHTML.toLowerCase();
     		
-    		if (countryValue.indexOf(searchInput.value.toLowerCase(), 0) == 0) {
-    			country.className = country.className.replace(/\b ?inactive\b/g, '');
-    			countryMatches = countryMatches + 1;
+    		if (regionValue.indexOf(searchInput.value.toLowerCase(), 0) == 0) {
+    			region.className = region.className.replace(/\b ?inactive\b/g, '');
+    			regionMatches = regionMatches + 1;
     		} else {
-    			if (!country.className.match(/inactive/)) {
-	    			country.className += ' inactive';
+    			if (!region.className.match(/inactive/)) {
+	    			region.className += ' inactive';
 	    		}
-    			countryMatches = countryMatches - 1;
+    			regionMatches = regionMatches - 1;
     		}
     	}
     	
-		countryCount.innerHTML = countryMatches / 2 + '/' + countries.length;
+		regionCount.innerHTML = regionMatches / 2 + '/' + regions.length;
 		
-		if (countryMatches == 0) {
+		if (regionMatches == 0) {
 			contribute.style.display = '';
 		} else {
 			contribute.style.display = 'none';

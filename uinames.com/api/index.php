@@ -55,16 +55,16 @@ function get_random_pool_by_size ($database) {
     return $database[$index];
 }
 
-function generate_name ($database, $country = ANY, $language = ANY, $gender = ANY) {
-    if ($country === ANY) {
+function generate_name ($database, $region = ANY, $language = ANY, $gender = ANY) {
+    if ($region === ANY) {
         $pool = get_random_pool_by_size($database);
     } else {
-        // find pool by country name and language
+        // find pool by region name and language
         $found   = false;
         $matches = array();
 
         foreach ($database as $pool) {
-            if (strtolower($pool->country) === strtolower($country)) $matches[] = $pool;
+            if (strtolower($pool->region) === strtolower($region)) $matches[] = $pool;
         }
 
         if ($language === ANY && count($matches)) {
@@ -123,7 +123,7 @@ function generate_name ($database, $country = ANY, $language = ANY, $gender = AN
         'name'     => $name,
         'surname'  => $surname,
         'gender'   => $gender,
-        'country'  => $pool->country
+        'region'  => $pool->region
     );
 
     if (!empty($pool->language)) {
@@ -137,7 +137,7 @@ $json     = file_get_contents('names.json');
 $database = sanitize(json_decode($json));
 
 $amount   = isset($_GET['amount']) ? (int) $_GET['amount'] : 1;
-$country  = @$_GET['country'];
+$region  = @$_GET['region'];
 $language = @$_GET['language'];
 $gender   = @$_GET['gender'];
 $minlen   = isset($_GET['minlen']) ? (int) $_GET['minlen'] : 1;
@@ -168,7 +168,7 @@ function send ($content) { //, $code = 200) {
 
 try {
     while ($count < $amount) {
-        $name = generate_name($database, $country, $language, $gender);
+        $name = generate_name($database, $region, $language, $gender);
         $name_length = iconv_strlen($name['name'] . ' ' . $name['surname']);
         if ($name_length >= $minlen && $name_length <= $maxlen) {
             $results[] = $name;

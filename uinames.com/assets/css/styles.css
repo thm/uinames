@@ -150,7 +150,7 @@ code {
 
 body.touch-device #help {display: none}
 
-/*--INFO & COUNTRY POPUPS--*/
+/*--INFO & REGION POPUPS--*/
 
 #tabs {
 	width: 100%;
@@ -206,7 +206,7 @@ body.touch-device #help {display: none}
 	border-radius: 3px;
 }
 
-#info, #country {
+#info, #region {
 	height: 0;
 	width: 480px;
 	max-width: 100%;
@@ -230,13 +230,13 @@ body.touch-device #help {display: none}
 	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
-[data-popup="info"] #info, [data-popup="country"] #country {
+[data-popup="info"] #info, [data-popup="region"] #region {
 	height: auto;
 	opacity: 1;
 	padding-top: 62px;
 }
 
-[data-popup="info"] #country, [data-popup="country"] #info {
+[data-popup="info"] #region, [data-popup="region"] #info {
 	margin: 0;
 }
 
@@ -290,14 +290,14 @@ body.touch-device #help {display: none}
 	opacity: .6;
 }
 
-/*--COUNTRY--*/
+/*--region--*/
 
-#country {
+#region {
 	padding: 0 !important;
 	width: 320px;
 }
 
-#country li, #country .contribute {
+#region li, #region .contribute {
 	max-height: 150px;
 	text-align: left;
 	line-height: 100%;
@@ -307,13 +307,13 @@ body.touch-device #help {display: none}
 	overflow: hidden;
 }
 
-#country li.inactive {
+#region li.inactive {
 	max-height: 0;
 	border-width: 0;
 	opacity: 0;
 }
 
-#country li .flag {
+#region li .flag {
 	height: 20px;
 	width: 20px;
 	margin: 12px;
@@ -321,7 +321,7 @@ body.touch-device #help {display: none}
 	position: relative;
 }
 
-#country li .flag:before {
+#region li .flag:before {
 	content: '';
 	height: 18px;
 	width: 18px;
@@ -332,36 +332,36 @@ body.touch-device #help {display: none}
 	border-radius: 50%;
 }
 
-#country li .flag img {
+#region li .flag img {
 	height: 100%;
 	width: 100%;
 	
 	border-radius: 50%;
 }
 
-#country li .country-label {
+#region li .region-label {
 	line-height: 260%;
 }
 
-#country li:first-child {
+#region li:first-child {
 	border-top: none;
 }
 
-#country li:hover {
+#region li:hover {
 	cursor: pointer;
 }
 
-#country li.active {
+#region li.active {
 	color: #999;
 }
 
-#country li:hover,
-#country li.active,
-#country li.highlight {
+#region li:hover,
+#region li.active,
+#region li.highlight {
 	background: #f9f9f9;
 }
 
-#country li.new:after, #country li.fav:after {
+#region li.new:after, #region li.fav:after {
 	content: 'NEW';
 	right: 0;
 	margin: 13px 12px;
@@ -376,16 +376,16 @@ body.touch-device #help {display: none}
 	border-radius: 2px;
 }
 
-#country li.fav:after {
+#region li.fav:after {
 	content: ' POPULAR';
 	background: #e59c1c;
 }
 
-#country li.active:after {
+#region li.active:after {
 	background: #999;
 }
 
-#countrySelect:before {
+#regionSelect:before {
 	content: '';
 	height: 4px;
 	width: 4px;
@@ -397,19 +397,19 @@ body.touch-device #help {display: none}
 	border-radius: 5px;
 }
 
-#country .contribute {
+#region .contribute {
 	padding: 0;
 	text-align: center;
 	line-height: 150%;
 	display: block;
 }
 
-#country .contribute a {
+#region .contribute a {
 	padding: 15px;
 	display: block;
 }
 
-#country .contribute svg {
+#region .contribute svg {
 	height: 48px;
 	width: 48px;
 	margin: 0 auto 5px;
@@ -417,13 +417,13 @@ body.touch-device #help {display: none}
 	fill: #333;
 }
 
-#country .contribute:hover svg {
+#region .contribute:hover svg {
 	fill: #444;
 }
 
-/* country count */
+/* region count */
 
-#country .countryCount {
+#region .regionCount {
 	top: 0;
 	right: 12px;
 	line-height: 260%;
@@ -431,14 +431,14 @@ body.touch-device #help {display: none}
 	position: absolute;
 }
 
-/* country search */
+/* region search */
 
-#country input {
+#region input {
 	width: 100%;
 	padding: 8px 13px;
 }
 
-#country a.random {
+#region a.random {
 	height: 20px;
 	width: 20px;
 	top: 12px;
@@ -538,19 +538,19 @@ body.touch-device #help {display: none}
 	margin-left: 0;
 }
 
-.icon.active, [data-popup="info"] .icon.info, [data-popup="country"] .icon.country {
+.icon.active, [data-popup="info"] .icon.info, [data-popup="region"] .icon.region {
 	opacity: 1;
 	background: #fff;
 }
 
-.icon.active span, [data-popup="info"] .icon.info span, [data-popup="country"] .icon.country span {
+.icon.active span, [data-popup="info"] .icon.info span, [data-popup="region"] .icon.region span {
 	background: #8fc06c;
 }
 
 .male.active .m1,
 .female.active .f1,
-[data-popup="country"] .icon.country .r1,
-[data-popup="country"] .icon.country .r4 {
+[data-popup="region"] .icon.region .r1,
+[data-popup="region"] .icon.region .r4 {
 	border-color: #8fc06c;
 	background: #fff;
 }
@@ -689,9 +689,9 @@ body.touch-device #help {display: none}
 	left: 16px;
 }
 
-/* country */
+/* region */
 
-.country .r1 {
+.region .r1 {
 	height: 20px;
 	width: 20px;
 	top: 7px;
@@ -702,7 +702,7 @@ body.touch-device #help {display: none}
 	border-radius: 100%;
 }
 
-.country .r2 {
+.region .r2 {
 	height: 18px;
 	width: 2px;
 	top: 8px;
@@ -710,7 +710,7 @@ body.touch-device #help {display: none}
 	z-index: 2;
 }
 
-.country .r3 {
+.region .r3 {
 	height: 2px;
 	width: 18px;
 	top: 16px;
@@ -718,7 +718,7 @@ body.touch-device #help {display: none}
 	z-index: 2;
 }
 
-.country .r4 {
+.region .r4 {
 	height: 20px;
 	width: 12px;
 	top: 7px;
@@ -759,7 +759,7 @@ body.no-js h1 em,
 body.no-js #specs,
 body.no-js #help,
 body.no-js #info,
-body.no-js #country,
+body.no-js #region,
 body.no-js #options,
 body.no-js #details,
 body.no-js #share-box {
@@ -816,7 +816,7 @@ body.no-js #share-box {
 
 @media (max-width: 480px) {
 
-	#info, #country {
+	#info, #region {
 		width: 100%;
 		border-radius: 0;
 	}

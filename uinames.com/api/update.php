@@ -14,15 +14,15 @@ $file     = file_get_contents(DATABASE_SOURCE);
 $database = json_decode($file);
 $stats    = array(
     'names'     => 0,
-    'countries' => 0
+    'regions' => 0
 );
 
-$countries = array_map(function ($pool) use (&$stats) {
+$regions = array_map(function ($pool) use (&$stats) {
     $stats['names'] += (count($pool->male) + count($pool->female)) * count($pool->surnames);
-    return $pool->country;
+    return $pool->region;
 }, $database);
 
-$stats['countries'] = count(array_unique($countries));
+$stats['regions'] = count(array_unique($regions));
 
 $json       = json_encode($database);//, JSON_UNESCAPED_UNICODE);
 $stats_json = json_encode((object) $stats);//, JSON_UNESCAPED_UNICODE);
