@@ -202,7 +202,6 @@ function hasClass(elem, klass) {
 	
 	addListener(infoToggle, 'click', togglePopup);
 	addListener(regionSelect, 'click', togglePopup);
-	addListener(window, 'load', togglePopup);
 	
 	// INFO TABS TOGGLE
 	var tabs = document.getElementById('tabs').getElementsByTagName('a');

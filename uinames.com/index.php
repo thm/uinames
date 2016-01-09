@@ -18,7 +18,7 @@
 
 	<meta charset="utf-8" />
 	
-	<title>uinames.com: Randomly Generate Fake Dummy Names</title>
+	<title>uinames.com: Randomly Generate Fake Names</title>
 	<meta name="description" content="Generate random fake dummy names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source. 🔥" />
 	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name" />
 	
