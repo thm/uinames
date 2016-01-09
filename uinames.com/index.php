@@ -18,8 +18,9 @@
 
 	<meta charset="utf-8" />
 	
-	<title>uinames.com</title>
-	<meta name="description" content="A simple tool to generate random names for use in designs and mockups." />
+	<title>uinames.com: Randomly Generate Fake Dummy Names</title>
+	<meta name="description" content="Generate random fake dummy names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source. 🔥" />
+	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name" />
 	
 	<link rel="shortcut icon" href="assets/img/favicon.ico" />
 	<script>
@@ -31,7 +32,7 @@
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	
 	<!-- viewport -->
-	<meta name="viewport" content="user-scalable=no, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	
 	<!-- identity -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +42,7 @@
 
 </head>
 
-<body class="no-js">
+<body class="no-js" data-tab="info">
 
 	<script>
 		var body = document.getElementsByTagName('body')[0],
@@ -63,10 +64,10 @@
 	<p id="specs" style="display: none"></p>
 	<p id="help" style="display: none">Press <span>C</span> to select, then <span><script>document.write(c)</script></span> to copy!</p>
 	
-	<div id="info" class="clearfix" data-tab="info">
+	<div id="info" class="clearfix">
 		<div id="tabs">
-			<a href="#info" class="active">Info</a>
-			<a href="#api">API</a>
+			<a id="info-tab" href="#info">Info</a>
+			<a id="api-tab" href="#api">API</a>
 		</div>
 		<div id="tab-info">
 			<h2>About</h2>
@@ -80,7 +81,7 @@
 		</div>
 		<div id="tab-api">
 			<h2>Overview</h2>
-			<p>All responses are returned as JSON, and there is no request limit. Please keep the amount of calls to a minimum though, and cache responses whenever possible.</p>
+			<p>All responses are returned as JSON. There is no request limit. Please keep the amount of calls to a minimum though, and cache responses if possible.</p>
 			<h2>Usage</h2>
 			<p>Basic usage:</p>
 <pre>http://api.uinames.com
@@ -99,7 +100,7 @@
 			<p>The gender of names to return (male or female):</p>
 			<pre><span>http://api.uinames.com/</span>?gender=female</pre>
 			<br />
-			<p>region specific results:</p>
+			<p>Region-specific results:</p>
 			<pre><span>http://api.uinames.com/</span>?region=germany</pre>
 			<br />
 			<p>Require a minimum number of characters in a name:</p>

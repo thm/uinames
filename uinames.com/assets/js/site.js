@@ -60,7 +60,7 @@ function hasClass(elem, klass) {
 			}
 						
 			function getName(e) {
-				if (e.keyCode == 32 || e.which == 32 || e.type.match(/(click|touchend)/)) {
+				if (e.keyCode == 32 || e.which == 32 || e.type.match(/(click|touchend)/) && !body.getAttribute('data-popup')) {
 					
 					var region = regionBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
 						gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1);
@@ -118,7 +118,7 @@ function hasClass(elem, klass) {
 				if (!body.getAttribute('data-popup')) getName(e);
 			});
 			
-			addListener(h1, 'click touchend', getName);
+			addListener(document, 'click touchend', getName);
 			addListener(document.getElementById('specs'), 'click touchend', getName);
 			
 			function select(e) {
@@ -202,6 +202,7 @@ function hasClass(elem, klass) {
 	
 	addListener(infoToggle, 'click', togglePopup);
 	addListener(regionSelect, 'click', togglePopup);
+	addListener(window, 'load', togglePopup);
 	
 	// INFO TABS TOGGLE
 	var tabs = document.getElementById('tabs').getElementsByTagName('a');
@@ -209,21 +210,17 @@ function hasClass(elem, klass) {
 	function toggleTab(e) {
 	    e.preventDefault();
 	    e.stopPropagation();
-	
-        if (!this.className.match(/active/)) {
-            for (var i = 0; i < tabs.length; i++) {
-                tabs[i].className = tabs[i].className.replace(/\b ?active\b/g, '');
-            }
-            this.className += ' active';
-            infoBox.setAttribute('data-tab', this.hash.substr(1));
-        }
+	    
+	    var hash = this.hash.substr(1);
+	    
+		body.setAttribute('data-tab', hash);
     }
     
     for (var i = 0; i < tabs.length; i++) {
     	addListener(tabs[i], 'click', toggleTab);
     }
     
-    // region SEARCH
+    // REGION SEARCH
     var regions = regionBox.getElementsByTagName('li'),
     	searchInput = document.getElementsByTagName('input')[0],
     	regionCount = regionBox.getElementsByClassName('regionCount')[0],
@@ -257,6 +254,22 @@ function hasClass(elem, klass) {
     
     addListener(searchInput, 'keyup', search);
 	
+})();
+
+(function() {
+
+	var title = document.title,
+		emoji = ['👀', '👻', '🙈'];
+
+	addListener(document, 'visibilitychange webkitvisibilitychange mozvisibilitychange msvisibilitychange', function() {
+		if (document.hidden) {
+			var randEmoji = emoji[Math.floor(Math.random() * emoji.length)];
+			document.title = randEmoji + ' ' + title;
+		} else {
+			document.title = title;
+		}
+	});
+
 })();
 	
 // STALKING CODE

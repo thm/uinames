@@ -178,7 +178,8 @@ body.touch-device #help {display: none}
 	color: #999;
 }
 
-#tabs > a.active {
+[data-tab="info"] #info-tab,
+[data-tab="api"] #api-tab {
 	color: #999;
 	border-bottom: none;
 	background: #fff;
@@ -189,8 +190,8 @@ body.touch-device #help {display: none}
 	display: none;
 }
 
-#info[data-tab="info"] #tab-info,
-#info[data-tab="api"] #tab-api {
+[data-tab="info"] #tab-info,
+[data-tab="api"] #tab-api {
 	display: block;
 }
 
@@ -290,7 +291,7 @@ body.touch-device #help {display: none}
 	opacity: .6;
 }
 
-/*--region--*/
+/*--REGION--*/
 
 #region {
 	padding: 0 !important;
