@@ -19,7 +19,7 @@
 	<meta charset="utf-8" />
 	
 	<title>uinames.com: Randomly Generate Fake Names</title>
-	<meta name="description" content="Generate random fake dummy names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source. 🔥" />
+	<meta name="description" content="Generate random fake names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source." />
 	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name" />
 	
 	<link rel="shortcut icon" href="assets/img/favicon.ico" />
@@ -31,14 +31,28 @@
 	
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	
-	<!-- viewport -->
+	<!--viewport-->
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	
-	<!-- identity -->
+	<!--identity-->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="uinames">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<link rel="apple-touch-icon" href="assets/img/ios-precomposed.png" />
+	
+	<!--Facebook Card-->
+	<meta property="og:title" content="Randomly Generate Fake Names" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="http://cl.ly/1o2k1Z422Z2T/icon-250.png" />
+	<meta property="og:url" content="http://uinames.com" />
+	<meta property="og:description" content="Generate random fake names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source." />
+	
+	<!--Twitter Card-->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@thomweerd" />
+	<meta name="twitter:title" content="Randomly Generate Fake Names" />
+	<meta name="twitter:description" content="Generate random fake names for use in designs and mockups. Supports 45+ regions with over 1 million possible combinations. Completely open-source." />
+	<meta name="twitter:image" content="http://cl.ly/1o2k1Z422Z2T/icon-250.png" />
 
 </head>
 
@@ -68,6 +82,7 @@
 		<div id="tabs">
 			<a id="info-tab" href="#info">Info</a>
 			<a id="api-tab" href="#api">API</a>
+			<a id="shortcuts-tab" href="#shortcuts">Shortcuts</a>
 		</div>
 		<div id="tab-info">
 			<h2>About</h2>
@@ -113,6 +128,19 @@
 			<p>Results for a language within a region:</p>
 			<pre><span>http://api.uinames.com/</span>?region=switzerland&amp;language=german</pre>
 			-->
+		</div>
+		<div id="tab-shortcuts">
+			<h2>Names</h2>
+			<p><code>Spacebar</code> Generate name</p>
+			<p><code>C</code> Select name</p>
+			<h2>Options</h2>
+			<p><code>1</code> Set gender to random</p>
+			<p><code>2</code> Set gender to male</p>
+			<p><code>3</code> Set gender to female</p>
+			<h2>Panels</h2>
+			<p><code>4</code> Change region</p>
+			<p><code>0</code> View info panel</p>
+			<p><code>ESC</code> Close panel</p>
 		</div>
 		<div id="facts">
 			<div><?php print $regions; ?><p>Regions</p></div>
@@ -165,12 +193,12 @@
 	
 	<div id="options">
 		<span id="genderSelect">
-			<a class="icon random active" href="#random" title="Random Gender"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span><span class="r7"></span></a>
-			<a class="icon male" href="#male" title="Male Only"><span class="m1"></span><span class="m2"></span><span class="m3"></span><span class="m4"></span></a>
-			<a class="icon female" href="#female" title="Female Only"><span class="f1"></span><span class="f2"></span><span class="f3"></span></a>
+			<a class="icon random active" href="#random" title="Gender: Random"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span></a>
+			<a class="icon male" href="#male" title="Gender: Male"><span class="m1"></span><span class="m2"></span><span class="m3"></span><span class="m4"></span></a>
+			<a class="icon female" href="#female" title="Gender: Female"><span class="f1"></span><span class="f2"></span><span class="f3"></span></a>
 		</span>
 		<span id="regionSelect">
-			<a class="icon region" href="#region" title="Select Region"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span></a>
+			<a class="icon region" href="#region" title="Select Region"><span class="flag"><img src="assets/img/flags/random.gif" /></span></a>
 		</span>
 	</div>
 	

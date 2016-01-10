@@ -36,9 +36,14 @@ function hasClass(elem, klass) {
 				}
 				this.className += ' active';
 				
+				// switch to new region
 				regionSelect.className = regionSelect.className.replace(/\b ?active\b/g, '');
 				localStorage.setItem('region', this.getElementsByClassName('region-label')[0].innerHTML);
 				
+				// update the flag in the region icon
+				regionSelect.getElementsByTagName('img')[0].src = this.getElementsByTagName('img')[0].src;
+				
+				// wait 250ms so the user can see the region switched
 				setTimeout(function() {
 					body.removeAttribute('data-popup');
 				}, 250);
@@ -60,7 +65,7 @@ function hasClass(elem, klass) {
 			}
 						
 			function getName(e) {
-				if (e.keyCode == 32 || e.which == 32 || e.type.match(/(click|touchend)/) && !body.getAttribute('data-popup')) {
+				if (e.keyCode == 32 || e.which == 32 || e.type == 'touchend' && !body.getAttribute('data-popup')) {
 					
 					var region = regionBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
 						gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1);
@@ -114,12 +119,9 @@ function hasClass(elem, klass) {
 				}
 			}
 			
-			addListener(document, 'keyup', function(e) {
-				if (!body.getAttribute('data-popup')) getName(e);
+			addListener(document, 'keyup touchend', function(e) {
+				if (!body.getAttribute('data-popup') && e.target == body || e.target == h1 || e.target == specs) getName(e);
 			});
-			
-			addListener(document, 'click touchend', getName);
-			addListener(document.getElementById('specs'), 'click touchend', getName);
 			
 			function select(e) {
 				if (e.keyCode == 67 || e.which == 67) {
@@ -227,6 +229,7 @@ function hasClass(elem, klass) {
     
     function search(e) {
     	var regionMatches = regions.length;
+    	
     	for (var i = 0; i < regions.length; i++) {
     		var region = regions[i],
     			regionValue = region.getElementsByClassName('region-label')[0].innerHTML.toLowerCase();
@@ -252,6 +255,25 @@ function hasClass(elem, klass) {
     }
     
     addListener(searchInput, 'keyup', search);
+    
+    // SHORTCUTS
+	addListener(window, 'keyup', function(e) {
+		if (body.getAttribute('data-popup') != 'region') {
+			var num = e.keyCode;
+			
+			if (num == 48 || num == 53) {
+				infoToggle.click();
+			} else if (num == 49) {
+				document.getElementsByClassName('icon random')[0].click();
+			} else if (num == 50) {
+				document.getElementsByClassName('icon male')[0].click();
+			} else if (num == 51) {
+				document.getElementsByClassName('icon female')[0].click();
+			} else if (num == 52) {
+				regionSelect.click();
+			}
+		}
+	});
 	
 })();
 

@@ -161,7 +161,7 @@ body.touch-device #help {display: none}
 }
 
 #tabs > a {
-	width: 50%;
+	width: 33.33%;
 	padding: 12px 0;
 	background: #eee;
 	line-height: 100%;
@@ -179,19 +179,21 @@ body.touch-device #help {display: none}
 }
 
 [data-tab="info"] #info-tab,
-[data-tab="api"] #api-tab {
+[data-tab="api"] #api-tab,
+[data-tab="shortcuts"] #shortcuts-tab {
 	color: #999;
 	border-bottom: none;
 	background: #fff;
 	cursor: default;
 }
 
-#tab-info, #tab-api {
+[id*="tab-"] {
 	display: none;
 }
 
 [data-tab="info"] #tab-info,
-[data-tab="api"] #tab-api {
+[data-tab="api"] #tab-api,
+[data-tab="shortcuts"] #tab-shortcuts {
 	display: block;
 }
 
@@ -241,6 +243,11 @@ body.touch-device #help {display: none}
 	margin: 0;
 }
 
+/* hide shortcuts tab on touch-devices */
+
+body.touch-device #tabs > a {width: 50%;}
+body.touch-device #shortcuts-tab {display: none}
+
 /*--INFO--*/
 
 #info h2 {
@@ -285,17 +292,11 @@ body.touch-device #help {display: none}
 	text-transform: uppercase;
 }
 
-/*--GENDER--*/
-
-[data-popup] #genderSelect .icon {
-	opacity: .6;
-}
-
 /*--REGION--*/
 
 #region {
 	padding: 0 !important;
-	width: 320px;
+	width: 300px;
 }
 
 #region li, #region .contribute {
@@ -314,7 +315,7 @@ body.touch-device #help {display: none}
 	opacity: 0;
 }
 
-#region li .flag {
+.flag {
 	height: 20px;
 	width: 20px;
 	margin: 12px;
@@ -322,7 +323,7 @@ body.touch-device #help {display: none}
 	position: relative;
 }
 
-#region li .flag:before {
+.flag:before {
 	content: '';
 	height: 18px;
 	width: 18px;
@@ -333,7 +334,7 @@ body.touch-device #help {display: none}
 	border-radius: 50%;
 }
 
-#region li .flag img {
+.flag img {
 	height: 100%;
 	width: 100%;
 	
@@ -471,6 +472,7 @@ body.touch-device #help {display: none}
 	position: fixed;
 	z-index: 3000;
 	cursor: pointer;
+	cursor: zoom-out;
 }
 
 /*--SHAREBOX--*/
@@ -521,7 +523,6 @@ body.touch-device #help {display: none}
 	width: 38px;
 	margin-left: 8px;
 	border: 2px solid #fff;
-	opacity: .6;
 	position: relative;
 	float: left;
 	
@@ -539,19 +540,26 @@ body.touch-device #help {display: none}
 	margin-left: 0;
 }
 
-.icon.active, [data-popup="info"] .icon.info, [data-popup="region"] .icon.region {
+.icon,
+[data-popup] #genderSelect .icon,
+[data-popup] .icon.region {
+	opacity: .6;
+}
+
+.icon.active, .icon.region,
+[data-popup="info"] .icon.info,
+[data-popup="region"] .icon.region {
 	opacity: 1;
 	background: #fff;
 }
 
-.icon.active span, [data-popup="info"] .icon.info span, [data-popup="region"] .icon.region span {
+.icon.active span, [data-popup="info"] .icon.info span {
 	background: #8fc06c;
 }
 
+.random.active .r1,
 .male.active .m1,
-.female.active .f1,
-[data-popup="region"] .icon.region .r1,
-[data-popup="region"] .icon.region .r4 {
+.female.active .f1 {
 	border-color: #8fc06c;
 	background: #fff;
 }
@@ -633,21 +641,20 @@ body.touch-device #help {display: none}
 /* random */
 
 .random .r1 {
-	height: 14px;
-	width: 2px;
-	top: 8px;
-	left: 11px;
+	height: 12px;
+	width: 12px;
+	top: 11px;
+	left: 10px;
+	border: 2px solid #fff;
+	background: none;
 	
-	-webkit-transform: rotate(-45deg);
-	    -ms-transform: rotate(-45deg);
-	        transform: rotate(-45deg);
-	
+	border-radius: 100%;
 }
 
 .random .r2 {
-	height: 14px;
+	height: 10px;
 	width: 2px;
-	top: 8px;
+	top: 5px;
 	left: 21px;
 	
 	-webkit-transform: rotate(45deg);
@@ -658,76 +665,38 @@ body.touch-device #help {display: none}
 .random .r3 {
 	height: 2px;
 	width: 8px;
-	top: 9px;
-	left: 6px;
+	top: 6px;
+	left: 18px;
 }
 
 .random .r4 {
 	height: 8px;
 	width: 2px;
-	top: 9px;
-	left: 6px;
+	top: 6px;
+	left: 24px;
 }
 
 .random .r5 {
-	height: 2px;
-	width: 8px;
-	top: 9px;
-	left: 20px;
+	height: 9px;
+	width: 2px;
+	top: 21px;
+	left: 15px;
 }
 
 .random .r6 {
-	height: 8px;
-	width: 2px;
-	top: 9px;
-	left: 26px;
-}
-
-.random .r7 {
-	height: 8px;
-	width: 2px;
-	top: 19px;
-	left: 16px;
+	height: 2px;
+	width: 8px;
+	top: 25px;
+	left: 12px;
 }
 
 /* region */
 
-.region .r1 {
-	height: 20px;
-	width: 20px;
-	top: 7px;
-	left: 7px;
-	border: 2px solid #fff;
+.region .flag {
+	margin: 7px;
+	left: 0;
+	color: #000;
 	background: none;
-	
-	border-radius: 100%;
-}
-
-.region .r2 {
-	height: 18px;
-	width: 2px;
-	top: 8px;
-	left: 16px;
-	z-index: 2;
-}
-
-.region .r3 {
-	height: 2px;
-	width: 18px;
-	top: 16px;
-	left: 8px;
-	z-index: 2;
-}
-
-.region .r4 {
-	height: 20px;
-	width: 12px;
-	top: 7px;
-	left: 11px;
-	border: 2px solid #fff;
-	background: none;
-	
-	border-radius: 100%;
 }
 
 /* info */
