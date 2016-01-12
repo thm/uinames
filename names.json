@@ -1,9 +1,9 @@
 [
     {
         "region":"Albania",
-        "male":["Aleksio","Alesandro","Aron","Enrik","Flavio","Luis","Noel"],
-        "female":["Alesia","Anamaria","Greis","Klea","Sara","Sidorela","Uendi"],
-        "surnames":["Bogdani","Dervishi","Dukagjini","Dushku","Frashëri","Gjoni","Gurakuqi","Hoxha","Leka","Loshi","Prifti"]
+        "male":["Aleks","Alesandro","Aron","Enrik","Flavio","Luis","Noel","Alban","Andi","Endri","Ermir","Arlind","Glen","Daniel","Erion","Lorik","Edi","Saimir","Vullnet","Orgest","Roland","Ferdinand","Neritan","Gazmir","Gersi","Genci"],
+        "female":["Alesia","Anamaria","Greis","Klea","Sara","Sidorela","Uendi","Armela","Megi","Sindi","Drita","Albana","Kejsi","Adea","Anila","Suzana","Loreta","Alma","Arnisa","Adea","Besa","Adea","Dorina","Elvira","Entela","Enkelejda"],
+        "surnames":["Bogdani","Dervishi","Dukagjini","Dushku","Frashëri","Gjoni","Gurakuqi","Hoxha","Leka","Loshi","Prifti","Baku","Kola","Zane","Musaj","Agolli", "Brahimi", "Kodra","Osmani","Myftiu","Xhafa","Dedja","Duro","Demiri","Shyti"],
     },
     {
         "region":"Argentina",
