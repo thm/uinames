@@ -155,7 +155,7 @@
 			<li class="pos-0"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
-				$newRegions = array("Pakistan", "Armenia");
+				$newRegions = array("Korea");
 				$favRegions = array("United States", "Germany", "France", "Russia", "India");
 				
 				$total = count($names);

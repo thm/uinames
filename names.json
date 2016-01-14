@@ -3,7 +3,7 @@
         "region":"Albania",
         "male":["Aleks","Alesandro","Aron","Enrik","Flavio","Luis","Noel","Alban","Andi","Endri","Ermir","Arlind","Glen","Daniel","Erion","Lorik","Edi","Saimir","Vullnet","Orgest","Roland","Ferdinand","Neritan","Gazmir","Gersi","Genci"],
         "female":["Alesia","Anamaria","Greis","Klea","Sara","Sidorela","Uendi","Armela","Megi","Sindi","Drita","Albana","Kejsi","Adea","Anila","Suzana","Loreta","Alma","Arnisa","Adea","Besa","Adea","Dorina","Elvira","Entela","Enkelejda"],
-        "surnames":["Bogdani","Dervishi","Dukagjini","Dushku","Frashëri","Gjoni","Gurakuqi","Hoxha","Leka","Loshi","Prifti","Baku","Kola","Zane","Musaj","Agolli", "Brahimi", "Kodra","Osmani","Myftiu","Xhafa","Dedja","Duro","Demiri","Shyti"]
+        "surnames":["Bogdani","Dervishi","Dukagjini","Dushku","Frashëri","Gjoni","Gurakuqi","Hoxha","Leka","Loshi","Prifti","Baku","Kola","Zane","Musaj","Agolli","Brahimi","Kodra","Osmani","Myftiu","Xhafa","Dedja","Duro","Demiri","Shyti"]
     },
     {
         "region":"Argentina",
@@ -162,12 +162,19 @@
         "male":["Andrea","Luca","Marco","Francesco","Matteo","Alessandro","Davide","Simone","Federico","Lorenzo","Mattia","Stefano","Giuseppe","Riccardo","Daniele","Michele","Alessio","Antonio","Giovanni","Nicola","Gabriele","Fabio","Alberto","Giacomo","Giulio","Filippo","Gianluca","Paolo","Roberto","Salvatore","Emanuele","Edoardo","Enrico","Vincenzo","Nicolò","Leonardo","Jacopo","Manuel","Mirko","Tommaso","Pietro","Luigi","Giorgio","Angelo","Dario","Valerio","Domenico","Claudio","Alex","Christian"],
         "female":["Giulia","Chiara","Francesca","Federica","Sara","Martina","Valentina","Alessia","Silvia","Elisa","Ilaria","Eleonora","Giorgia","Elena","Laura","Alice","Alessandra","Jessica","Arianna","Marta","Veronica","Roberta","Anna","Giada","Claudia","Beatrice","Valeria","Michela","Serena","Camilla","Irene","Cristina","Simona","Maria","Noemi","Stefania","Erika","Sofia","Lucia","Vanessa","Greta","Debora","Nicole","Angela","Paola","Caterina","Monica","Erica","Lisa","Gaia"],
         "surnames":["Rossi","Russo","Ferrari","Esposito","Bianchi","Romano","Colombo","Ricci","Marino","Greco","Bruno","Gallo","Conti","De Luca","Mancini","Costa","Giordano","Rizzo","Lombardi","Moretti","Barbieri","Fontana","Santoro","Mariani","Rinaldi","Caruso","Ferrara","Galli","Martini","Leone","Longo","Gentile","Martinelli","Vitale","Lombardo","Serra","Coppola","Palazzo","Moro","Marchetti","Parisi","Villa","Conte","Ferraro","Ferri","Fabbri","Bianco","Marini","Grasso","Valentini","Messina","Sala","Giannini","Gatti","Pellegrin","Palumbo","Sanna","Farina","Rizzi","Monti","Cattaneo","Morelli","Amato","Silvestri","Mazza","Testa","Grassi","Pellegrini","Carbone","Giuliani","Benedetti","Barone","Rossetti","Caputo","Montanari","Guerra","Palmieri","Bernardi","Martino","Fiore","Adami","Ferretti","Bellini","Basile","Riva","Donati","Piras","Vitali","Battaglia","Sartori","Neri","Costantino","Milani","Pagano","Ruggiero","Sorrentino","Salvi","Orlando","Damico","Negri"]
-    },
-    {
+	},
+	{
         "region":"Japan",
         "male":["昭一","昭三","幸雄","稔","明","昇","隆","勉","勝","勲","功","勝利","修","豊","誠","浩","徹","浩一","浩二","浩之","聡","剛","和彦","秀樹","哲也","直樹","達也","学","健一","淳","健","博之","英樹","崇","大輔","大介","亮","竜也","健太郎","洋平","健太","和也","翔","拓也","祐介","雄太","優","翔太","大樹","翔平","駿","大貴","貴大","大輝","翼","大地","亮太","拓哉","雄大","拓海","直人","康平","陸","海斗","一輝","涼太","匠","智也","蓮","優斗","竜","優太","颯太","大翔","太陽","悠斗","颯","輝","大和","空","陽斗","悠希","陽向","悠人","悠太","瑛太","悠真","颯真","歩夢","蒼空","大雅","樹","陽翔","陸斗","太一","海翔","湊","龍生","陽太","朝陽"],
         "female":["久美子","順子","由美子","裕子","明美","智子","浩子","真由美","由美","ゆかり","直美","陽子","直子","純子","恵美","美香","香織","恵","美穂","優子","美紀","裕美","めぐみ","理恵","愛","絵美","麻美","麻衣","明日香","智美","麻衣子","友美","彩","あゆみ","舞","由佳","愛美","沙織","成美","瞳","彩香","千尋","美咲","早紀","茜","桃子","里奈","萌","彩花","遥","千夏","葵","佳奈","菜摘","真由","楓","奈々","優花","七海","未来","彩乃","玲奈","亜美","菜々子","さくら","菜月","美月","詩織","彩夏","未 来","結衣","琴音","美羽","莉子","美優","凜","陽菜","真央","花音","百花","ひなた","優衣","杏","結菜","優奈","心優","美桜","結愛","愛莉","杏奈","心愛","愛菜","心春","芽依","美結","心咲","凛","陽葵","桜","愛梨"],
         "surnames":["佐藤","鈴木","高橋","田中","伊藤","山本","渡辺","中村","小林","加藤","吉田","山田","佐々木","山口","松本","井上","木村","斎藤","林","清水","山崎","阿部","森","池田","橋本","山下","石川","中島","前田","藤田","小川","後藤","岡田","長谷川","村上","石井","近藤","坂本","遠藤","藤井","青木","西村","福田","斉藤","太田","藤原","三浦","岡本","松田","中川"],
+        "exceptions":[["/^(.*) (.*)$/","$2 $1"]]
+    },
+    {
+        "region":"Korea",
+        "male":["건우","도윤","도현","동현","민석","민수","민재","민준","병철","상현","상훈","서준","성민","성수","성진","성현","성호","성훈","승민","승현","시우","영수","영진","영철","영호","예준","우진","재현","재호","정호","정훈","주원","준서","준영","준혁","준호","지후","지훈","진우","진호","현우","현준"],
+        "female":["경숙","경희","미경","미숙","미영","미정","민서","민지","보람","서연","서영","서윤","서현","선영","수민","수빈","수진","아름","영미","영숙","예원","예은","예지","예진","유진","윤서","은경","은서","은영","은정","은주","은지","정숙","정희","지민","지아","지연","지영","지우","지원","지은","지현","지혜","채원","하윤","하은","현숙","현정","현주","현지","혜진"],
+        "surnames":["강","고","공","곽","구","국","권","금","기","길","김","나","남","노","도","마","맹","명","모","문","민","박","반","방","배","백","변","서","석","선","설","성","소","손","송","신","심","안","양","어","엄","여","연","염","오","옥","왕","우","원","위","유","육","윤","은","이","인","임","장","전","정","제","조","주","지","진","차","채","천","최","추","탁","편","표","하","한","함","허","현","홍","황"],
         "exceptions":[["/^(.*) (.*)$/","$2 $1"]]
     },
     {
