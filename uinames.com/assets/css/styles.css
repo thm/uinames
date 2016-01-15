@@ -502,6 +502,95 @@ body.touch-device #shortcuts-tab {display: none}
 	display: inline-block;
 }
 
+.share-button, .share-count {
+	height: 20px;
+	padding: 3px 6px;
+	font: 600 11px/120% "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	background: #333;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	
+	border-radius: 3px;
+}
+
+.facebook-button .share-button {
+	padding: 3px 6px 3px 4px;
+	text-shadow: 0 -1px 0 #354c8c;
+	background: #4c69ba;
+	
+	background: -webkit-linear-gradient(#4c69ba, #3b55a0);
+	   background: -moz-linear-gradient(#4c69ba, #3b55a0);
+	        background: linear-gradient(#4c69ba, #3b55a0);
+	
+	border-radius: 2px;
+}
+
+.twitter-button .share-button {
+	background: #1b95e0;
+}
+
+#share-box .share-button:hover {
+	background: #0c7abf;
+}
+
+#share-box .share-icon {
+	height: 14px;
+	width: 14px;
+	margin-right: 4px;
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+
+#share-box .share-icon svg {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+
+.share-count {
+	margin: 0 0 0 2px;
+	padding: 2px 4px;
+	font-weight: 500;
+	color: #666;
+	border: 1px solid #bbb;
+	background: none;
+}
+
+.facebook-button .share-count {
+	border-radius: 2px;
+}
+
+.share-count:hover {
+	color: #333;
+}
+
+.share-count:before,
+.share-count:after {
+	content: '';
+	height: 6px;
+	width: 6px;
+	top: 50%;
+	left: -3.75px;
+	margin-top: -3px;
+	background: #bbb;
+	position: absolute;
+	
+	border-radius: 1px;
+	
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+
+.share-count:after {
+	left: -2px;
+	background: #fff;
+}
+
 /*--DETAILS--*/
 
 #options, #details {
