@@ -14,10 +14,14 @@ function hasClass(elem, klass) {
      return (' ' + elem.className + ' ').indexOf(' ' + klass + ' ') > -1;
 }
 
+function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 (function() {
 	
 	var body = document.getElementsByTagName('body')[0],
-		h1 = document.getElementsByTagName('h1')[0],
+		nameContainer = document.getElementById('name'),
 		genders = document.getElementById('genderSelect').getElementsByTagName('a'),
 		infoToggle = document.getElementsByClassName('info')[0],
 		regionSelect = document.getElementsByClassName('icon region')[0],
@@ -25,140 +29,154 @@ function hasClass(elem, klass) {
 		availableRegions = regionBox.getElementsByTagName('li'),
 		infoBox = document.getElementById('info');
 	
-	// NAME RANDOMIZER
-	function randomizer() {
-		if (req.readyState == 4) {
-			var data = eval('(' + req.responseText + ')');
-			
-			function regionToggle() {
-				for (var j = 0; j < availableRegions.length; j++) {
-					availableRegions[j].className = availableRegions[j].className.replace(/\b ?active\b/g, '');
-				}
-				this.className += ' active';
-				
-				// switch to new region
-				regionSelect.className = regionSelect.className.replace(/\b ?active\b/g, '');
-				localStorage.setItem('region', this.getElementsByClassName('region-label')[0].innerHTML);
-				
-				// update the flag in the region icon
-				regionSelect.getElementsByTagName('img')[0].src = this.getElementsByTagName('img')[0].src;
-				
-				// wait 250ms so the user can see the region switched
-				setTimeout(function() {
-					body.removeAttribute('data-popup');
-				}, 250);
+	// REGION SWITCHER
+	function regionToggle() {
+		for (var j = 0; j < availableRegions.length; j++) {
+			availableRegions[j].className = availableRegions[j].className.replace(/\b ?active\b/g, '');
+		}
+		this.className += ' active';
+		
+		// switch to new region
+		localStorage.setItem('region', this.getElementsByClassName('region-label')[0].innerHTML);
+		
+		// update the flag in the region icon
+		regionSelect.getElementsByTagName('img')[0].src = this.getElementsByTagName('img')[0].src;
+		
+		// wait 250ms so the user can see the region switched
+		setTimeout(function() {
+			body.removeAttribute('data-popup');
+		}, 250);
+	}
+	
+	for (var i = 0; i < availableRegions.length; i++) {
+		addListener(availableRegions[i], 'click', regionToggle);
+	}
+	
+	// select region from local storage if saved
+	var storedRegion = localStorage.getItem('region');
+	if (storedRegion) {
+		for (var i = 0, n = availableRegions.length; i < n; i++) {
+			if (storedRegion == availableRegions[i].getElementsByClassName('region-label')[0].innerHTML) {
+				availableRegions[i].click();
+				break;
 			}
-			
-			for (var i = 0; i < availableRegions.length; i++) {
-				addListener(availableRegions[i], 'click', regionToggle);
-			}
-			
-			// select region from local storage if saved
-			var storedRegion = localStorage.getItem('region');
-			if (storedRegion) {
-				for (var i = 0, n = availableRegions.length; i < n; i++) {
-					if (storedRegion == availableRegions[i].getElementsByClassName('region-label')[0].innerHTML) {
-						availableRegions[i].click();
-						break;
-					}
-				}
-			}
-						
-			function getName(e) {
-				if (e.keyCode == 32 || e.which == 32 || e.type == 'touchend' && !body.getAttribute('data-popup')) {
-					
-					var region = regionBox.getElementsByClassName('active')[0].className.replace(/[^0-9]/g, '') - 1,
-						gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1);
-					
-					if (region < 0) {
-						region = Math.floor(Math.random() * data.length);
-					}
-					
-					if (gender == 'random') {
-						if (Math.floor(Math.random() * 2) == 0) {
-							gender = 'male';
-						} else {
-							gender = 'female';
-						}
-					}
-					
-					// generating html
-					var first = data[region][gender][Math.floor(Math.random() * data[region][gender].length)],
-						last = data[region]['surnames'][Math.floor(Math.random() * data[region]['surnames'].length)];
-					
-					// russian exceptions
-					if (gender == 'female' && data[region]['region'].toLowerCase() == 'russia' && /[в|н]/.test(last[last.length - 1])) {
-						 last += 'a';
-					}
-					
-					// set name order as per http://en.wikipedia.org/wiki/Personal_name#Name_order
-					if (data[region]['region'].match(/(Japan|Hungary|China|Korea|Singapore|Taiwan|Vietnam)/)) {
-						h1.innerHTML = last + ' ' + first;
-					} else {
-						h1.innerHTML = first + ' ' + last;
-					}
-					
-					h1.style.display = '';
-					
-					var specs = document.getElementById('specs'),
-						help = document.getElementById('help');
-					
-					specs.innerHTML = gender.charAt(0).toUpperCase() + gender.slice(1) + ' from ' + data[region]['region'];
-					
-					infoToggle.className = infoToggle.className.replace(/\b ?active\b/g, '');
-					regionSelect.className = regionSelect.className.replace(/\b ?active\b/g, '');
-					
-					specs.style.display = '';
-					help.style.display = '';
-					help.className += ' animate';
-					
-					setTimeout(function() {
-						help.className = 'help';
-					}, 250);
-					
-				}
-			}
-			
-			addListener(document, 'keyup touchend', function(e) {
-				if (!body.getAttribute('data-popup') && e.target == body || e.target == h1 || e.target == specs) getName(e);
-			});
-			
-			function select(e) {
-				if (e.keyCode == 67 || e.which == 67) {
-				
-					if (!hasClass(body, 'touch-device') && !h1.getElementsByTagName('em')[0]) {
-						var range, selection;
-						if (document.body.createTextRange) {
-							range = document.body.createTextRange();
-							range.moveToElementText(h1);
-							range.select();
-						} else if (window.getSelection) {
-							selection = window.getSelection();
-							range = document.createRange();
-							range.selectNodeContents(h1);
-							selection.removeAllRanges();
-							selection.addRange(range);
-						}
-					}
-				
-				}
-			}
-			
-			addListener(document, 'keyup', select);
 		}
 	}
 	
-	var req = new XMLHttpRequest();
-	req.open("GET", "./api/names.json", true);
-	req.onreadystatechange = randomizer;
-	req.send(null);
+	// CONNECTION TO THE API
+	var namesRequested = 0,
+		maxNamesRequested = 25,
+		data, oldRegion, oldGender;
+	
+	function getName(e) {
+		// set parameters based on settings
+		var region = regionBox.getElementsByClassName('active')[0].getElementsByClassName('region-label')[0].innerHTML.toLowerCase().replace(/ /g, '+'),
+			gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1),
+			bulkToggle = document.getElementById('bulk').getElementsByClassName('icon')[0];
+		
+		// function that injects all the data on the page
+		function injectData(data, offset) {
+			var specs = document.getElementById('specs'),
+				help = document.getElementById('help');
+			
+			// inject name into page
+			nameContainer.innerHTML = '<h1>' + data[offset]['name'] + ' ' + data[offset]['surname'] + '</h1>';
+			// inject gender and region into page
+			specs.innerHTML = capitalize(data[offset]['gender']) + ' from ' + data[offset]['region'];
+			
+			// if bulk mode, add the other 24
+			if (hasClass(bulkToggle, 'active')) {
+				namesRequested = maxNamesRequested;
+				nameContainer.innerHTML = '';
+				
+				if (!hasClass(body, 'bulk')) {
+					body.className += ' bulk';
+				}
+				
+				// inject names, genders and regions into page
+				for (var i = 0; i < namesRequested; i++) {
+					nameContainer.innerHTML += '<h1>' + data[i]['name'] + ' ' + data[i]['surname'] + '</h1><p>' + capitalize(data[i]['gender']) + ' from ' + data[i]['region'] + '</p>';
+				}
+				
+				// pause requests to stop overly excited users
+				body.className += ' bulkPause';
+				
+				// bulk toggle count-down
+				var bulkCache = bulkToggle.innerHTML,
+					count = 11;
+				
+				var interval = setInterval(function() {
+					bulkToggle.innerHTML = count - 1;
+					bulkToggle.style.lineHeight = '200%';
+					if (count <= 0 || !hasClass(bulkToggle, 'active')) {
+						bulkToggle.innerHTML = bulkCache;
+						body.className = body.className.replace(/\b ?bulkPause\b/g, '');
+						bulkToggle.style.lineHeight = '';
+						clearInterval(interval);
+					}
+					count--;
+				}, 600);
+				
+				// reset name node and count
+				namesRequested = maxNamesRequested;
+			} else {
+				body.className = body.className.replace(/\b ?bulk\b/g, '');
+			}
+			
+			nameContainer.style.display = '';
+			
+			// surface help elements
+			specs.style.display = '';
+			help.style.display = '';
+			help.className = 'animate';
+			
+			setTimeout(function() {
+				help.className = '';
+			}, 250);
+			
+			// count generated name
+			var getJSON = new XMLHttpRequest();
+			getJSON.open('POST', 'api/counter.php', true);
+			getJSON.send();
+		}
+		
+		function injectNewData() {
+			// get new names from api
+			var getJSON = new XMLHttpRequest();
+			getJSON.onreadystatechange = function() {
+				if (getJSON.readyState == 4 && getJSON.status == 200) {
+					data = JSON.parse(getJSON.responseText);
+					injectData(data, 0);
+				}
+			};
+			
+			// send the request
+			getJSON.open('GET', 'api/?amount=' + maxNamesRequested + '&region=' + region + '&gender=' + gender, true);
+			getJSON.send();
+			
+			// reset counter
+			namesRequested = 0;
+		}
+		
+		// detect end of road or a change in settings
+		if (namesRequested == 0 || namesRequested >= 25 || oldRegion != region || oldGender != gender || hasClass(bulkToggle, 'active')) {
+			injectNewData();
+		} else {
+			injectData(data, namesRequested);
+		}
+		
+		// update flags
+		namesRequested++;
+		oldRegion = region;
+		oldGender = gender;
+	}
 	
 	// GENDER TOGGLE
 	function toggleGender(e) {
 	    e.preventDefault();
 	    e.stopPropagation();
 	
-        if (!this.className.match(/active/)) {
+        if (!hasClass(this, 'active')) {
             for (var i = 0; i < genders.length; i++) {
                 genders[i].className = genders[i].className.replace(/\b ?active\b/g, '');
             }
@@ -170,6 +188,28 @@ function hasClass(elem, klass) {
     	addListener(genders[i], 'click', toggleGender);
     }
 	
+	// BULK TOGGLE
+	var bulk = document.getElementById('bulk').getElementsByClassName('icon bulk')[0];
+	
+	function toggleBulk(e) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	
+        if (hasClass(bulk, 'active')) {
+            bulk.className = bulk.className.replace(/\b ?active\b/g, '');
+		} else {
+            bulk.className += ' active';
+        }
+    }
+    
+	addListener(bulk, 'click', toggleBulk);
+    	
+	// POPUP CLOSER
+	function closePopup() {
+		regionBox.getElementsByTagName('input')[0].blur();
+		body.removeAttribute('data-popup');
+	}
+	
 	// POPUP TOGGLE
 	function togglePopup(e) {
 		e.preventDefault();
@@ -177,26 +217,28 @@ function hasClass(elem, klass) {
 		
 		var hash = this.hash.substr(1),
 			overlay = document.getElementById('overlay');
-		
-		function closePopup() {
-			regionBox.getElementsByTagName('input')[0].blur();
-			body.removeAttribute('data-popup');
-		}
 
 		if (body.getAttribute('data-popup') == hash) {
 			closePopup();
 		} else {
+			// lazy load images
+			var lazyImages = document.getElementById(hash).getElementsByClassName('lazy');
+			for (var i = 0; i < lazyImages.length; i++) {
+				(function(i) {
+					setTimeout(function() {
+						lazyImages[i].src = lazyImages[i].getAttribute('data-src');
+					}, i*15);
+				})(i);
+			}
+			
+			// show popup
 			body.setAttribute('data-popup', hash);
+			
+			// let's focus the input field if it's the region popup
 			if (hash == 'region') {
 				regionBox.getElementsByTagName('input')[0].focus();
 			}
 		}
-		
-		addListener(window, 'keyup', function(e) {
-			if (e.keyCode == 27 || e.which == 27) {
-				closePopup();
-			}
-		});
 		
 		addListener(overlay, 'click', closePopup);
 		
@@ -212,9 +254,7 @@ function hasClass(elem, klass) {
 	    e.preventDefault();
 	    e.stopPropagation();
 	    
-	    var hash = this.hash.substr(1);
-	    
-		body.setAttribute('data-tab', hash);
+		body.setAttribute('data-tab', this.hash.substr(1));
     }
     
     for (var i = 0; i < tabs.length; i++) {
@@ -238,7 +278,7 @@ function hasClass(elem, klass) {
     			region.className = region.className.replace(/\b ?inactive\b/g, '');
     			regionMatches = regionMatches + 1;
     		} else {
-    			if (!region.className.match(/inactive/)) {
+    			if (!hasClass(region, 'inactive')) {
 	    			region.className += ' inactive';
 	    		}
     			regionMatches = regionMatches - 1;
@@ -257,11 +297,15 @@ function hasClass(elem, klass) {
     addListener(searchInput, 'keyup', search);
     
     // SHORTCUTS
-	addListener(window, 'keyup', function(e) {
-		if (body.getAttribute('data-popup') != 'region') {
-			var num = e.keyCode;
-			
-			if (num == 48 || num == 53) {
+	addListener(window, 'keyup touchend', function(e) {
+		var num = e.which || e.keyCode || e.type == 'touchend' || 0;
+		
+		if (body.getAttribute('data-popup') != 'region' || num == 27) {
+			if (num == 27) {
+				closePopup();
+			} else if (num == 32 && !body.getAttribute('data-popup') && !hasClass(body, 'bulkPause') && e.target == body || e.target == nameContainer || e.target == specs) {
+				getName(e);
+			} else if (num == 48) {
 				infoToggle.click();
 			} else if (num == 49) {
 				document.getElementsByClassName('icon random')[0].click();
@@ -271,21 +315,78 @@ function hasClass(elem, klass) {
 				document.getElementsByClassName('icon female')[0].click();
 			} else if (num == 52) {
 				regionSelect.click();
+			} else if (num == 53) {
+				document.getElementsByClassName('icon bulk')[0].click();
+			} else if (e.keyCode == 67 || e.which == 67) {
+				if (!hasClass(body, 'touch-device') && !hasClass(body, 'bulk') && !nameContainer.getElementsByTagName('em')[0]) {
+					var range, selection;
+					if (document.body.createTextRange) {
+						range = document.body.createTextRange();
+						range.moveToElementText(nameContainer);
+						range.select();
+					} else if (window.getSelection) {
+						selection = window.getSelection();
+						range = document.createRange();
+						range.selectNodeContents(nameContainer);
+						selection.removeAllRanges();
+						selection.addRange(range);
+					}
+				}
 			}
 		}
 	});
+	
+	// GRAPH POPUP
+	var graph = document.getElementById('graph'),
+		bars = graph.getElementsByClassName('bar'),
+		popup = graph.getElementsByClassName('popup')[0];
+	
+	// update contents of popup and display when bar is hovered
+	for (var i = 0; i < bars.length; i++) {
+		(function(i) {
+			addListener(bars[i], 'mouseover', function() {
+				var web = bars[i].getAttribute('data-web'),
+					api = bars[i].getAttribute('data-api');
+				
+				// set values in popup
+				popup.getElementsByTagName('span')[0].innerHTML = web;
+				popup.getElementsByTagName('span')[1].innerHTML = api;
+				
+				// set distance from left of graph
+				var leftOffset = bars[i].offsetLeft + document.getElementById('bars').offsetLeft - 13;
+				popup.style.left = leftOffset + 'px';
+				
+				// add class if visible if it doesn't already have it
+				if (!hasClass(graph, 'visible')) {
+					graph.className += ' visible';
+				}
+				
+				// add inflated class
+				if (hasClass(bars[i], 'inflated') && !hasClass(popup, 'inflated')) {
+					popup.className += ' inflated';
+				} else if (!hasClass(bars[i], 'inflated')) {
+					popup.className = popup.className.replace(/\b ?inflated\b/g, '');
+				}
+			});
+		})(i);
+	}
+	
+	// hide popup when pointer leaves graph
+	addListener(graph, 'mouseleave', function() {
+		graph.className = graph.className.replace(/\b ?visible\b/g, '');
+	});
+	
+	// make api legend clickable
+	addListener(document.getElementById('graph-legend').getElementsByTagName('a')[0], 'click', toggleTab);
 	
 })();
 
 (function() {
 
-	var title = document.title,
-		emoji = ['👀', '👻', '🙈'];
-
+	var title = document.title;
 	addListener(document, 'visibilitychange webkitvisibilitychange mozvisibilitychange msvisibilitychange', function() {
 		if (document.hidden) {
-			var randEmoji = emoji[Math.floor(Math.random() * emoji.length)];
-			document.title = randEmoji + ' ' + title;
+			document.title = '👀 ' + title;
 		} else {
 			document.title = title;
 		}

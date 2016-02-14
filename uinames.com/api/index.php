@@ -9,14 +9,14 @@
 const ANY = NULL;
 
 function sanitize($database) {
-    static $defaultValues = array(
-        'male'              => array(),
-        'female'            => array(),
-        'surname'           => array(),
-        'exceptions'        => array(),
-        'male_exceptions'   => array(),
-        'female_exceptions' => array()
-    );
+    static $defaultValues = [
+        'male'              => [],
+        'female'            => [],
+        'surname'           => [],
+        'exceptions'        => [],
+        'male_exceptions'   => [],
+        'female_exceptions' => []
+    ];
 
     foreach ($database as $pool) {
         foreach ($defaultValues as $key => $defaultValue) {
@@ -33,14 +33,14 @@ function get_sizes($database) {
     }, $database);
 }
 
-function get_random_pool ($database) {
+function get_random_pool($database) {
     $index = mt_rand(0, count($database) - 1);
     $pool  = $database[$index];
 
     return $pool;
 }
 
-function get_random_pool_by_size ($database) {
+function get_random_pool_by_size($database) {
     $sizes   = get_sizes($database);
     $total   = array_sum($sizes);
     $random  = mt_rand(0, $total);
@@ -55,13 +55,13 @@ function get_random_pool_by_size ($database) {
     return $database[$index];
 }
 
-function generate_name ($database, $region = ANY, $language = ANY, $gender = ANY) {
-    if ($region === ANY) {
+function generate_name($database, $region = ANY, $language = ANY, $gender = ANY) {
+    if ($region === ANY || $region === 'random') {
         $pool = get_random_pool_by_size($database);
     } else {
         // find pool by region name and language
         $found   = false;
-        $matches = array();
+        $matches = [];
 
         foreach ($database as $pool) {
             if (strtolower($pool->region) === strtolower($region)) $matches[] = $pool;
@@ -70,7 +70,7 @@ function generate_name ($database, $region = ANY, $language = ANY, $gender = ANY
         if ($language === ANY && count($matches)) {
             $pool  = get_random_pool($matches);
             $found = true;
-        } else {
+        } else if (isset($match->language)) {
             foreach ($matches as $match) {
                 if (strtolower($match->language) !== strtolower($language)) continue;
 
@@ -78,16 +78,16 @@ function generate_name ($database, $region = ANY, $language = ANY, $gender = ANY
                 $pool  = $match;
             }
         }
-
-        if (!$found) throw new Exception('No matching pool found');
+		
+        if (!$found) throw new Exception('Region or language not found');
     }
 
-    if ($gender === ANY) {
+    if ($gender === ANY || $gender === 'random') {
         // we're being sexist here to make the code more effective
         $male_size = count($pool->male);
         $total     = $male_size + count($pool->female);
         $gender    = (mt_rand(0, $total) >= $male_size) ? 'female' : 'male';
-    } elseif ($gender !== 'male' && $gender !== 'female') {
+    } else if ($gender !== 'male' && $gender !== 'female') {
         // transphobic now too
         throw new Exception('Invalid gender');
     }
@@ -119,12 +119,12 @@ function generate_name ($database, $region = ANY, $language = ANY, $gender = ANY
     $name        = implode(' ', $name_chunks);
     $surname     = implode(' ', $chunks);
 
-    $result = array(
+    $result = [
         'name'     => $name,
         'surname'  => $surname,
         'gender'   => $gender,
         'region'  => $pool->region
-    );
+    ];
 
     if (!empty($pool->language)) {
         $result->language = $pool->language;
@@ -137,23 +137,23 @@ $json     = file_get_contents('names.json');
 $database = sanitize(json_decode($json));
 
 $amount   = isset($_GET['amount']) ? (int) $_GET['amount'] : 1;
-$region  = @$_GET['region'];
+$region   = @$_GET['region'];
 $language = @$_GET['language'];
 $gender   = @$_GET['gender'];
 $minlen   = isset($_GET['minlen']) ? (int) $_GET['minlen'] : 1;
 $maxlen   = isset($_GET['maxlen']) ? (int) $_GET['maxlen'] : 1000;
-$results  = array();
+$results  = [];
 $count    = 0;
 
-function send ($content) { //, $code = 200) {
+function send($content, $code = 200) {
     $type = (!empty($_GET['callback'])) ? 'application/javascript' : 'application/json';
 
     header('Content-Type: ' . $type . '; charset=utf-8');
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET');
-    header("HTTP/1.1 200 OK"); // http_response_code($code);
-
-    $output = json_encode($content); // , JSON_UNESCAPED_UNICODE);
+    http_response_code($code); // use this for PHP <5.4 instead: header("HTTP/1.1 200 OK");
+	
+    $output = json_encode($content, JSON_UNESCAPED_UNICODE);
 
     // if (!DEBUGGING) ob_end_clean();
     if (!empty($_GET['callback'])) {
@@ -162,11 +162,57 @@ function send ($content) { //, $code = 200) {
     } else {
         echo $output;
     }
-
+	
+	// it only counts if names are actually served
+	if ($code == 200) {
+	
+		// get old stats
+		$stats = json_decode(file_get_contents('stats.json'));
+		
+		// make sure file is not conflicted
+		if (isset($stats->api->calculated)) {
+		
+			// compare saved day with server day
+			if ((int)date('d') != $stats->updated) {
+				include_once('../dependables.php');
+				updateDay($stats);
+			}
+			
+			// get amount
+			$amount = isset($content['name']) ? 1 : count($content);
+			
+			// update confirmed and daily stats
+			$stats->api->confirmed += $amount;
+			$stats->api->daily[0] += $amount;
+			
+			$time = time();
+			
+			// a = days since names generated through the api are confirmed
+			// b = days since api is live
+			$a = ($time - strtotime('Jan 20, 2016')) / 86400;
+			$b = ($time - strtotime('Oct 17, 2014')) / 86400;
+			
+			// determine confirmed generated names
+			$confirmed = $stats->api->confirmed / $a;
+			
+			// calculate avg generated names
+			$stats->api->calculated = floor($confirmed * $b);
+			
+			// push new stats
+			file_put_contents('stats.json', json_encode($stats));
+		
+		}
+	}
+	
     exit;
 }
 
 try {
+
+	if ($amount < 1 || $amount > 500) {
+		throw new Exception('Amount of requested names exceeds maximum allowed');
+	}
+	
     while ($count < $amount) {
         $name = generate_name($database, $region, $language, $gender);
         $name_length = iconv_strlen($name['name'] . ' ' . $name['surname']);
@@ -176,13 +222,13 @@ try {
         }
     }
 
-    if (!isset($_GET['amount'])) {
+	if ($amount == 1) {
         send($results[0]);
     } else {
         send($results);
     }
 } catch (Exception $e) {
-    send(array('error' => $e->getMessage()), 400);
+    send(['error' => $e->getMessage()], 400);
 }
 
 ?>
