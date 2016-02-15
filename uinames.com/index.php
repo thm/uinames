@@ -34,7 +34,7 @@
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	
 	<!--viewport-->
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 	
 	<!--identity-->
 	<meta name="apple-mobile-web-app-capable" content="yes" />

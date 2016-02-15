@@ -159,7 +159,7 @@ function capitalize(string) {
 		}
 		
 		// detect end of road or a change in settings
-		if (namesRequested == 0 || namesRequested >= 25 || oldRegion != region || oldGender != gender || hasClass(bulkToggle, 'active')) {
+		if (namesRequested == 0 || namesRequested >= maxNamesRequested || oldRegion != region || oldGender != gender || hasClass(bulkToggle, 'active')) {
 			injectNewData();
 		} else {
 			injectData(data, namesRequested);
@@ -297,14 +297,19 @@ function capitalize(string) {
     addListener(searchInput, 'keyup', search);
     
     // SHORTCUTS
-	addListener(window, 'keyup touchend', function(e) {
-		var num = e.which || e.keyCode || e.type == 'touchend' || 0;
+	addListener(window, 'keyup touchstart', function(e) {
+		var num = e.which || e.keyCode || e.type == 'touchstart' || 0;
+		
+		console.log(e);
 		
 		if (body.getAttribute('data-popup') != 'region' || num == 27) {
 			if (num == 27) {
 				closePopup();
-			} else if (num == 32 && !body.getAttribute('data-popup') && !hasClass(body, 'bulkPause') && e.target == body || e.target == nameContainer || e.target == specs) {
+			} else if (num == 32 && !body.getAttribute('data-popup') && !hasClass(body, 'bulkPause')) {
 				getName(e);
+			} else if (e.type == 'touchstart') {
+				if (/(EM|H1)/.test(e.target.tagName) || e.target == body || e.target == nameContainer || e.target == specs)
+					getName(e);
 			} else if (num == 48) {
 				infoToggle.click();
 			} else if (num == 49) {
