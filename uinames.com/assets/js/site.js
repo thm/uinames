@@ -300,16 +300,15 @@ function capitalize(string) {
 	addListener(window, 'keyup touchstart', function(e) {
 		var num = e.which || e.keyCode || e.type == 'touchstart' || 0;
 		
-		console.log(e);
-		
 		if (body.getAttribute('data-popup') != 'region' || num == 27) {
 			if (num == 27) {
 				closePopup();
 			} else if (num == 32 && !body.getAttribute('data-popup') && !hasClass(body, 'bulkPause')) {
 				getName(e);
 			} else if (e.type == 'touchstart') {
-				if (/(EM|H1)/.test(e.target.tagName) || e.target == body || e.target == nameContainer || e.target == specs)
+				if (/(EM|H1)/.test(e.target.tagName) || e.target == body || e.target == nameContainer || e.target == specs) {
 					getName(e);
+				}
 			} else if (num == 48) {
 				infoToggle.click();
 			} else if (num == 49) {
