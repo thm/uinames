@@ -249,18 +249,6 @@ body.touch-device #help {display: none}
 	display: block;
 }
 
-#tab-api .blue {
-	padding: 3px 5px 4px;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 11px;
-	font-weight: 700;
-	background: #288ad5;
-	border-bottom: none;
-	
-	border-radius: 3px;
-}
-
 #info, #region {
 	height: 0;
 	width: 480px;
@@ -288,7 +276,6 @@ body.touch-device #help {display: none}
 	height: auto;
 	opacity: 1;
 	padding-top: 62px;
-	overflow: visible;
 }
 
 [data-popup="info"] #region, [data-popup="region"] #info {
@@ -413,161 +400,6 @@ body.touch-device #shortcuts-tab {display: none}
 .contributor .popup > span,
 #graph .popup span:first-child {
 	color: #222;
-}
-
-/*--STATISTICS--*/
-
-#statistics {
-	margin: 25px -25px -25px;
-	text-align: left;
-	padding: 15px 25px;
-	font-weight: bold;
-	line-height: 24px;
-	font-size: 12px;
-	color: #999;
-	text-transform: uppercase;
-	background: #eee;
-	border-top: 1px solid #ddd;
-	position: relative;
-}
-
-#statistics .dark {
-	color: #222;
-}
-
-#statistics p {
-	margin: 0;
-}
-
-/* legend */
-
-#graph-legend > * {
-	margin-right: 6px;
-}
-
-#graph-legend > *:before {
-	content: '';
-	height: 6px;
-	width: 6px;
-	margin: -3px 5px 0 0;
-	background: #222;
-	display: inline-block;
-	vertical-align: middle;
-	border-radius: 100%;
-}
-
-/* legend -> api */
-
-#graph-legend .api:before {
-	background: #aaa;
-}
-
-/* legend -> inflated */
-
-#graph-legend .inflated:before {
-	height: 0;
-	width: 0;
-	margin-top: -7px;
-	border: 4px solid transparent;
-	border-bottom: 7px solid #ed5826;
-	background: none;
-	border-radius: 0;
-}
-
-/* graph */
-
-#graph {
-	height: 96px;
-	position: relative;
-	overflow: hidden;
-}
-
-#graph.visible {
-	overflow: visible;
-}
-
-#graph .popup.inflated span:last-child {
-	color: #ed5826;
-}
-
-/* rows */
-
-#statistics .rows p {
-	position: relative;
-}
-
-#statistics .rows p:after {
-	content: '';
-	height: 1px;
-	width: 96%;
-	top: 50%;
-	right: -25px;
-	background: #ddd;
-	position: absolute;
-}
-
-/* bars */
-
-#bars {
-	height: 100%;
-	width: 96%;
-	bottom: 10px;
-	right: -25px;
-	padding-left: 4px;
-	position: absolute;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-#bars .bar {
-	height: 100%;
-	width: 12px;
-	padding: 0 3px;
-	display: inline-block;
-	position: relative;
-}
-
-#bars .bar.inflated:after {
-	content: '';
-	left: 50%;
-	margin-left: -6px;
-	bottom: 70px;
-	border: 6px solid transparent;
-	border-bottom: 10px solid #ed5826;
-	position: absolute;
-	z-index: 2000;
-}
-
-#graph .popup.inflated span:last-child:after {
-	content: '';
-	margin: -4px  0 1px 4px;
-	border: 4px solid transparent;
-	border-bottom: 7px solid #ed5826;
-	display: inline-block;
-}
-
-#bars .bar > span {
-	min-height: 6px;
-	width: 6px;
-	bottom: 0;
-	background: #ccc;
-	position: absolute;
-	
-	border-radius: 10px;
-}
-
-#bars .bar:hover > span {
-	background: #bbb;
-}
-
-#bars .bar > span > span {
-	height: 6px;
-	width: 100%;
-	bottom: 0;
-	background: #222;
-	position: absolute;
-	
-	border-radius: 10px;
 }
 
 /*--FACTS--*/
@@ -1158,7 +990,6 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 /* info (active) */
-
 
 [data-popup="info"] .info .i1,
 [data-popup="info"] .info .i2,

@@ -338,51 +338,7 @@ function capitalize(string) {
 				}
 			}
 		}
-	});
-	
-	// GRAPH POPUP
-	var graph = document.getElementById('graph'),
-		bars = graph.getElementsByClassName('bar'),
-		popup = graph.getElementsByClassName('popup')[0];
-	
-	// update contents of popup and display when bar is hovered
-	for (var i = 0; i < bars.length; i++) {
-		(function(i) {
-			addListener(bars[i], 'mouseover', function() {
-				var web = bars[i].getAttribute('data-web'),
-					api = bars[i].getAttribute('data-api');
-				
-				// set values in popup
-				popup.getElementsByTagName('span')[0].innerHTML = web;
-				popup.getElementsByTagName('span')[1].innerHTML = api;
-				
-				// set distance from left of graph
-				var leftOffset = bars[i].offsetLeft + document.getElementById('bars').offsetLeft - 13;
-				popup.style.left = leftOffset + 'px';
-				
-				// add class if visible if it doesn't already have it
-				if (!hasClass(graph, 'visible')) {
-					graph.className += ' visible';
-				}
-				
-				// add inflated class
-				if (hasClass(bars[i], 'inflated') && !hasClass(popup, 'inflated')) {
-					popup.className += ' inflated';
-				} else if (!hasClass(bars[i], 'inflated')) {
-					popup.className = popup.className.replace(/\b ?inflated\b/g, '');
-				}
-			});
-		})(i);
-	}
-	
-	// hide popup when pointer leaves graph
-	addListener(graph, 'mouseleave', function() {
-		graph.className = graph.className.replace(/\b ?visible\b/g, '');
-	});
-	
-	// make api legend clickable
-	addListener(document.getElementById('graph-legend').getElementsByTagName('a')[0], 'click', toggleTab);
-	
+	});	
 })();
 
 (function() {

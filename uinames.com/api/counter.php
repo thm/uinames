@@ -10,20 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	if (isset($stats->web->calculated)) {
 		
-		// compare saved day with server day
-		if ((int)date('d') != $stats->updated) {
-			include_once('../dependables.php');
-			updateDay($stats);
-		}
-		
-		// update confirmed and daily stats
+		// update confirmed stats
 		$stats->web->confirmed++;
-		$stats->web->daily[0]++;
-			
-		$time = time();
 		
 		// a = days since names generated are confirmed
 		// b = days since start of uinames.com
+		$time = time();
 		$a = ($time - strtotime('Jan 16, 2016')) / 86400;
 		$b = ($time - strtotime('Dec 23, 2013')) / 86400;
 		

@@ -137,7 +137,7 @@ $json     = file_get_contents('names.json');
 $database = sanitize(json_decode($json));
 
 $amount   = isset($_GET['amount']) ? (int) $_GET['amount'] : 1;
-$region   = @$_GET['region'];
+$region   = isset($_GET['region']) ? $_GET['region'] : (isset($_GET['country']) ? $_GET['country'] : 'random');
 $language = @$_GET['language'];
 $gender   = @$_GET['gender'];
 $minlen   = isset($_GET['minlen']) ? (int) $_GET['minlen'] : 1;
@@ -171,24 +171,13 @@ function send($content, $code = 200) {
 		
 		// make sure file is not conflicted
 		if (isset($stats->api->calculated)) {
-		
-			// compare saved day with server day
-			if ((int)date('d') != $stats->updated) {
-				include_once('../dependables.php');
-				updateDay($stats);
-			}
 			
-			// get amount
-			$amount = isset($content['name']) ? 1 : count($content);
-			
-			// update confirmed and daily stats
-			$stats->api->confirmed += $amount;
-			$stats->api->daily[0] += $amount;
-			
-			$time = time();
+			// update confirmed stats
+			$stats->api->confirmed += isset($content['name']) ? 1 : count($content);
 			
 			// a = days since names generated through the api are confirmed
 			// b = days since api is live
+			$time = time();
 			$a = ($time - strtotime('Jan 20, 2016')) / 86400;
 			$b = ($time - strtotime('Oct 17, 2014')) / 86400;
 			

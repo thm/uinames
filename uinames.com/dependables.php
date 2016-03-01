@@ -58,34 +58,3 @@ function github($format) {
 		echo str_replace($needles, $details, $format);
 	}
 }
-
-// update day and relative stats
-function updateDay($stats) {
-
-	// update saved day
-	$stats->updated = (int)date('d');
-	
-	// trash values we don't need anymore
-	array_splice($stats->web->daily, 30);
-	array_splice($stats->web->daily_relative, 30);
-	array_splice($stats->api->daily, 30);
-	array_splice($stats->api->daily_relative, 30);
-	
-	// compare and adjust all values in api->daily_relative to highest value
-	$highestVal = max($stats->api->daily);
-	for ($i = 0; $i < count($stats->api->daily); $i++) {
-		$stats->api->daily_relative[$i] = round($stats->api->daily[$i] / $highestVal * 100, 1);
-	}
-	
-	// compare and adjust all values in web->daily_relative to total/api values
-	$stats->web->daily_relative = [];
-	for ($i = 0; $i < count($stats->web->daily); $i++) {
-		$stats->web->daily_relative[$i] = round($stats->web->daily[$i] / $stats->api->daily[$i] * 100, 1);
-	}
-	
-	// prepend new 0 values to start counting again
-	array_unshift($stats->web->daily, 0);
-	array_unshift($stats->web->daily_relative, 0);
-	array_unshift($stats->api->daily, 0);
-	array_unshift($stats->api->daily_relative, 0);
-}
