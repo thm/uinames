@@ -9,7 +9,7 @@ When the option to pick a country at random is selected, a country will be picke
 ### The Layout (JSON)
     [
       {
-        "country": "Country",
+        "region": "Country",
         "male": ["Male", "First", "Names"],
         "female": ["Female", "First", "Names"],
         "surnames": ["Last", "Names"]
@@ -18,10 +18,10 @@ When the option to pick a country at random is selected, a country will be picke
     ]
 
 ### The API
-All responses are returned as JSON, and there is no request limit. Please keep the amount of calls to a minimum though, and cache responses whenever possible.
+All responses are returned as JSON(P), with no request limit. Please keep the amount of calls to a minimum though, and cache responses whenever possible.
 
 #### Basic usage
-	http://api.uinames.com
+	http://uinames.com/api/
 	---
 	{
 	  "name":"John",
@@ -30,20 +30,27 @@ All responses are returned as JSON, and there is no request limit. Please keep t
 	  "country":"United States"
 	}
 #### Optional Parameters
-The amount of names to return:
-<pre>http://api.uinames.com/<strong>?amount=25</strong></pre>
+Amount of names to return, between `1` and `500`:
+<pre>http://uinames.com/api/<strong>?amount=25</strong></pre>
 
-The gender of names to return (male or female):
-<pre>http://api.uinames.com/<strong>?gender=female</strong></pre>
+Limit results to the `male` or `female` gender:
+<pre>http://uinames.com/api/<strong>?gender=female</strong></pre>
 
-Country specific results:
-<pre>http://api.uinames.com/<strong>?country=germany</strong></pre>
+Region-specific results:
+<pre>http://uinames.com/api/<strong>?country=germany</strong></pre>
 
 Require a minimum number of characters in a name:
-<pre>http://api.uinames.com/<strong>?minlen=25</strong></pre>
+<pre>http://uinames.com/api/<strong>?minlen=25</strong></pre>
 
 Require a maximum number of characters in a name:
-<pre>http://api.uinames.com/<strong>?maxlen=75</strong></pre>
+<pre>http://uinames.com/api/<strong>?maxlen=75</strong></pre>
+
+For JSONP, specify a callback function to wrap results in:
+<pre>http://uinames.com/api/<strong>?callback=example</strong></pre>
+
+#### Exception handling
+Error messages have the following format:
+<pre>{"error":"Region or language not found"}</pre>
 
 ### Author
 This project is initiated and maintained by [@thomweerd](http://twitter.com/thomweerd).
@@ -51,4 +58,4 @@ This project is initiated and maintained by [@thomweerd](http://twitter.com/thom
 ### Credit
 This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support!
 
-Special thanks go out to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
+Special thanks to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
