@@ -79,6 +79,12 @@
         "surnames":["Agudelo","Alvarez","Arango","Arbeláez","Arias","Aristizabal","Arroyave","Bernal","Builes","Bustamente","Cardona","Carvajal","Castaño","Castillo","Castrillón","Chamorro","Echavarría","Fajardo","Fernández","Franco","Garcés","García","Gaviria","Gil","Gómez","González","Gutierrez","Jaramillo","Londoño","Lopera","López","Marín","Mejía","Montoya","Moreno","Ocampo","Ochoa","Ortega","Osorio","Ospina","Palacio","Pérez","Posada","Puerta","Pulgarín","Quintero","Ramírez","Rendón","Restrepo","Rivera","Robledo","Rodas","Ruíz","Salazar","Sánchez","Silva","Toro","Torres","Trujillo","Uribe","Valencia","Vásquez","Vélez","Villa","Villegas","Zapata","Zuleta","Zuluaga"]
     },
     {
+        "region":"Costa Rica",
+        "male":["Adrian","Carlos Roberto","Dennis","Gerarod","Pablo"],
+        "female":["Alexa","Sophia"],
+        "surnames":["Araya","Arias","Chaves","Hernández","Gómez","Mora","Molina","Vargas","Vega"]
+    },
+    {
         "region":"Denmark",
         "male":["William","Lucas","Victor","Noah","Frederik","Emil","Liam","Oliver","Oscar","Magnus","Alexander","Carl","Elias","Christian","Sebastian","Mikkel","Mads","Anton","Benjamin","Malthe","Mathias","Villads","Felix","August","Valdemar","Johan","Marcus","Alfred","Marius","Storm","Aksel","Tobias","Nikolaj","Jonathan","Adam","Jonas","Philip","Jakob","Albert","Arthur","Bertram","Elliot","Laurits","Simon","Andreas","Sander","Tristan","Nicklas","Rasmus","Silas","Matias"],
         "female":["Sofia","Ida","Isabella","Emma","Freja","Anna","Caroline","Josefine","Clara","Laura","Sofie","Alma","Maja","Karla","Ella","Mathilde","Liva","Olivia","Alberte","Emilie","Frida","Mille","Victoria","Lærke","Agnes","Filippa","Vigga","Sara","Naja","Julie","Emily","Nicoline","Johanne","Astrid","Celina","Ellen","Marie","Lea","Thea","Andrea","Tilde","Silje","Nanna","Nora","Malou","Merle","Aya","Liv","Esther","Rosa"],
