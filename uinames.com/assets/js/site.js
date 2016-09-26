@@ -115,7 +115,7 @@ function capitalize(string) {
 	function getName(e) {
 		// set parameters based on settings
 		var region = regionBox.getElementsByClassName('active')[0].getElementsByClassName('region-label')[0].innerHTML.toLowerCase().replace(/ /g, '+'),
-			gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substring(1),
+			gender = genders[0].parentNode.getElementsByClassName('active')[0].hash.substr(1),
 			bulkToggle = document.getElementById('bulk').getElementsByClassName('icon')[0];
 		
 		// function that injects all the data on the page
@@ -285,7 +285,7 @@ function capitalize(string) {
 		// reassign each time
 		trigger = this;
 
-		var name = (this.hash) ? this.hash.substring(1) : this.getAttribute('data-href'),
+		var name = (this.hash) ? this.hash.substr(1) : this.getAttribute('data-href'),
 			box = document.getElementById(name),
 			overlay = document.getElementById('overlay');
 
