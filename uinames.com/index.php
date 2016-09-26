@@ -15,7 +15,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
 
 	<meta charset="utf-8" />
@@ -76,17 +76,46 @@
 		}
 	</script>
 
-	<div id="name"><h1><em><script>document.write(action)</script></em></h1></div>
+	<div id="name" aria-live="polite" aria-atomic="true"><h1><em><script>document.write(action)</script></em></h1></div>
 	<p id="specs" style="display: none"></p>
 	<p id="help" style="display: none">Press <span>C</span> to select, then <span><script>document.write(c)</script></span> to copy!</p>
 	
+	<p class="ac" id="destination" tabindex="-1">In options menu</p>
+	<div id="options">
+		<span id="genderSelect">
+			<a role="button" class="icon random active" href="#random" title="Gender: Random" aria-label="Gender: Random" aria-pressed="true">
+				<span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span><span class="r7"></span>
+			</a>
+			<a role="button" class="icon male" href="#male" title="Gender: Male" aria-label="Gender: Male" aria-pressed="false">
+				<span class="m1"></span><span class="m2"></span><span class="m3"></span><span class="m4"></span>
+			</a>
+			<a role="button" class="icon female" href="#female" title="Gender: Female" aria-label="Gender: Female" aria-pressed="false">
+				<span class="f1"></span><span class="f2"></span><span class="f3"></span>
+			</a>
+		</span>
+		<span id="regionSelect">
+			<a class="icon region active" href="#region" title="Select Region">
+				<span class="flag"><img src="assets/img/flags/random.gif" /></span>
+				<b class="ac">Random region selected</b>
+			</a>
+		</span>
+		<span id="bulk">
+			<a role="button" class="icon bulk" href="#bulk" title="Bulk mode" aria-label="Bulk mode" aria-pressed="false">
+				<span class="b1"></span><span class="b2"></span><span class="b3"></span>
+			</a>
+		</span>
+	</div>
+	
+	<div id="details">
+		<button type="button" class="icon info" data-href="info" title="More Information" aria-label="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></button>
+	</div>
 	<div id="info" class="clearfix">
 		<div id="tabs">
-			<a id="info-tab" href="#info">Info</a>
-			<a id="api-tab" href="#api">API</a>
-			<a id="shortcuts-tab" href="#shortcuts">Shortcuts</a>
+			<a id="info-tab" href="#info-panel" data-set="info">Info <b class="ac">(Selected)</b></a>
+			<a id="api-tab" href="#api-panel" data-set="api">API <b class="ac"></b></a>
+			<a id="shortcuts-tab" href="shortcuts-panel" data-set="shortcuts">Shortcuts <b class="ac"></b></a>
 		</div>
-		<div id="tab-info">
+		<div id="info-panel">
 			<h2>About</h2>
 			<p><a href="http://uinames.com">uinames.com</a> is a simple tool to generate names for use in designs and mockups. Made by <a href="http://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
 			<h2>Elsewhere</h2>
@@ -110,7 +139,7 @@
 			</p>
 			<p>Check out <a href="http://uifaces.com" target="_blank">uifaces.com</a> as well!</p>
 		</div>
-		<div id="tab-api">
+		<div id="api-panel">
 			<h2>Overview</h2>
 			<p>All responses are returned as JSON(P). There is currently no request limit. However, please keep the amount of requests to a minimum, and cache responses whenever possible.</p>
 			<h2>Usage</h2>
@@ -145,7 +174,7 @@
 			<p>Error messages have the following format:</p>
 			<pre>{"error":"Region or language not found"}</pre>
 		</div>
-		<div id="tab-shortcuts">
+		<div id="shortcuts-panel">
 			<h2>Names</h2>
 			<p><code>Spacebar</code> to generate a new name</p>
 			<p><code>C</code> to highlight the current name</p>
@@ -167,10 +196,13 @@
 	</div>
 
 	<div id="region" class="clearfix">
-		<ul>
-			<span class="regionCount"><?php echo (count($names) + 1) . '/' . (count($names) + 1); ?></span>
-			<input class="search" type="text" placeholder="Type to search..." />
-			<li class="pos-0"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="region-label">Random</span></li>
+		<div>
+			<label for="rsearch" id="regionSearchLabel" class="ac">Search regions</label>
+			<span class="regionCount" aria-live="polite" aria-atomic="true"><?php echo (count($names) + 1) . '/' . (count($names) + 1); ?></span>
+			<input class="search" type="text" placeholder="Type to search..." role="combobox" aria-expanded="true" aria-autocomplete="list" id="rsearch" aria-labelledby="regionSearchLabel" aria-owns="regionList" aria-activedescendant="region-0" />
+		</div>
+		<ul id="regionList" role="listbox">
+			<li id="region-0" class="pos-0" role="option" tabindex="-1"><span class="flag"><img src="assets/img/flags/random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
 				$newRegions = array("Slovakia");
@@ -194,7 +226,7 @@
 						}
 					}
 					
-					echo '<li class="pos-' . ($i + 1) . $new . $fav . '"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/' . str_replace(' ', '-', strtolower($region)) . '.png" /></span><span class="region-label">' . $region . '</span></li>';
+					echo '<li id="region-' . ($i + 1) . '" class="pos-' . ($i + 1) . $new . $fav . '" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/' . str_replace(' ', '-', strtolower($region)) . '.png" /></span><span class="region-label">' . $region . '</span></li>';
 				}
 				
 			?>
@@ -209,23 +241,6 @@
 	
 	<div id="overlay"></div>
 	
-	<div id="options">
-		<span id="genderSelect">
-			<a class="icon random active" href="#random" title="Gender: Random"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span><span class="r7"></span></a>
-			<a class="icon male" href="#male" title="Gender: Male"><span class="m1"></span><span class="m2"></span><span class="m3"></span><span class="m4"></span></a>
-			<a class="icon female" href="#female" title="Gender: Female"><span class="f1"></span><span class="f2"></span><span class="f3"></span></a>
-		</span>
-		<span id="regionSelect">
-			<a class="icon region active" href="#region" title="Select Region"><span class="flag"><img src="assets/img/flags/random.gif" /></span></a>
-		</span>
-		<span id="bulk">
-			<a class="icon bulk" href="#bulk" title="Bulk mode"><span class="b1"></span><span class="b2"></span><span class="b3"></span></a>
-		</span>
-	</div>
-	
-	<div id="details">
-		<a class="icon info" href="#info" title="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></a>
-	</div>
 	
 	<div id="share-box">
 		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fuinames.com&amp;width=100px&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow: hidden; width: 87px; height: 20px;" allowTransparency="true"></iframe>
