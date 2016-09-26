@@ -751,7 +751,6 @@ body.touch-device #shortcuts-tab {display: none}
 
 #options {
 	left: 25px;
-	outline: 0;
 }
 
 #options > span:before {
