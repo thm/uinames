@@ -30,7 +30,7 @@ All responses are returned as JSON(P), with no request limit. Please keep the am
 	  "region":"United States"
 	}
 #### Optional Parameters
-Amount of names to return, between `1` and `500`:
+Number of names to return, between `1` and `500`:
 <pre>http://uinames.com/api/<strong>?amount=25</strong></pre>
 
 Limit results to the `male` or `female` gender:
