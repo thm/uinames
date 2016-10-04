@@ -3,6 +3,8 @@ uinames.com
 
 This is the repo for [uinames.com](http://uinames.com). Feel free to contribute to the project by adding names. Keep in mind that more isn't better. Quality over quantity. Quality being the most common/popular names in a region.
 
+If you're looking for a Node.js client, we recommend using [names](https://github.com/leo/names).
+
 ### The Algorithm
 When the option to pick a region at random is selected, a region will be picked based on the amount of possible name-combinations for that region. A region with more names is more likely to be picked, and regions with less names are less likely to be picked. I propose having a maximum of 100 male names, 100 female names and 300 last names per region. That's 60.000 possible combinations per region.
 

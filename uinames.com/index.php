@@ -142,6 +142,7 @@
 		<div id="api-panel">
 			<h2>Overview</h2>
 			<p>All responses are returned as JSON(P). There is currently no request limit. However, please keep the amount of requests to a minimum, and cache responses whenever possible.</p>
+			<p>The following sections will explain how to interact manually with the API without any abstractions. If you're using <a href="https://nodejs.org/en/" target="_blank">Node.js</a>, we highly recommend using <a href="https://github.com/leo/names" target="_blank">names</a>.</p>
 			<h2>Usage</h2>
 			<p>Basic usage:</p>
 <pre>http://uinames.com/api/
