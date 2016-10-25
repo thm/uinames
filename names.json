@@ -203,9 +203,9 @@
     },
     {
         "region":"Nigeria",
-        "male":["Aanu","Abey","Adamu","Ade","Adediran","Aganga","Amechie","Ayodeji","Adekunle","Babatunde","Bayo","Dayo","Deji","Femi","Goke","Kayode"],
-        "female":["Ada","Amaka","Chidinma","Chidumga","Dolapo","Ekaite","Fehinti","Funmi","Grace","Isioma","Olamide","Onnaedo","Yetunde"],
-        "surnames":["Ajayi","Ajimobi","Aladegbaiye","Elemide","Igboegwu","Izuzu","Kuyinu","Makinwa","Okafor","Oyebanji","Oyeleke"]
+        "male":["Aanu","Abey","Adamu","Ade","Adediran","Aganga","Amechie","Ayodeji","Adekunle","Babatunde","Bayo","Dayo","Deji","Femi","Goke","Kayode","Salisu","Salahudeen","Teslim","Wale","Muyiwa","Bisi","Abdulrashid","Ndubuisi","Tosin","Temitope","Kehinde","Hussaini"],
+        "female":["Ada","Amaka","Chidinma","Chidumga","Dolapo","Ekaite","Fehinti","Funmi","Grace","Isioma","Olamide","Onnaedo","Yetunde","Titilayo","Ireti","Opeyemi","Adedunni","Fatima","Amina","Aishat","Ngozi","Patricia","Odion","Bukola","Joyce","Chikodi","Safinatu","Nkem","Toyin","Ronke","Alaba", "Hassana","Balaraba","Mairo","Awa"],
+        "surnames":["Ajayi","Ajimobi","Aladegbaiye","Elemide","Igboegwu","Izuzu","Kuyinu","Makinwa","Okafor","Oyebanji","Oyeleke","Kabir","Adigun","Aliero","Dutse","Kura","Okolo","Nwaneri","Obi","Akande","Isiaku","Olaleke", "Ifedolapo","Aluede","Akhigbe","Adegoke","Raji","Adamu","Ilayasu","Balarebe","Kuta","Bassey","Bala","Balogun","Ajayi","Dan-Asebe","Alhassan"]
     },
     {
         "region":"Norway",
