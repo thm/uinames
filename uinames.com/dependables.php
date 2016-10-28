@@ -55,6 +55,8 @@ function github($format) {
 			$data[$i]['contributions']
 		];
 		
-		echo str_replace($needles, $details, $format);
+		if ($details[2] != 'thm') {
+			echo str_replace($needles, $details, $format);
+		}
 	}
 }

@@ -13,11 +13,13 @@ function addListener(li, ev, fn) {
 function hasClass(elem, klass) {
 	return (' ' + elem.className + ' ').indexOf(' ' + klass + ' ') > -1;
 }
-function addClass(elem,klass) {
+
+function addClass(elem, klass) {
 	if (!hasClass(elem, klass)) {
-		elem.className += (elem.className==='') ? klass : (' '+klass);
+		elem.className += (elem.className === '') ? klass : (' ' + klass);
 	}
 }
+
 function removeClass(elem, klass) {
 	if (hasClass(elem, klass)) {
 		var pattern = new RegExp('(^| )' + klass + '( |$)');
@@ -42,11 +44,25 @@ function capitalize(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-(function() {
+function selectThis(elem) {
+	var range, selection,
+		elem = (elem instanceof Element) ? elem : this;
+	if (document.body.createTextRange) {
+		range = document.body.createTextRange();
+		range.moveToElementText(elem);
+		range.select();
+	} else if (window.getSelection) {
+		selection = window.getSelection();
+		range = document.createRange();
+		range.selectNodeContents(elem);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	}
+}
 
+(function() {
 	var body = document.getElementsByTagName('body')[0],
 		nameContainer = document.getElementById('name'),
-		destination = document.getElementById('destination'),
 		genders = document.getElementById('genderSelect').getElementsByTagName('a'),
 		infoToggle = document.getElementsByClassName('info')[0],
 		regionSelect = document.getElementsByClassName('icon region')[0],
@@ -60,17 +76,14 @@ function capitalize(string) {
 	regionBox.style.display = 'none';
 
 	// MOUSE DETECTION
-	// www.paciellogroup.com/blog/2012/04/how-to-remove-css-outlines-in-an-accessible-manner/
 	addListener(body, 'mousedown keydown', function(e) {
-		return (e.type == 'mousedown') ?
-				addClass(body,'mouseDetected') :
-				removeClass(body,'mouseDetected');
-      });
+		return (e.type == 'mousedown') ? addClass(body,'mouseDetected') : removeClass(body,'mouseDetected');
+	});
 
 	// REGION SWITCHER
 	function regionToggle(elem) {
 		var l = availableRegions.length,
-			current = (elem.nodeType==1) ? elem : this;
+			current = (elem.nodeType == 1) ? elem : this;
 
 		clearClasses(availableRegions, l, 'active');
 		addClass(current, 'active');
@@ -81,12 +94,12 @@ function capitalize(string) {
 		localStorage.setItem('region', regionName);
 		
 		// update the flag in the region icon
-		regionSelect.getElementsByTagName('img')[0].src = current.getElementsByTagName('img')[0].src;
+		regionSelect.getElementsByTagName('img')[0].src = current.getElementsByTagName('img')[0].getAttribute('data-src');
 
 		// update the textual name in the region icon
 		b.innerHTML = regionName + ' selected';
 		
-		// wait 250ms so the user can see the region switched
+		// wait 250ms so the user can see the region being switched
 		setTimeout(function() {
 			closePopup();
 		}, 250);
@@ -120,13 +133,36 @@ function capitalize(string) {
 		
 		// function that injects all the data on the page
 		function injectData(data, offset) {
-			var specs = document.getElementById('specs'),
-				help = document.getElementById('help');
+			var specs = document.getElementById('data');
 			
-			// inject name into page
+			// insert name into page
 			nameContainer.innerHTML = '<h1>' + data[offset]['name'] + ' ' + data[offset]['surname'] + '</h1>';
-			// inject gender and region into page
-			specs.innerHTML = capitalize(data[offset]['gender']) + ' from ' + data[offset]['region'];
+			
+			// insert additional data into page
+			var specsData = '';
+			specsData += '<li><span class="label">Gender:</span> <span class="click-to-select">' + capitalize(data[offset]['gender']) + '</span></li>';
+			specsData += '<li><span class="label">Region:</span> <span class="click-to-select">' + data[offset]['region'] + '</span></li>';
+			specsData += '<li><span class="label">Phone:</span> <span class="click-to-select">' + data[offset]['phone'] + '</span></li>';
+			specsData += '<li><span class="label">Birthday:</span> <span class="click-to-select">' + data[offset]['birthday']['dmy'] + '</span></li>';
+			specsData += '<li><span class="label">Email:</span> <span class="click-to-select">' + data[offset]['email'] + '</span></li>';
+			specsData += '<li><span class="label">Password:</span> <span class="click-to-select">' + data[offset]['password'] + '</span></li>';
+			
+			var photo = '<div class="photo-container"><a href="' + data[offset]['photo'] + '" target="_blank" class="photo"><img src="' + data[offset]['photo'].replace(/http:\/\/uinames\.com\//, '') + '" /></a><a href="http://uifaces.com" target="_blank">More</a></div>';
+			
+			specs.innerHTML = '<a id="data-open">Show Details</a><div>' + photo + '<ul>' + specsData + '</ul><a id="data-exit"></a></div>';
+			
+			var dataVals = document.getElementsByClassName('click-to-select');
+			for (var i = 0; i < dataVals.length; i++) {
+				addListener(dataVals[i], 'click', selectThis);
+			}
+			
+			addListener(document.getElementById('data-exit'), 'click', function() {
+				addClass(specs, 'closed');
+			});
+			
+			addListener(document.getElementById('data-open'), 'click', function() {
+				removeClass(specs, 'closed');
+			});
 			
 			// if bulk mode, add the other 24
 			if (hasClass(bulkToggle, 'active')) {
@@ -168,15 +204,7 @@ function capitalize(string) {
 			}
 
 			nameContainer.style.display = '';
-
-			// surface help elements
 			specs.style.display = '';
-			help.style.display = '';
-			help.className = 'animate';
-
-			setTimeout(function() {
-				help.className = '';
-			}, 250);
 
 			// count generated name
 			var getJSON = new XMLHttpRequest();
@@ -195,7 +223,7 @@ function capitalize(string) {
 			};
 
 			// send the request
-			getJSON.open('GET', 'api/?amount=' + maxNamesRequested + '&region=' + region + '&gender=' + gender, true);
+			getJSON.open('GET', 'api/?ext&amount=' + maxNamesRequested + '&region=' + region + '&gender=' + gender, true);
 			getJSON.send();
 
 			// reset counter
@@ -214,12 +242,12 @@ function capitalize(string) {
 		oldRegion = region;
 		oldGender = gender;
 	}
-
+	
 	// GENDER TOGGLE
 	function toggleGender(e) {
 		e.preventDefault();
 		e.stopPropagation();
-
+		
 		if (!hasClass(this, 'active')) {
 			var l = genders.length;
 			clearClasses(genders, l, 'active');
@@ -231,14 +259,14 @@ function capitalize(string) {
 	for (var i = 0; i < genders.length; i++) {
 		addListener(genders[i], 'click', toggleGender);
 	}
-
+	
 	// BULK TOGGLE
 	var bulk = document.getElementById('bulk').getElementsByClassName('icon bulk')[0];
 
 	function toggleBulk(e) {
 		e.preventDefault();
 		e.stopPropagation();
-
+		
 		if (hasClass(bulk, 'active')) {
 			removeClass(bulk, 'active');
 		} else {
@@ -248,32 +276,29 @@ function capitalize(string) {
 	}
     
 	addListener(bulk, 'click', toggleBulk);
-
-
+	
 	// whoever opens popups, to get the focus when they're closed
 	var trigger;
-
+	
 	// POPUP CLOSER
 	function closePopup() {
 		var name = body.getAttribute('data-popup'),
 			popup = document.getElementById(name);
-
+		
 		if (name == 'region') {
 			regionBox.getElementsByTagName('input')[0].blur();
-			destination.focus();
+			document.getElementById('destination').focus();
 			searchInput.removeEventListener('keyup', search);
 		}
-		// no popup onload
-		// prevent tabbing through invisibles
+		// no popup onload, prevent tabbing through invisibles
 		if (popup) {
 			popup.style.display = 'none';
 		}
-		// no trigger onload
-		// prevent hocus-focus
-		if (trigger) {
+		// no trigger onload, prevent hocus-focus
+		if (trigger && !hasClass(body, 'mouseDetected')) {
 			trigger.focus();
 		}
-
+		
 		body.removeAttribute('data-popup');
 	}
 	
@@ -281,14 +306,14 @@ function capitalize(string) {
 	function togglePopup(e) {
 		e.preventDefault();
 		e.stopPropagation();
-
+		
 		// reassign each time
 		trigger = this;
-
+	
 		var name = (this.hash) ? this.hash.substr(1) : this.getAttribute('data-href'),
 			box = document.getElementById(name),
 			overlay = document.getElementById('overlay');
-
+		
 		if (body.getAttribute('data-popup') == name) {
 			closePopup();
 		} else {
@@ -301,7 +326,7 @@ function capitalize(string) {
 					}, i*15);
 				})(i);
 			}
-
+			
 			// stopPropagation isn't really the right tool
 			// sometimes still passes on to search input which now
 			// listens to 'Enter'. So this nasty hack instead.
@@ -310,10 +335,10 @@ function capitalize(string) {
 					addListener(searchInput, 'keyup', search);
 				}, 150);
 			}
-
+			
 			// let transitions work
 			box.style.display = 'block';
-
+			
 			// show popup
 			setTimeout(function() {
 				body.setAttribute('data-popup', name);
@@ -324,9 +349,8 @@ function capitalize(string) {
 				regionBox.getElementsByTagName('input')[0].focus();
 			}
 		}
-
+		
 		addListener(overlay, 'click', closePopup);
-
 	}
 	
 	addListener(infoToggle, 'click', togglePopup);
@@ -362,7 +386,7 @@ function capitalize(string) {
 		regionCount = regionBox.getElementsByClassName('regionCount')[0],
 		contribute = regionBox.getElementsByClassName('contribute')[0];
 
-	// navigates options
+	// REGION KEYBOARD NAVIGATION
 	function comboNav(k, currentMatches) {
 		var current, // array position
 			length = currentMatches.length;
@@ -380,13 +404,13 @@ function capitalize(string) {
 			return;
 		}
 
-		function sallyForth() {
+		function next() {
 			current = (current !== (length - 1)) ? (current + 1) : 0;
 			clearClasses(currentMatches, length, 'highlight');
 			addClass(currentMatches[current], 'highlight');
 		}
 
-		function fallBack() {
+		function prev() {
 			current = (current !== 0) ? (current - 1) : (length - 1);
 			clearClasses(currentMatches, length, 'highlight');
 			addClass(currentMatches[current], 'highlight');
@@ -405,10 +429,10 @@ function capitalize(string) {
 					current = length; 
 					break;
 				case 38:
-					fallBack();
+					prev();
 					break;
 				case 40:
-					sallyForth();
+					next();
 					break;
 				default:
 					break;
@@ -442,15 +466,9 @@ function capitalize(string) {
 		}
 
 		regionCount.innerHTML = regionMatches / 2 + '/' + regions.length;
+		contribute.style.display = (regionMatches == 0) ? '' : 'none';
 
-		if (regionMatches == 0) {
-			contribute.style.display = '';
-		} else {
-			contribute.style.display = 'none';
-		}
-
-		if (k == 35 || k == 36|| 
-			k == 38 || k == 40 || k == 13) {
+		if (k == 35 || k == 36 || k == 38 || k == 40 || k == 13) {
 			var currentMatches = [];
 
 			for (var i = 0, l = regions.length; i < l; i++) {
@@ -464,16 +482,16 @@ function capitalize(string) {
 	}
 
 	// SHORTCUTS
-	addListener(window, 'keyup touchstart', function(e) {
-		var num = e.which || e.keyCode || e.type == 'touchstart' || 0;
+	addListener(window, 'click keyup touchstart', function(e) {
+		var num = e.which || e.keyCode || e.type === 'touchstart' || 0;
 		
 		if (body.getAttribute('data-popup') != 'region' || num == 27) {
 			if (num == 27) {
 				closePopup();
 			} else if (num == 32 && !body.getAttribute('data-popup') && !hasClass(body, 'bulkPause')) {
 				getName(e);
-			} else if (e.type == 'touchstart') {
-				if (/(EM|H1)/.test(e.target.tagName) || e.target == body || e.target == nameContainer || e.target == specs) {
+			} else if (num == 'touchstart') {
+				if (/(EM|H1)/.test(e.target.tagName) || e.target == body) {
 					getName(e);
 				}
 			} else if (num == 48) {
@@ -488,35 +506,22 @@ function capitalize(string) {
 				regionSelect.click();
 			} else if (num == 53) {
 				document.getElementsByClassName('icon bulk')[0].click();
-			} else if (e.keyCode == 67 || e.which == 67) {
+			} else if (e.type == 'click' && e.target.tagName == 'H1') {
+				selectThis(nameContainer);
+			} else if (num == 67) {
 				if (!hasClass(body, 'touch-device') && !hasClass(body, 'bulk') && !nameContainer.getElementsByTagName('em')[0]) {
-					var range, selection;
-					if (document.body.createTextRange) {
-						range = document.body.createTextRange();
-						range.moveToElementText(nameContainer);
-						range.select();
-					} else if (window.getSelection) {
-						selection = window.getSelection();
-						range = document.createRange();
-						range.selectNodeContents(nameContainer);
-						selection.removeAllRanges();
-						selection.addRange(range);
-					}
+					selectThis(nameContainer);
 				}
 			}
 		}
-	});	
+	});
 })();
 
 (function() {
 
 	var title = document.title;
 	addListener(document, 'visibilitychange webkitvisibilitychange mozvisibilitychange msvisibilitychange', function() {
-		if (document.hidden) {
-			document.title = '👀 ' + title;
-		} else {
-			document.title = title;
-		}
+		document.title = document.hidden ? '👀 ' + title : title;
 	});
 
 })();
