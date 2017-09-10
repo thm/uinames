@@ -1,8 +1,8 @@
 /*--FONTS--*/
 
 @import 'https://fonts.googleapis.com/css?family=Karla:400,700&subset=latin-ext';
-@import 'https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek-ext,cyrillic-ext,greek,vietnamese,latin-ext,cyrillic';
-@import 'https://fonts.googleapis.com/css?family=Droid+Sans+Mono';
+@import 'http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek-ext,cyrillic-ext,greek,vietnamese,latin-ext,cyrillic';
+@import 'http://fonts.googleapis.com/css?family=Droid+Sans+Mono';
 
 /*--RESET & GENERAL--*/
 
@@ -46,7 +46,7 @@ html {
 body {
 	min-height: 100%;
 	width: 100%;
-	font: 400 16px/165% Karla, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 400 16px/175% Karla, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #222;
 	text-align: center;
 	background: #8fc06c;
@@ -163,7 +163,14 @@ hr {
 /*--NAME--*/
 
 #name {
-	color: #fff;
+	text-shadow: 0 1px 3px rgba(0,0,0,.25);
+	
+	-webkit-transition: text-shadow .15s ease-out;
+	   -moz-transition: text-shadow .15s ease-out;
+	        transition: text-shadow .15s ease-out;
+}
+
+#name:hover {
 	cursor: default;
 	text-shadow: 0 5px 15px rgba(0,0,0,.15);
 }
@@ -182,6 +189,7 @@ body.bulk #name {
 
 #data {
 	width: 380px;
+	max-width: 80%;
 	left: 50%;
 	margin-left: -190px;
 	bottom: 67px;
@@ -194,10 +202,9 @@ body.bulk #name {
 	background: #fff;
 
 	border-radius: 5px;
-	
-	-webkit-box-shadow: 0 3px 10px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 3px 10px rgba(0,0,0,.15);
-	        box-shadow: 0 3px 10px rgba(0,0,0,.15);
+
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
 #data.closed > div {
@@ -397,16 +404,15 @@ body.bulk #data {
 	        transition: opacity .25s ease-out;
 
 	border-radius: 5px;
-	
-	-webkit-box-shadow: 0 10px 20px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 10px 20px rgba(0,0,0,.15);
-	        box-shadow: 0 10px 20px rgba(0,0,0,.15);
+
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
 [data-popup="info"] #info, [data-popup="region"] #region {
 	height: auto;
 	opacity: 1;
-	padding: 62px 25px 25px;
+	padding-top: 62px;
 }
 
 [data-popup="info"] #region, [data-popup="region"] #info {
@@ -482,9 +488,9 @@ body.touch-device #shortcuts-tab {display: none}
 	   -moz-transition: top .25s ease-out, opacity .25s ease-out;
 	        transition: top .25s ease-out, opacity .25s ease-out;
 	
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
-	        box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
+	   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
+	        box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
 }
 
 .bar .popup {
@@ -500,10 +506,10 @@ body.touch-device #shortcuts-tab {display: none}
 	background: #fff;
 	position: absolute;
 	z-index: -2;
-	
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
-	        box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.15);
+
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
+	   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
+	        box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 0 2px rgba(0,0,0,.25);
 
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
@@ -543,30 +549,23 @@ body.touch-device #shortcuts-tab {display: none}
 	color: #fff;
 	background: #222;
 	overflow: hidden;
-	display: block;
-	border-collapse: collapse;
-	table-layout: fixed;
 
 	border-radius: 0 0 5px 5px;
 }
 
-#facts tr, #facts tbody {
-	width: 100%;
-	display: block;
-}
-
-#facts tr th, #facts tr td {
+#facts > div {
 	width: 33.334%;
+	padding: 18px 0 20px;
 	border-left: 1px solid #333;
 	float: left;
 }
 
-#facts tr th:first-child, #facts tr td:first-child {
+#facts > div:first-child {
 	border-left: none;
 }
 
-#facts tr th {
-	padding: 15px 0 5px;
+#facts p {
+	margin-top: 5px;
 	font-size: 11px;
 	line-height: 100%;
 	font-weight: 700;
@@ -574,16 +573,11 @@ body.touch-device #shortcuts-tab {display: none}
 	text-transform: uppercase;
 }
 
-#facts tr td {
-	padding: 0 0 15px;
-}
-
 /*--REGION--*/
 
 #region {
 	padding: 0 !important;
 	width: 300px;
-	overflow: hidden;
 }
 
 #region li, #region .contribute {
@@ -608,12 +602,6 @@ body.touch-device #shortcuts-tab {display: none}
 	margin: 12px;
 	float: left;
 	position: relative;
-	
-	background: url(../img/flags.png) no-repeat 0 0;
-	
-	-webkit-background-size: 20px 980px;
-	   -moz-background-size: 20px 980px;
-	        background-size: 20px 980px;
 }
 
 .flag:before {
@@ -767,11 +755,11 @@ body.touch-device #shortcuts-tab {display: none}
 /*--SHAREBOX--*/
 
 #share-box {
-	width: 300px;
+	width: 290px;
 	height: 32px;
 	bottom: 25px;
 	left: 50%;
-	margin-left: -150px;
+	margin-left: -145px;
 	padding: 6px;
 	background: #fff;
 	white-space: nowrap;
@@ -782,12 +770,11 @@ body.touch-device #shortcuts-tab {display: none}
 	border-radius: 5px;
 
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
 	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
 	
-	-webkit-transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out, -webkit-box-shadow .15s ease-out;
-	   -moz-transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out, -moz-box-shadow .15s ease-out;
-	        transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out, box-shadow .15s ease-out;
+	-webkit-transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out;
+	   -moz-transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out;
+	        transition: margin-left .25s ease-out, left .25s ease-out, bottom .25s ease-out;
 }
 
 #share-box iframe {
@@ -823,14 +810,8 @@ body.touch-device #shortcuts-tab {display: none}
 	background: #1b95e0;
 }
 
-.twitter-button .share-button:hover {
+#share-box .share-button:hover {
 	background: #0c7abf;
-}
-
-.facebook-button .share-button:hover {
-	background: -webkit-linear-gradient(#5c7cd1, #4a68b2);
-	   background: -moz-linear-gradient(#5c7cd1, #4a68b2);
-	        background: linear-gradient(#5c7cd1, #4a68b2);
 }
 
 #share-box .share-icon {
@@ -858,9 +839,7 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 .facebook-button .share-count {
-	margin-right: 2px;
 	border-radius: 2px;
-	border-color: #999;
 }
 
 .share-count:hover {
@@ -908,7 +887,7 @@ body.touch-device #shortcuts-tab {display: none}
 	height: 4px;
 	width: 4px;
 	margin: 16px 8px;
-	background: rgba(255,255,255,.5);
+	background: #fff;
 	float: left;
 
 	border-radius: 5px;
@@ -931,28 +910,17 @@ body.touch-device #shortcuts-tab {display: none}
 	float: left;
 	background-color: transparent;
 	cursor: pointer;
+	opacity: .75;
 
 	border-radius: 100%;
-	
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	        box-shadow: 0 1px 2px rgba(0,0,0,.15);
 
-	-webkit-transition: opacity .15s ease-out, background-color .15s ease-out, -webkit-box-shadow .15s ease-out;
-	   -moz-transition: opacity .15s ease-out, background-color .15s ease-out, -moz-box-shadow .15s ease-out;
-	        transition: opacity .15s ease-out, background-color .15s ease-out, box-shadow .15s ease-out;
+	-webkit-transition: opacity .15s ease-out;
+	   -moz-transition: opacity .15s ease-out;
+	        transition: opacity .15s ease-out;
 }
 
 .icon:first-child {
 	margin-left: 0;
-}
-
-.icon:hover {
-	background: #8bb86c;
-	
-	-webkit-box-shadow: 0 3px 10px rgba(0,0,0,.15);
-	   -moz-box-shadow: 0 3px 10px rgba(0,0,0,.15);
-	        box-shadow: 0 3px 10px rgba(0,0,0,.15);
 }
 
 .info::-moz-focus-inner {
@@ -967,14 +935,13 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 .icon:focus {
-	-webkit-box-shadow: 0 0 0 2px #249de2;
-	   -moz-box-shadow: 0 0 0 2px #249de2;
-	        box-shadow: 0 0 0 2px #249de2;
+	box-shadow: 0 0 0 2px #249de2;
 }
 
 .icon.active,
 [data-popup="info"] .icon.info,
 [data-popup="region"] .icon.region {
+	opacity: 1;
 	background: #fff;
 }
 
@@ -1114,10 +1081,6 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 /* bulk */
-
-body.touch-device #bulk {
-	display: none;
-}
 
 .bulkCounter {
 	line-height: 200%;
@@ -1263,14 +1226,14 @@ body.no-js #share-box {
 
 @media (max-height: 600px) {
 	#data {
-		display: none !important;
+		display: none;
 	}
 }
 
 @media (max-width: 480px) {
-
+	
 	#data {
-		display: none !important;
+		display: none;
 	}
 	
 	#info, #region {

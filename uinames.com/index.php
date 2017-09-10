@@ -46,7 +46,7 @@
 	<meta property="og:title" content="Randomly Generate Fake Names" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="http://cl.ly/1o2k1Z422Z2T/icon-250.png" />
-	<meta property="og:url" content="https://uinames.com" />
+	<meta property="og:url" content="http://uinames.com" />
 	<meta property="og:description" content="Generate random fake names for use in designs and mockups. Supports 48+ regions with over 1.2 million possible combinations. Completely open-source." />
 	
 	<!--Twitter Card-->
@@ -90,7 +90,7 @@
 		</span>
 		<span id="regionSelect">
 			<a class="icon region active" href="#region" title="Select Region">
-				<span class="flag"><img src="assets/img/flag-random.gif" /></span>
+				<span class="flag"><img src="assets/img/flags/random.gif" /></span>
 				<b class="ac">Random region selected</b>
 			</a>
 		</span>
@@ -113,13 +113,13 @@
 		</div>
 		<div id="info-panel">
 			<h2>About</h2>
-			<p><a href="https://uinames.com">uinames.com</a> is a simple tool to generate fake names for use in designs and mockups. Made by <a href="https://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
+			<p><a href="http://uinames.com">uinames.com</a> is a simple tool to generate fake names for use in designs and mockups. Made by <a href="http://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
 			<h2>Elsewhere</h2>
-			<p>Numerous blogs and websites have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="https://speckyboy.com/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="https://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
+			<p>Numerous blogs and websites have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="http://speckyboy.com/2014/01/30/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="http://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="http://www.cssauthor.com/weekly-web-development-resources-tools-35/" target="_blank">CSS Author</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
 			<h2>Feedback</h2>
-			<p>Feedback can be tweeted directly to <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a>.</p>
+			<p>Feedback can be tweeted directly to <a href="http://twitter.com/thomweerd" target="_blank">@thomweerd</a>.</p>
 			<h2>Contribute</h2>
-			<p>This massive collection of names wouldn’t have been as complete without the help of these wonderful people. If you would like to contribute to the project too, then send a pull-request on <a href="https://github.com/thm/uinames" target="_blank">Github</a>!</p>
+			<p>This massive collection of names wouldn’t have been as complete without the help of these wonderful people. If you would like to contribute to the project too, then send a pull-request on <a href="http://github.com/thm/uinames" target="_blank">Github</a>!</p>
 			<p class="clearfix">
 				<?php
 					// render github contributors
@@ -135,9 +135,9 @@
 		</div>
 		<div id="api-panel">
 			<h2>Overview</h2>
-			<p>All responses are returned as JSON(P) over HTTP(S). There is currently no request limit. However, please keep the amount of requests to a minimum, and cache responses whenever possible.</p>
+			<p>All responses are returned as JSON(P). There is currently no request limit. However, please keep the amount of requests to a minimum, and cache responses whenever possible.</p>
 			<h2>Basic Usage</h2>
-<pre>https://uinames.com/api/
+<pre>http://uinames.com/api/
 <span>---</span>
 {
   <span class="key">"name"</span>: <span class="val">"John"</span>,
@@ -148,24 +148,24 @@
 </pre>
 			<h2>Optional Parameters</h2>
 			<p>Number of names to return, between <code>1</code> and <code>500</code>:</p>
-			<pre><span>https://uinames.com/api/</span>?amount=25</pre>
+			<pre><span>http://uinames.com/api/</span>?amount=25</pre>
 			<p>Limit results to the <code>male</code> or <code>female</code> gender:</p>
-			<pre><span>https://uinames.com/api/</span>?gender=female</pre>
+			<pre><span>http://uinames.com/api/</span>?gender=female</pre>
 			<p>Region-specific results:</p>
-			<pre><span>https://uinames.com/api/</span>?region=germany</pre>
+			<pre><span>http://uinames.com/api/</span>?region=germany</pre>
 			<p>Require a minimum number of characters in a name:</p>
-			<pre><span>https://uinames.com/api/</span>?minlen=25</pre>
+			<pre><span>http://uinames.com/api/</span>?minlen=25</pre>
 			<p>Require a maximum number of characters in a name:</p>
-			<pre><span>https://uinames.com/api/</span>?maxlen=75</pre>
+			<pre><span>http://uinames.com/api/</span>?maxlen=75</pre>
 			<p>For JSONP, specify a callback function to wrap results in:</p>
-			<pre><span>https://uinames.com/api/</span>?callback=example</pre>
+			<pre><span>http://uinames.com/api/</span>?callback=example</pre>
 			<!-- no region currently supports different languages
 			<p>Results for a language within a region:</p>
-			<pre><span>https://uinames.com/api/</span>?region=switzerland&amp;language=german</pre>
+			<pre><span>http://uinames.com/api/</span>?region=switzerland&amp;language=german</pre>
 			-->
 			<h2>Extended Usage</h2>
 			<p>Additional randomized personal data is served if the <code>ext</code> parameter is detected. Photos offered are from the authorized section on <a href="http://uifaces.com" target="_blank">uifaces.com</a>:</p>
-<pre><span>https://uinames.com/api/</span>?ext
+<pre><span>http://uinames.com/api/</span>?ext
 <span>---</span>
 {
   <span class="key">"name"</span>: <span class="val">"John"</span>,
@@ -188,7 +188,7 @@
     <span class="key">"pin"</span>: <span class="int">1234</span>,
     <span class="key">"security"</span>: <span class="int">123</span>
   },
-  <span class="key">"photo"</span>: <span class="val">"https://uinames.com/api/photos/male/1.jpg"</span>
+  <span class="key">"photo"</span>: <span class="val">"http://uinames.com/api/photos/male/1.jpg"</span>
 }
 </pre>
 			<h2>Exception Handling</h2>
@@ -209,20 +209,11 @@
 			<p><code>0</code> to view the info panel</p>
 			<p><code>Esc</code> to close the current panel</p>
 		</div>
-		<!--<table id="facts">
-			<tbody>
-				<tr>
-					<th>Available Regions</th>
-					<th>Unique Names</th>
-					<th>Generated</th>
-				</tr>
-				<tr>
-					<td><?php print $regions; ?></td>
-					<td><?php print number_format($available, 0, ',', '.'); ?></td>
-					<td title="<?php print number_format($stats->web, 0, ',', '.'); ?> direct"><?php print number_format($stats->api, 0, ',', '.'); ?></td>
-				</tr>
-			</tbody>
-		</table>-->
+		<div id="facts">
+			<div><?php print $regions; ?><p>Regions Available</p></div>
+			<div><?php print number_format($available, 0, ',', '.'); ?><p>Names Available</p></div>
+			<div title="<?php print number_format($stats->web, 0, ',', '.'); ?> direct"><?php print number_format($stats->api, 0, ',', '.'); ?><p>Names Generated</p></div>
+		</div>
 	</div>
 
 	<div id="region" class="clearfix">
@@ -232,7 +223,7 @@
 			<input class="search" type="text" placeholder="Type to search..." role="combobox" aria-expanded="true" aria-autocomplete="list" id="rsearch" aria-labelledby="regionSearchLabel" aria-owns="regionList" aria-activedescendant="region-0" />
 		</div>
 		<ul id="regionList" role="listbox">
-			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
+			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
 				$newRegions = [];
@@ -249,9 +240,7 @@
 						$fav = ($region == $favRegions[0]) ? ' fav active' : ' fav';
 					}
 					
-					// echo '<li id="region-' . ($i + 1) . '" class="' . $new . $fav . '" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/' . str_replace(' ', '-', strtolower($region)) . '.png" /></span><span class="region-label">' . $region . '</span></li>';
-					
-					echo '<li id="region-' . ($i + 1) . '" class="' . $new . $fav . '" role="option" tabindex="-1"><span class="flag" style="background-position: 0 -' . $i*20 . 'px;"></span><span class="region-label">' . $region . '</span></li>';
+					echo '<li id="region-' . ($i + 1) . '" class="' . $new . $fav . '" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/' . str_replace(' ', '-', strtolower($region)) . '.png" /></span><span class="region-label">' . $region . '</span></li>';
 				}
 				
 			?>
@@ -267,20 +256,16 @@
 	<div id="overlay"></div>
 	
 	<div id="share-box">
-		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-icon-facebook.svg'); ?></span>Share</span>
-			<span class="share-count">1.4k</span>
-		</a>
+		<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fuinames.com&amp;width=100px&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow: hidden; width: 87px; height: 20px;" allowTransparency="true"></iframe>
 		
-		<iframe src="https://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="86" height="20"></iframe>
+		<iframe src="http://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="86" height="20"></iframe>
 
-		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
+		<a href="http://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=http://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
 			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-icon-twitter.svg'); ?></span>Tweet</span>
 			<span class="share-count">1.9k</span>
 		</a>
 	</div>
-
-	<script src="assets/js/jquery.min.js"></script>
+	
 	<script src="assets/js/site.js"></script>
 
 </body>
