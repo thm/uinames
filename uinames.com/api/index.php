@@ -1,5 +1,22 @@
 <?php
 
+// STALKING CODE
+$ua = isset($_SERVER["HTTP_USER_AGENT"]) ? '&ua=' . rawurlencode($_SERVER["HTTP_USER_AGENT"]) : '';
+$ip = getenv('HTTP_CLIENT_IP') ?: getenv('REMOTE_ADDR');
+$uuid = preg_replace('/\./', 'a', $ip) . '35009a791a0549d7b8762b884d0f825b';
+$uuid = substr($uuid, 0, 8).'-'.substr($uuid, 8, 4).'-'.substr($uuid, 12, 4).'-'.substr($uuid, 16, 4).'-'.substr($uuid, 20, 12);
+
+$ch = curl_init();
+	
+curl_setopt($ch, CURLOPT_URL,'https://ssl.google-analytics.com/collect');
+curl_setopt($ch, CURLOPT_POSTFIELDS, "v=1&tid=UA-46677803-1&cid=$uuid&t=pageview&aip=0&uip=$ip$ua&dp=%2Fapi&dt=API");
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1); // seconds to wait for response
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // prevent direct outputting of response
+
+$ga_response = curl_exec($ch);
+
+curl_close($ch);
+
 // define('DEBUGGING', ($_GET['debug'] == 1) ? true : false);
 
 // error_reporting(DEBUGGING ? E_ALL : 0);
@@ -10,11 +27,11 @@ const ANY = NULL;
 
 function sanitize($database) {
 	static $defaultValues = [
-		'male'			  => [],
-		'female'			=> [],
-		'surname'		   => [],
-		'exceptions'		=> [],
-		'male_exceptions'   => [],
+		'male' => [],
+		'female'	 => [],
+		'surname' => [],
+		'exceptions' => [],
+		'male_exceptions' => [],
 		'female_exceptions' => []
 	];
 
@@ -102,7 +119,7 @@ function generate_ext_result($result) {
 	
 	// photo
 	$photos = ($gender == 'male') ? glob('photos/male/*.jpg') : glob('photos/female/*.jpg');
-	$result['photo'] = 'http://uinames.com/api/' . $photos[array_rand($photos)];
+	$result['photo'] = 'https://uinames.com/api/' . $photos[array_rand($photos)];
 	
 	return $result;
 }
