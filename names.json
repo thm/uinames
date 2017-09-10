@@ -104,9 +104,9 @@
     },
     {
         "region":"Finland",
-        "male":["Antero","Ilkka","Ilmari","Johannes","Juhani","Kalevi","Matti","Mikael","Olavi","Ossi","Simo","Tapani","Tapio","Teemu","Teo"],
-        "female":["Anna","Anneli","Annikki","Emma","Hannele","Johanna","Kaarina","Katja","Liisa","Lotta","Maria","Marjatta","Sanna","Sofia","Tarja"],
-        "surnames":["Aalto","Hämäläinen","Heikkinen","Ihalainen","Järvinen","Korhonen","Koskinen","Kosunen","Laine","Mäkelä","Mäkinen","Miettinen","Nieminen","Nurmi","Seppälä","Siniranta","Toivonen","Uusimäki","Vatanen","Virtanen"]
+        "male":["Akseli","Antero","Arttu","Eero","Elias","Erkki","Ilkka","Ilmari","Ismo","Jaakko","Johannes","Jouni","Juha","Juhani","Jussi","Jyri","Kai","Kalle","Kalevi","Kim","Lasse","Matti","Mika","Mikael","Olavi","Oskari","Ossi","Pekka","Risto","Simo","Taneli","Tapani","Tapio","Teemu","Teo","Timo","Tuomas","Urho","Veijo","Veikko","Verneri","Ville","Väinö","Yrjö"],
+        "female":["Aino","Anna","Anneli","Annikki","Ella","Emma","Hannele","Johanna","Kaarina","Katja","Kristiina","Leena","Liisa","Lotta","Maria","Marja","Marjatta","Marjut","Outi","Pirkko","Päivi","Raila","Sanna","Sofia","Tarja","Tiina","Ulla","Virpi"],
+        "surnames":["Aalto","Heikkinen","Hämäläinen","Häyhä","Ihalainen","Jokinen","Järvinen","Kivelä","Korhonen","Koskinen","Kosunen","Laine","Lähteenmäki","Miettinen","Mäkelä","Mäkinen","Möttölä","Nieminen","Niinistö","Nurmi","Seppälä","Siniranta","Sirén","Toivonen","Uusimäki","Vatanen","Virtanen","Väänänen","Westerlund","Yrjölä"]
     },
     {
         "region":"France",
