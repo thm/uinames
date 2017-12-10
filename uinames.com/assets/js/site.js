@@ -115,15 +115,18 @@ function selectThis(elem) {
 			$('.click-to-select').click(selectThis);
 			
 			$('#data-exit').click(function() {
-				$specs.addClass('closed');
+				$specs.find('div').fadeOut(250);
+				$('#data-open').delay(250).fadeIn(250);
 			});
 			
 			$('#data-open').click(function() {
-				$specs.removeClass('closed');
+				$('#data-open').fadeOut(250);
+				$specs.find('div').delay(250).fadeIn(250);
 			});
 			
 			// if bulk mode, add the other 24
 			if ($bulkToggle.hasClass('active')) {
+				$specs.fadeOut(250);
 				$body.addClass('bulk bulkPause'); // 'bulkPause' pauses requests to stop overly excited users
 				
 				// inject names, genders and regions into page
@@ -147,9 +150,9 @@ function selectThis(elem) {
 					}, 650);
 			} else {
 				$body.removeClass('bulk');
+				$specs.fadeIn(250);
 			}
 			
-			$specs.toggle(!$bulkToggle.hasClass('active'));
 			$name
 				.show()
 				.find('h1').click(selectThis)
@@ -263,7 +266,8 @@ function selectThis(elem) {
 			}
 			
 			$('#overlay').addClass('visible');
-			$('.popover').hide().removeClass('visible').filter('#'+name).show().addClass('visible');
+			// $('.popover').hide().removeClass('visible').filter('#'+name).show().addClass('visible');
+			$('.popover').fadeOut(250).filter('#'+name).fadeIn(250);
 			
 			// let's focus the input field if it's the region popup
 			if (name == 'region') $regionPopup.find('input:first').focus();

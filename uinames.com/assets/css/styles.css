@@ -200,19 +200,11 @@ body.bulk #name {
 	        box-shadow: 0 3px 10px rgba(0,0,0,.15);
 }
 
-#data.closed > div {
-	display: none;
-}
-
 #data-open {
 	margin-bottom: 10px;
 	color: #fff;
 	font-weight: bold;
 	display: none;
-}
-
-#data.closed #data-open {
-	display: block;
 }
 
 #data .photo-container {
@@ -371,10 +363,9 @@ body.bulk #data {
 }
 
 .popover {
-	height: 0;
 	width: 480px;
 	max-width: 100%;
-	margin: 0;
+	margin: 88px auto 82px;
 	background: #fff;
 	position: relative;
 	z-index: 4000;
@@ -385,11 +376,6 @@ body.bulk #data {
 	-webkit-box-shadow: 0 10px 20px rgba(0,0,0,.15);
 	   -moz-box-shadow: 0 10px 20px rgba(0,0,0,.15);
 	        box-shadow: 0 10px 20px rgba(0,0,0,.15);
-}
-
-.popover.visible {
-	height: auto;
-	margin: 88px auto 82px;
 }
 
 /* hide shortcuts tab on touch-devices */
