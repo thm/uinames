@@ -1042,13 +1042,12 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 .icon.active,
-[data-popup="info"] .icon.info,
-[data-popup="region"] .icon.region {
+.icon.active.info {
 	background: #fff;
 }
 
 .icon.active span,
-[data-popup="info"] .icon.info span {
+.icon.active.info span {
 	background: #8fc06c;
 }
 
@@ -1252,28 +1251,28 @@ body.touch-device #bulk {
 
 /* info (active) */
 
-[data-popup="info"] .info .i1,
-[data-popup="info"] .info .i2,
-[data-popup="info"] .info .i3,
-[data-popup="info"] .info .i4 {
+.active.info .i1,
+.active.info .i2,
+.active.info .i3,
+.active.info .i4 {
 	-webkit-transition: top .15s ease-out, opacity 0s ease-out .15s, -webkit-transform .15s ease-out .15s;
 	   -moz-transition: top .15s ease-out, opacity 0s ease-out .15s, -ms-transform .15s ease-out .15s;
 	        transition: top .15s ease-out, opacity 0s ease-out .15s, transform .15s ease-out .15s;
 }
 
-[data-popup="info"] .info .i1,
-[data-popup="info"] .info .i3 {
+.active.info .i1,
+.active.info .i3 {
 	top: 16px;
 	opacity: 0;
 }
 
-[data-popup="info"] .info .i2 {
+.active.info .i2 {
 	-webkit-transform: rotate(45deg);
 	    -ms-transform: rotate(45deg);
 	        transform: rotate(45deg);
 }
 
-[data-popup="info"] .info .i4 {
+.active.info .i4 {
 	-webkit-transform: rotate(-45deg);
 	    -ms-transform: rotate(-45deg);
 	        transform: rotate(-45deg);

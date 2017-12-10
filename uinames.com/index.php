@@ -58,7 +58,7 @@
 
 </head>
 
-<body class="no-js" data-tab="info">
+<body class="no-js">
 	<script>
 		var body = document.getElementsByTagName('body')[0],
 			action = 'Press Spacebar';

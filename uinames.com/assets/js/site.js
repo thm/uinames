@@ -231,6 +231,7 @@ function selectThis(elem) {
 		// no popup onload, prevent tabbing through invisibles
 		$('.popover').hide().removeClass('visible');
 		$('#overlay').removeClass('visible');
+		$('.popover-trigger').removeClass('active');
 		
 		// no trigger onload, prevent hocus-focus
 		if (trigger && !$body.hasClass('mouseDetected')) {
@@ -247,7 +248,7 @@ function selectThis(elem) {
 		trigger = this;
 		var name = (this.hash) ? this.hash.substr(1) : $(this).attr('data-href');
 		
-		if ($('#'+name).hasClass('visible')) {
+		if ($('#'+name).is(':visible')) {
 			closePopup();
 		} else {
 			// lazy load images
@@ -266,8 +267,8 @@ function selectThis(elem) {
 			}
 			
 			$('#overlay').addClass('visible');
-			// $('.popover').hide().removeClass('visible').filter('#'+name).show().addClass('visible');
 			$('.popover').fadeOut(250).filter('#'+name).fadeIn(250);
+			$(this).addClass('active');
 			
 			// let's focus the input field if it's the region popup
 			if (name == 'region') $regionPopup.find('input:first').focus();
