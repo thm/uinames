@@ -449,18 +449,19 @@ body.touch-device #shortcuts-tab {display: none}
 	padding: 20px 20px 20px 0;
 }
 
-.cryptocard .crypto-icon {
+.cryptocard .btc-icon {
 	height: 44px;
 	width: 44px;
 	margin: 1px 15px 0 0;
 	float: left;
 }
 
-.btc-address {
+.crypto-address {
 	max-width: 100%;
 	margin-top: 15px;
-	padding: 8px 10px;
+	padding: 10px;
 	line-height: 100%;
+	color: #aaa;
 	border: 1px dashed #666;
 	background: none;
 	white-space: nowrap;
@@ -469,10 +470,15 @@ body.touch-device #shortcuts-tab {display: none}
 	overflow: hidden;
 }
 
+.crypto-address span {
+	color: #fff;
+}
+
 .crypto-qr div {
 	height: 100px;
 	width: 100px;
-	background: #333 url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=100) no-repeat 0 0;
+	background: #333 url(../img/crypto-qr.png) no-repeat 0 0;
+	/* https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=100 */
 	
 	border-radius: 3px;
 	
@@ -489,9 +495,9 @@ body.touch-device #shortcuts-tab {display: none}
 	background: #181818;
 }
 
-#crypto .crypto-icon {
-	height: 64px;
-	width: 64px;
+#crypto .btc-icon {
+	height: 52px;
+	width: 52px;
 	margin: 0 auto;
 	display: block;
 }
@@ -505,25 +511,12 @@ body.touch-device #shortcuts-tab {display: none}
 }
 
 #crypto .crypto-qr div {
-	height: 140px;
-	width: 140px;
-	margin: 20px auto 0;
-	background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=140);
-	
-	border-radius: 4px;
-	
-	-webkit-background-size: 140px;
-	   -moz-background-size: 140px;
-	        background-size: 140px;
+	margin: 25px auto 0;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 	.crypto-qr div {
-		background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=200);
-	}
-	
-	#crypto .crypto-qr div {
-		background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=280);
+		background-image: url(../img/crypto-qr@2x.png);
 	}
 }
 
@@ -556,7 +549,7 @@ body.touch-device #shortcuts-tab {display: none}
 	background: #282828;
 }
 
-#crypto-button a .crypto-icon {
+#crypto-button a .btc-icon {
 	height: 22px;
 	width: 22px;
 	margin: -2px 2px 0 0;

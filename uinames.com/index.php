@@ -119,7 +119,7 @@
 			<h2>Support Development</h2>
 			<p>If you find uinames.com useful, then consider donating BTC to support its development.</p>
 			<div class="crypto-qr"><div></div></div>
-			<code title="Click to select" class="btc-address click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</code>
+			<code class="crypto-address">BTC Address: <span title="Click to select" class="click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
 		</div>
 	</div>
 	
@@ -235,7 +235,7 @@
 			<div class="crypto-info">
 				<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
 				Find this site useful? Donate BTC to support its development.
-				<code title="Click to select" class="btc-address click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</code>
+				<code class="crypto-address">BTC Address: <span title="Click to select" class="click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
 			</div>
 			<div class="crypto-qr"><div></div></div>
 		</div>
