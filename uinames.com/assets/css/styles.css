@@ -378,6 +378,7 @@ body.bulk #data {
 	background: #fff;
 	position: relative;
 	z-index: 4000;
+	display: none;
 
 	border-radius: 5px;
 	
@@ -1363,7 +1364,7 @@ body.no-js #share-box {
 
 @media (max-width: 480px) {
 	
-	.popover {
+	.popover, .cryptocard {
 		width: 100% !important;
 		border-radius: 0;
 	}

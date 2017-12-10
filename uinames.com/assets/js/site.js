@@ -31,9 +31,6 @@ function selectThis(elem) {
 		$name = $('#name'),
 		$specs = $('#data');
 	
-	// so we don't tab into invisible things
-	$('.popover').hide();
-	
 	// add any click-to-select listeners
 	$('.click-to-select').click(selectThis);
 	
