@@ -24,6 +24,7 @@ function selectThis(elem) {
 		$regionToggle = $('.icon.region:first'),
 		$bulkToggle = $('#bulk .icon'),
 		$infoToggle = $('.info:first'),
+		$cryptoToggle = $('#crypto-button a:first'),
 		$regionPopup = $('#region'),
 		$searchInput = $regionPopup.find('input:first'),
 		$availableRegions = $regionPopup.find('li'),
@@ -31,8 +32,10 @@ function selectThis(elem) {
 		$specs = $('#data');
 	
 	// so we don't tab into invisible things
-	$('#info').hide();
-	$regionPopup.hide();
+	$('.popover').hide();
+	
+	// add any click-to-select listeners
+	$('.click-to-select').click(selectThis);
 	
 	// MOUSE DETECTION
 	$body.on('mousedown keydown', function(e) {
@@ -51,7 +54,14 @@ function selectThis(elem) {
 		localStorage.setItem('region', regionName);
 		
 		// update the flag in the region icon
-		$regionToggle.find('img').attr('src', $this.find('img').attr('data-src'));
+		var randName = $this.attr('id') == 'region-0' ? 1 : 0;
+		$regionToggle.find('img')
+			.attr('src', 'assets/img/' + (randName ? 'flag-random.gif' : 'flags.png'))
+			.css({
+				'height': randName ? '20px' : 'auto',
+				'top': randName ? '0' : ('-' + ($this.attr('id').replace('region-','')-1)*20 + 'px'),
+				'border-radius': randName ? '100%' : '0'
+			});
 		
 		// update the textual name in the region icon
 		$regionToggle.find('b').innerHTML = regionName + ' selected';
@@ -213,22 +223,19 @@ function selectThis(elem) {
 	
 	// POPUP CLOSER
 	function closePopup() {
-		var name = $body.attr('data-popup');
-		
-		if (name == 'region') {
+		if ($('#region').hasClass('visible')) {
 			$regionPopup.find('input').blur();
 			$('#destination').focus();
 			$searchInput.off('keyup');
 		}
 		// no popup onload, prevent tabbing through invisibles
-		$('#'+name).hide();
+		$('.popover').hide().removeClass('visible');
+		$('#overlay').removeClass('visible');
 		
 		// no trigger onload, prevent hocus-focus
 		if (trigger && !$body.hasClass('mouseDetected')) {
 			trigger.focus();
 		}
-		
-		$body.removeAttr('data-popup');
 	}
 	
 	// POPUP TOGGLE
@@ -240,7 +247,7 @@ function selectThis(elem) {
 		trigger = this;
 		var name = (this.hash) ? this.hash.substr(1) : $(this).attr('data-href');
 		
-		if ($body.attr('data-popup') == name) {
+		if ($('#'+name).hasClass('visible')) {
 			closePopup();
 		} else {
 			// lazy load images
@@ -258,12 +265,8 @@ function selectThis(elem) {
 				}, 150);
 			}
 			
-			$('#'+name).show();
-			
-			// show popup
-			setTimeout(function() {
-				$body.attr('data-popup', name);
-			}, 50);
+			$('#overlay').addClass('visible');
+			$('.popover').hide().removeClass('visible').filter('#'+name).show().addClass('visible');
 			
 			// let's focus the input field if it's the region popup
 			if (name == 'region') $regionPopup.find('input:first').focus();
@@ -272,8 +275,7 @@ function selectThis(elem) {
 		$('#overlay').click(closePopup);
 	}
 	
-	$infoToggle.click(togglePopup);
-	$regionToggle.click(togglePopup);
+	$('.popover-trigger').click(togglePopup);
 
 	// INFO TABS TOGGLE
 	var $tabs = $('#tabs a');
@@ -281,9 +283,13 @@ function selectThis(elem) {
 		e.preventDefault();
 		e.stopPropagation();
 
-		$body.attr('data-tab', $(this).attr('data-set'));
-		$tabs.find('b').html('');
-		$(this).find('b').html('(Selected)');
+		// re-set tab contents
+		$("[id$='-panel']").hide();
+		$('#' + this.hash.substr(1)).show();
+		
+		// re-set active tab
+		$tabs.removeClass('active').find('b').html('');
+		$(this).addClass('active').find('b').html('(Selected)');
 	});
 
 	// REGION SEARCH
@@ -328,10 +334,10 @@ function selectThis(elem) {
 	$(window).keyup(function(e) {
 		var n = e.which || e.keyCode || 0;
 		
-		if ($body.attr('data-popup') != 'region' || n == 27) {	
+		if (!$('#region').hasClass('visible') || n == 27) {	
 			if (n == 27) {
 				closePopup();
-			} else if (n == 32 && !$body.attr('data-popup') && !$body.hasClass('bulkPause')) {
+			} else if (n == 32 && !$('.popover').hasClass('visible') && !$body.hasClass('bulkPause')) {
 				getName();
 			} else if (n == 48) {
 				$infoToggle.click();

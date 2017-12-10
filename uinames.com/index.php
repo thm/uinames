@@ -1,13 +1,16 @@
 <?php
 	
+
 	$data = file_get_contents('api/names.json');
 	$names = json_decode($data);
-	
+
+	/*	
 	$data = file_get_contents('api/stats.json');
 	$stats = json_decode($data);
 	
 	$regions = $stats->regions;
 	$available = $stats->names;
+	*/
 	
 	require_once('dependables.php');
 
@@ -21,13 +24,10 @@
 	<meta charset="utf-8" />
 	
 	<title>uinames.com: Randomly Generate Fake Names</title>
-	<meta name="description" content="Generate random fake names for use in designs and mockups. Supports 48+ regions with over 1.2 million possible combinations. Completely open-source." />
+	<meta name="description" content="Generate random fake names for use in designs and mockups. Supports 50+ regions with more than 1.2 million possible combinations. Completely open-source." />
 	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name, personas" />
 	
-	<link rel="shortcut icon" href="assets/img/favicon.ico" />
-	<script>
-		var isRetina = (window.devicePixelRatio > 1 || (window.matchMedia && window.matchMedia("(-webkit-min-device-pixel-ratio: 1.5),(-moz-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)").matches)); if (isRetina) document.write('<link rel="shortcut icon" href="assets/img/favicon@2x.ico" />');
-	</script>
+	<link rel="shortcut icon" href="assets/img/favicon@2x.ico" />
 	
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
@@ -69,6 +69,10 @@
 			body.className += ' touch-device';
 			action = 'Tap here';
 		}
+		
+		/*if (window.devicePixelRatio > 1 || (window.matchMedia && window.matchMedia("(-webkit-min-device-pixel-ratio: 1.5),(-moz-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)").matches)) {
+			body.className += ' retina';
+		}*/
 	</script>
 
 	<div id="name" aria-live="polite" aria-atomic="true"><h1><script>document.write(action)</script></h1></div>
@@ -89,7 +93,7 @@
 			</a>
 		</span>
 		<span id="regionSelect">
-			<a class="icon region active" href="#region" title="Select Region">
+			<a class="icon region active popover-trigger" href="#region" title="Select Region">
 				<span class="flag"><img src="assets/img/flag-random.gif" /></span>
 				<b class="ac">Random region selected</b>
 			</a>
@@ -102,22 +106,39 @@
 	</div>
 	
 	<div id="details">
-		<a role="button" class="icon info" href="#info" title="More Information" aria-label="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></a>
+		<a role="button" class="icon info popover-trigger" href="#info" title="More Information" aria-label="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></a>
 	</div>
 	
-	<div id="info" class="clearfix">
-		<div id="tabs">
-			<a id="info-tab" href="#info-panel" data-set="info">Info <b class="ac">(Selected)</b></a>
-			<a id="api-tab" href="#api-panel" data-set="api">API <b class="ac"></b></a>
-			<a id="shortcuts-tab" href="shortcuts-panel" data-set="shortcuts">Shortcuts <b class="ac"></b></a>
+	<div id="crypto-button">
+		<a href="#crypto" class="popover-trigger"><?php echo file_get_contents('assets/img/btc-icon.svg'); ?> Donate BTC</a>
+	</div>
+	
+	<div id="crypto" class="popover clearfix">
+		<div class="crypto-info">
+			<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
+			<h2>Support Development</h2>
+			<p>If you find uinames.com useful, then consider donating BTC to support its development.</p>
+			<div class="crypto-qr"><div></div></div>
+			<code title="Click to select" class="btc-address click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</code>
 		</div>
-		<div id="info-panel">
+	</div>
+	
+	<div id="info" class="popover clearfix">
+		<div id="tabs">
+			<a id="info-tab" href="#info-panel" class="active">Info <b class="ac">(Selected)</b></a>
+			<a id="api-tab" href="#api-panel">API <b class="ac"></b></a>
+			<a id="shortcuts-tab" href="#shortcuts-panel">Shortcuts <b class="ac"></b></a>
+		</div>
+		<div id="info-panel" style="display: block;">
 			<h2>About</h2>
 			<p><a href="https://uinames.com">uinames.com</a> is a simple tool to generate fake names for use in designs and mockups. Made by <a href="https://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
+			
 			<h2>Elsewhere</h2>
 			<p>Numerous blogs and websites have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="https://speckyboy.com/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="https://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
+			
 			<h2>Feedback</h2>
-			<p>Feedback can be tweeted directly to <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a>.</p>
+			<p>Send <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> a message if you have feedback.</p>
+			
 			<h2>Contribute</h2>
 			<p>This massive collection of names wouldn’t have been as complete without the help of these wonderful people. If you would like to contribute to the project too, then send a pull-request on <a href="https://github.com/thm/uinames" target="_blank">Github</a>!</p>
 			<p class="clearfix">
@@ -131,6 +152,7 @@
 					);
 				?>
 			</p>
+			
 			<p>Check out <a href="http://uifaces.com" target="_blank">uifaces.com</a> as well!</p>
 		</div>
 		<div id="api-panel">
@@ -209,23 +231,17 @@
 			<p><code>0</code> to view the info panel</p>
 			<p><code>Esc</code> to close the current panel</p>
 		</div>
-		<!--<table id="facts">
-			<tbody>
-				<tr>
-					<th>Available Regions</th>
-					<th>Unique Names</th>
-					<th>Generated</th>
-				</tr>
-				<tr>
-					<td><?php print $regions; ?></td>
-					<td><?php print number_format($available, 0, ',', '.'); ?></td>
-					<td title="<?php print number_format($stats->web, 0, ',', '.'); ?> direct"><?php print number_format($stats->api, 0, ',', '.'); ?></td>
-				</tr>
-			</tbody>
-		</table>-->
+		<div class="cryptocard">
+			<div class="crypto-info">
+				<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
+				Find this site useful? Donate BTC to support its development.
+				<code title="Click to select" class="btc-address click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</code>
+			</div>
+			<div class="crypto-qr"><div></div></div>
+		</div>
 	</div>
 
-	<div id="region" class="clearfix">
+	<div id="region" class="popover clearfix">
 		<div>
 			<label for="rsearch" id="regionSearchLabel" class="ac">Search regions</label>
 			<span class="regionCount" aria-live="polite" aria-atomic="true"><?php echo (count($names) + 1) . '/' . (count($names) + 1); ?></span>
@@ -235,7 +251,7 @@
 			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
-				$newRegions = [];
+				$newRegions = ["Bulgaria", "Costa Rica", "Nepal", "Saudi Arabia"];
 				$favRegions = ["United States", "Germany", "France", "Russia", "India"];
 				
 				$total = count($names);

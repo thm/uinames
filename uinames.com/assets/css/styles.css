@@ -333,10 +333,6 @@ body.bulk #data {
 
 #tabs {
 	width: 100%;
-	top: 0;
-	left: 0;
-	display: block;
-	position: absolute;
 	overflow: hidden;
 
 	border-radius: 5px 5px 0 0;
@@ -361,9 +357,7 @@ body.bulk #data {
 	color: #999;
 }
 
-[data-tab="info"] #info-tab,
-[data-tab="api"] #api-tab,
-[data-tab="shortcuts"] #shortcuts-tab {
+#tabs a.active {
 	color: #999;
 	border-bottom: none;
 	background: #fff;
@@ -371,30 +365,19 @@ body.bulk #data {
 }
 
 [id$="-panel"] {
+	padding: 25px;
 	text-align: left;
 	display: none;
 }
 
-[data-tab="info"] #info-panel,
-[data-tab="api"] #api-panel,
-[data-tab="shortcuts"] #shortcuts-panel {
-	display: block;
-}
-
-#info, #region {
+.popover {
 	height: 0;
 	width: 480px;
 	max-width: 100%;
-	margin: 88px auto 82px;
-	padding: 0 25px;
+	margin: 0;
 	background: #fff;
-	opacity: 0;
 	position: relative;
 	z-index: 4000;
-	
-	-webkit-transition: opacity .25s ease-out;
-	   -moz-transition: opacity .25s ease-out;
-	        transition: opacity .25s ease-out;
 
 	border-radius: 5px;
 	
@@ -403,14 +386,9 @@ body.bulk #data {
 	        box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
 
-[data-popup="info"] #info, [data-popup="region"] #region {
+.popover.visible {
 	height: auto;
-	opacity: 1;
-	padding: 62px 25px 25px;
-}
-
-[data-popup="info"] #region, [data-popup="region"] #info {
-	margin: 0;
+	margin: 88px auto 82px;
 }
 
 /* hide shortcuts tab on touch-devices */
@@ -457,6 +435,145 @@ body.touch-device #shortcuts-tab {display: none}
 	background: #eee;
 
 	border-radius: 50%;
+}
+
+/* crypto card */
+
+.cryptocard {
+	width: 100%;
+	text-align: left;
+	line-height: 150%;
+	color: #fff;
+	background: #181818;
+	display: table;
+	table-layout: fixed;
+	
+	border-radius: 0 0 4px 4px;
+}
+
+.cryptocard .crypto-info, .cryptocard .crypto-qr {
+	padding: 25px;
+	display: table-cell;
+	vertical-align: top;
+}
+
+.cryptocard .crypto-qr {
+	width: 120px;
+	padding: 20px 20px 20px 0;
+}
+
+.cryptocard .crypto-icon {
+	height: 44px;
+	width: 44px;
+	margin: 1px 15px 0 0;
+	float: left;
+}
+
+.btc-address {
+	max-width: 100%;
+	margin-top: 15px;
+	padding: 8px 10px;
+	line-height: 100%;
+	border: 1px dashed #666;
+	background: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.crypto-qr div {
+	height: 100px;
+	width: 100px;
+	background: #333 url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=100) no-repeat 0 0;
+	
+	border-radius: 3px;
+	
+	-webkit-background-size: 100px;
+	   -moz-background-size: 100px;
+	        background-size: 100px;
+}
+
+/* large cryptocard */
+
+#crypto {
+	padding: 50px;
+	color: #fff;
+	background: #181818;
+}
+
+#crypto .crypto-icon {
+	height: 64px;
+	width: 64px;
+	margin: 0 auto;
+	display: block;
+}
+
+#crypto h2 {
+	margin-top: 15px;
+}
+
+#crypto p {
+	color: #aaa;
+}
+
+#crypto .crypto-qr div {
+	height: 140px;
+	width: 140px;
+	margin: 20px auto 0;
+	background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=140);
+	
+	border-radius: 4px;
+	
+	-webkit-background-size: 140px;
+	   -moz-background-size: 140px;
+	        background-size: 140px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	.crypto-qr div {
+		background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=200);
+	}
+	
+	#crypto .crypto-qr div {
+		background-image: url(https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=280);
+	}
+}
+
+/* crypto button */
+
+#crypto-button {
+	bottom: 25px;
+	right: 25px;
+	position: fixed;
+	z-index: 500;
+}
+
+#crypto-button a {
+	height: 32px;
+	padding: 0 10px 0 8px;
+	font-size: 90%;
+	line-height: 32px;
+	color: #fff;
+	background: #181818;
+	display: inline-block;
+
+	border-radius: 5px;
+
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+#crypto-button a:hover {
+	background: #282828;
+}
+
+#crypto-button a .crypto-icon {
+	height: 22px;
+	width: 22px;
+	margin: -2px 2px 0 0;
+	vertical-align: middle;
 }
 
 /* popups */
@@ -534,54 +651,9 @@ body.touch-device #shortcuts-tab {display: none}
 	color: #222;
 }
 
-/*--FACTS--*/
-
-#facts {
-	margin: 25px -25px 0;
-	line-height: 100%;
-	font-size: 22px;
-	color: #fff;
-	background: #222;
-	overflow: hidden;
-	display: block;
-	border-collapse: collapse;
-	table-layout: fixed;
-
-	border-radius: 0 0 5px 5px;
-}
-
-#facts tr, #facts tbody {
-	width: 100%;
-	display: block;
-}
-
-#facts tr th, #facts tr td {
-	width: 33.334%;
-	border-left: 1px solid #333;
-	float: left;
-}
-
-#facts tr th:first-child, #facts tr td:first-child {
-	border-left: none;
-}
-
-#facts tr th {
-	padding: 15px 0 5px;
-	font-size: 11px;
-	line-height: 100%;
-	font-weight: 700;
-	color: #999;
-	text-transform: uppercase;
-}
-
-#facts tr td {
-	padding: 0 0 15px;
-}
-
 /*--REGION--*/
 
 #region {
-	padding: 0 !important;
 	width: 300px;
 	overflow: hidden;
 }
@@ -608,31 +680,29 @@ body.touch-device #shortcuts-tab {display: none}
 	margin: 12px;
 	float: left;
 	position: relative;
-	
-	background: url(../img/flags.png) no-repeat 0 0;
-	
-	-webkit-background-size: 20px 980px;
-	   -moz-background-size: 20px 980px;
-	        background-size: 20px 980px;
+	overflow: hidden;
 }
 
 .flag:before {
 	content: '';
 	height: 18px;
 	width: 18px;
+	top: 0;
+	left: 0;
 	border: 1px solid #000;
 	opacity: .25;
 	position: absolute;
+	z-index: 1;
 
-	border-radius: 50%;
+	border-radius: 100%;
 }
 
 .flag img {
-	height: 100%;
+	height: auto;
 	width: 100%;
-	background: #eee;
-
-	border-radius: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
 }
 
 #region li .region-label {
@@ -650,6 +720,18 @@ body.touch-device #shortcuts-tab {display: none}
 #region li:hover,
 #region li.active {
 	background: #f9f9f9;
+}
+
+#region li .flag img {
+	border-radius: 100%;
+}
+
+#region li .flag {
+	background: url(../img/flags.png) no-repeat 0 20px;
+	
+	-webkit-background-size: 20px 1060px;
+	   -moz-background-size: 20px 1060px;
+	        background-size: 20px 1060px;
 }
 
 #region li.highlight {
@@ -751,7 +833,7 @@ body.touch-device #shortcuts-tab {display: none}
 	        transition: opacity .25s ease-out;
 }
 
-[data-popup] #overlay {
+#overlay.visible {
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -1246,6 +1328,18 @@ body.no-js #share-box {
 		margin-top: -18px;
 	}
 
+	#data {
+		display: none !important;
+	}
+	
+	#crypto-button {
+		bottom: 67px;
+		right: 50%;
+		margin-right: -60px;
+		position: fixed;
+		z-index: 500;
+	}
+
 }
 
 @media (max-width: 520px) {
@@ -1268,26 +1362,22 @@ body.no-js #share-box {
 }
 
 @media (max-width: 480px) {
+	
+	.popover {
+		width: 100% !important;
+		border-radius: 0;
+	}
+	
+	#crypto {
+		padding: 10%;
+	}
 
-	#data {
-		display: none !important;
-	}
+}
+
+@media (max-width: 375px) {
 	
-	#info, #region {
-		width: 100%;
-		border-radius: 0;
-	}
-	
-	#facts > div {
-		padding: 14px 0 16px;
-	}
-	
-	#facts {
-		border-radius: 0;
-	}
-	
-	#facts p {
-		font-size: 9px;
+	.cryptocard .crypto-qr {
+		display: none;
 	}
 
 }

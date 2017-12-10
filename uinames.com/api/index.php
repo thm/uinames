@@ -230,6 +230,7 @@ function send($content, $code = 200) {
 	echo empty($_GET['callback']) ? $output : $_GET['callback'] . "($output);";
 	
 	// it only counts if names are actually served
+	/*
 	if ($code == 200) {
 		$stats = json_decode(file_get_contents('stats.json'));
 		if (isset($stats->api)) {
@@ -237,6 +238,7 @@ function send($content, $code = 200) {
 			file_put_contents('stats.json', json_encode($stats));
 		}
 	}
+	*/
 	exit;
 }
 
