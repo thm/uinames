@@ -21,6 +21,8 @@
 <html lang="en">
 <head>
 
+	<!-- Copryight (c) 2017 Thom van der Weerd. All rights reserved. -->
+
 	<meta charset="utf-8" />
 	
 	<title>uinames.com: Randomly Generate Fake Names</title>
