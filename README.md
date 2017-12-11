@@ -88,3 +88,6 @@ This project is initiated and maintained by [@thomweerd](http://twitter.com/thom
 This massive collection of names wouldn't have been as complete without the help of [these wonderful people](https://github.com/thm/uinames/network/members). Thanks for all the contributions and the continued support!
 
 Special thanks to [Claudio Albertin](http://github.com/ClaudioAlbertin) for his work on the API.
+
+### License
+Parts of this repository are licensed. Except where otherwise stated, any code not covered by this license is published under exclusive copyright. See [LICENSE.md](LICENSE.md) to learn more.
