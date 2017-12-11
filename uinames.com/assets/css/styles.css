@@ -478,7 +478,6 @@ body.touch-device #shortcuts-tab {display: none}
 	height: 100px;
 	width: 100px;
 	background: #333 url(../img/crypto-qr.png) no-repeat 0 0;
-	/* https://blockchain.info/qr?data=141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC&size=100 */
 	
 	border-radius: 3px;
 	
@@ -683,6 +682,8 @@ body.touch-device #shortcuts-tab {display: none}
 	top: 0;
 	left: 0;
 	position: absolute;
+	
+	border-radius: 100%;
 }
 
 #region li .region-label {
@@ -1342,7 +1343,7 @@ body.no-js #share-box {
 
 @media (max-width: 480px) {
 	
-	.popover, .cryptocard {
+	.popover, .cryptocard, #tabs {
 		width: 100% !important;
 		border-radius: 0;
 	}

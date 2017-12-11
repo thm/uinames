@@ -57,7 +57,7 @@ function selectThis(elem) {
 			.css({
 				'height': randName ? '20px' : 'auto',
 				'top': randName ? '0' : ('-' + ($this.attr('id').replace('region-','')-1)*20 + 'px'),
-				'border-radius': randName ? '100%' : '0'
+				'border-radius': randName ? '' : '0'
 			});
 		
 		// update the textual name in the region icon
@@ -326,7 +326,6 @@ function selectThis(elem) {
 			});
 			
 			var regionMatches = $availableRegions.not('.inactive').length;
-	
 			$regionPopup.find('.regionCount').html(regionMatches + '/' + $availableRegions.length);
 			$regionPopup.find('.contribute').toggle(regionMatches === 0);
 		}
