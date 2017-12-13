@@ -119,9 +119,9 @@
 		<div class="crypto-info">
 			<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
 			<h2>Support Development</h2>
-			<p>If you find uinames.com useful, then consider donating BTC to support its development.</p>
+			<p>Keeping this site running smoothly roughly costs me $100/year and several weekends of work. Consider donating some BTC if you find this site useful! 😃</p>
 			<div class="crypto-qr"><div></div></div>
-			<code class="crypto-address">BTC Address: <span title="Click to select" class="click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
+			<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
 		</div>
 	</div>
 	
@@ -139,23 +139,21 @@
 			<p>Numerous blogs and websites have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="https://speckyboy.com/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="https://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
 			
 			<h2>Feedback</h2>
-			<p>Send <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> a message if you have feedback.</p>
+			<p>Message <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> if you have feedback.</p>
 			
 			<h2>Contribute</h2>
-			<p>This massive collection of names wouldn’t have been as complete without the help of these wonderful people. If you would like to contribute to the project too, then send a pull-request on <a href="https://github.com/thm/uinames" target="_blank">Github</a>!</p>
+			<p>Contribute to the project through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! This collection of names wouldn’t have been as complete without the help of these wonderful people:</p>
 			<p class="clearfix">
 				<?php
 					// render github contributors
 					echo github(
 						'<a href="$href" class="contributor">
 							<span class="popup"><span>$user</span> +$contributions</span>
-							<img class="lazy" src="assets/img/blank.png" data-src="$img" />
+							<img class="lazy" src="assets/img/replacement.png" data-src="$img" />
 						</a>'
 					);
 				?>
 			</p>
-			
-			<p>Check out <a href="http://uifaces.com" target="_blank">uifaces.com</a> as well!</p>
 		</div>
 		<div id="api-panel">
 			<h2>Overview</h2>
@@ -187,8 +185,9 @@
 			<p>Results for a language within a region:</p>
 			<pre><span>https://uinames.com/api/</span>?region=switzerland&amp;language=german</pre>
 			-->
-			<h2>Extended Usage</h2>
-			<p>Additional randomized personal data is served if the <code>ext</code> parameter is detected. Photos offered are from the authorized section on <a href="http://uifaces.com" target="_blank">uifaces.com</a>:</p>
+			<h2>Extra Data</h2>
+			<p>Additional random data is served to requests passing an <code>ext</code> parameter. As larger amounts of data require more bandwidth and processing power, please use this functionality sparingly.</p>
+			<p>All photos are hand-picked from <a href="https://unsplash.com" target="_blank">Unsplash</a> (<a href="https://unsplash.com/license" target="_blank">license</a>):</p>
 <pre><span>https://uinames.com/api/</span>?ext
 <span>---</span>
 {
@@ -236,8 +235,8 @@
 		<div class="cryptocard">
 			<div class="crypto-info">
 				<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
-				Find this site useful? Donate BTC to support its development.
-				<code class="crypto-address">BTC Address: <span title="Click to select" class="click-to-select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
+				Consider donating some BTC if you find this site useful! 😃
+				<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
 			</div>
 			<div class="crypto-qr"><div></div></div>
 		</div>
@@ -250,7 +249,7 @@
 			<input class="search" type="text" placeholder="Type to search..." role="combobox" aria-expanded="true" aria-autocomplete="list" id="rsearch" aria-labelledby="regionSearchLabel" aria-owns="regionList" aria-activedescendant="region-0" />
 		</div>
 		<ul id="regionList" role="listbox">
-			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
+			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
 				$newRegions = ["Bulgaria", "Costa Rica", "Nepal", "Saudi Arabia"];
@@ -266,8 +265,6 @@
 					if (in_array($region, $favRegions)) {
 						$fav = ($region == $favRegions[0]) ? ' fav active' : ' fav';
 					}
-					
-					// echo '<li id="region-' . ($i + 1) . '" class="' . $new . $fav . '" role="option" tabindex="-1"><span class="flag"><img class="lazy" src="assets/img/blank.png" data-src="assets/img/flags/' . str_replace(' ', '-', strtolower($region)) . '.png" /></span><span class="region-label">' . $region . '</span></li>';
 					
 					echo '<li id="region-' . ($i + 1) . '" class="' . $new . $fav . '" role="option" tabindex="-1"><span class="flag" style="background-position: 0 -' . $i*20 . 'px;"></span><span class="region-label">' . $region . '</span></li>';
 				}
@@ -286,20 +283,23 @@
 	
 	<div id="share-box">
 		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-icon-facebook.svg'); ?></span>Share</span>
-			<span class="share-count">1.4k</span>
+			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-fb.svg'); ?></span>Share</span>
+			<span class="share-count">1.5k</span>
 		</a>
 		
-		<iframe src="https://ghbtns.com/github-btn.html?user=thm&repo=uinames&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="86" height="20"></iframe>
+		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
+			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-gh.svg'); ?></span>Star</span>
+			<span class="share-count">397</span>
+		</a>
 
 		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-icon-twitter.svg'); ?></span>Tweet</span>
+			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-tw.svg'); ?></span>Tweet</span>
 			<span class="share-count">1.9k</span>
 		</a>
 	</div>
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/site.js"></script>
+	
+	<script><?php echo file_get_contents('assets/js/jquery.min.js'); ?></script>
+	<script><?php echo file_get_contents('assets/js/site.min.js'); ?></script>
 
 </body>
 </html>

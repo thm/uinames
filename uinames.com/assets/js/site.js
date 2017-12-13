@@ -108,7 +108,7 @@ function selectThis(elem) {
 				specsData += '<li><span class="label">' + key + ':</span> <span class="click-to-select">' + val + '</span></li>';
 			});
 			
-			var photo = '<div class="photo-container"><a href="' + data[offset]['photo'] + '" target="_blank" class="photo"><img src="' + data[offset]['photo'].replace(/http:\/\/uinames\.com\//, '') + '" /></a><a href="http://uifaces.com" target="_blank">More</a></div>';
+			var photo = '<div class="photo-container"><a href="' + data[offset]['photo'] + '" target="_blank" class="photo"><img src="' + data[offset]['photo'].replace(/http:\/\/uinames\.com\//, '') + '" /></a><a class="photo-more-link" href="https://unsplash.com/search/photos/people" target="_blank">More</a><a href="https://unsplash.com/license" target="_blank">License</a></div>';
 			
 			$specs.html('<a id="data-open">Show Details</a><div>' + photo + '<ul>' + specsData + '</ul><a id="data-exit"></a></div>');
 			
@@ -371,15 +371,4 @@ function selectThis(elem) {
 		document.title = document.hidden ? '👀 ' + title : title;
 	});
 
-})();
-
-// STALKING CODE
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-46677803-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
