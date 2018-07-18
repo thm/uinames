@@ -167,7 +167,7 @@ function generate_name($database, $region = ANY, $language = ANY, $gender = ANY)
 
 	// this works 99.7% of the time, maybe
 	$chunks	     = explode(' ', $subject);
-	$name_chunks = array_splice($chunks, 0, $name_chunk_count - 1);
+	$name_chunks = array_splice($chunks, 0, $name_chunk_count + 1);
 	$name		 = implode(' ', $name_chunks);
 	$surname	 = implode(' ', $chunks);
 
