@@ -189,7 +189,7 @@
 			<pre><span>https://uinames.com/api/</span>?region=switzerland&amp;language=german</pre>
 			-->
 			<h2>Extra Data</h2>
-			<p>Additional random data is served to requests passing an <code>ext</code> parameter. As larger amounts of data require more bandwidth and processing power, please use this functionality sparingly.</p>
+			<p>Additional random data is served to requests passing an <code>ext</code> parameter. However, response times may be slower, especially when requesting larger quantities of data.</p>
 			<p>All photos are hand-picked from <a href="https://unsplash.com" target="_blank">Unsplash</a> (<a href="https://unsplash.com/license" target="_blank">license</a>):</p>
 <pre><span>https://uinames.com/api/</span>?ext
 <span>---</span>
