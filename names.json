@@ -97,6 +97,12 @@
         "surnames":["Perić","Matić","Mesić","Grgić","Kovačević","Brlić","Dujmović","Krznarić","Bulić", "Marić", "Mišić", "Lisak", "Gotovac"]
     },
     {
+        "region":"Czech Republic",
+        "male":["Jakub","Tomáš","Jan","Matyáš","Adam"],
+        "female":["Eliška","Tereza", "Anna", "Adéla", "Natálie"],
+        "surnames":["Adamec","Babik","Bartusek","Kopriva","Krempasky","Radecki","Skoda","Zelenka","Zima"]
+    },
+    {
         "region":"Denmark",
         "male":["William","Lucas","Victor","Noah","Frederik","Emil","Liam","Oliver","Oscar","Magnus","Alexander","Carl","Elias","Christian","Sebastian","Mikkel","Mads","Anton","Benjamin","Malthe","Mathias","Villads","Felix","August","Valdemar","Johan","Marcus","Alfred","Marius","Storm","Aksel","Tobias","Nikolaj","Jonathan","Adam","Jonas","Philip","Jakob","Albert","Arthur","Bertram","Elliot","Laurits","Simon","Andreas","Sander","Tristan","Nicklas","Rasmus","Silas","Matias"],
         "female":["Sofia","Ida","Isabella","Emma","Freja","Anna","Caroline","Josefine","Clara","Laura","Sofie","Alma","Maja","Karla","Ella","Mathilde","Liva","Olivia","Alberte","Emilie","Frida","Mille","Victoria","Lærke","Agnes","Filippa","Vigga","Sara","Naja","Julie","Emily","Nicoline","Johanne","Astrid","Celina","Ellen","Marie","Lea","Thea","Andrea","Tilde","Silje","Nanna","Nora","Malou","Merle","Aya","Liv","Esther","Rosa"],
