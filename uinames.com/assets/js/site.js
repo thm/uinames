@@ -363,12 +363,3 @@ function selectThis(elem) {
 	});
 	
 })();
-
-(function() {
-
-	var title = document.title;
-	$(window).on('blur focus', function() {
-		document.title = document.hidden ? '👀 ' + title : title;
-	});
-
-})();

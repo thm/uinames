@@ -177,7 +177,7 @@ body.bulk #name {
 	width: 380px;
 	left: 50%;
 	margin-left: -190px;
-	bottom: 100px;
+	bottom: 82px;
 	font-size: 90%;
 	line-height: 110%;
 	position: fixed;
@@ -422,133 +422,6 @@ body.touch-device #shortcuts-tab {display: none}
 	border-radius: 100%;
 }
 
-/* crypto card */
-
-.cryptocard {
-	width: 100%;
-	text-align: left;
-	line-height: 150%;
-	color: #fff;
-	background: #181818;
-	display: table;
-	table-layout: fixed;
-	
-	border-radius: 0 0 4px 4px;
-}
-
-.cryptocard .crypto-info, .cryptocard .crypto-qr {
-	padding: 25px;
-	display: table-cell;
-	vertical-align: top;
-}
-
-.cryptocard .crypto-qr {
-	width: 120px;
-	padding: 20px 20px 20px 0;
-}
-
-.cryptocard .btc-icon {
-	height: 44px;
-	width: 44px;
-	margin: 1px 15px 0 0;
-	float: left;
-}
-
-.crypto-address {
-	max-width: 100%;
-	margin-top: 15px;
-	padding: 10px;
-	line-height: 100%;
-	color: #fff;
-	border: 1px dashed #666;
-	background: none;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	display: inline-block;
-	overflow: hidden;
-}
-
-.crypto-qr div {
-	height: 100px;
-	width: 100px;
-	background: #fff url(../img/crypto-qr.png) no-repeat 0 0;
-	
-	border-radius: 3px;
-	
-	-webkit-background-size: 100px;
-	   -moz-background-size: 100px;
-	        background-size: 100px;
-}
-
-/* large cryptocard */
-
-#crypto {
-	padding: 50px;
-	color: #fff;
-	background: #181818;
-}
-
-#crypto .btc-icon {
-	height: 52px;
-	width: 52px;
-	margin: 0 auto;
-	display: block;
-}
-
-#crypto h2 {
-	margin-top: 15px;
-}
-
-#crypto p {
-	color: #aaa;
-}
-
-#crypto .crypto-qr div {
-	margin: 25px auto 0;
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-	.crypto-qr div {
-		background-image: url(../img/crypto-qr@2x.png);
-	}
-}
-
-/* crypto button */
-
-#crypto-button {
-	bottom: 25px;
-	right: 25px;
-	position: fixed;
-	z-index: 500;
-}
-
-#crypto-button a {
-	height: 32px;
-	padding: 0 10px 0 8px;
-	font-size: 90%;
-	line-height: 32px;
-	color: #fff;
-	background: #181818;
-	display: inline-block;
-
-	border-radius: 5px;
-
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
-	        box-shadow: 0 1px 2px rgba(0,0,0,.25);
-}
-
-#crypto-button a:hover {
-	background: #282828;
-}
-
-#crypto-button a .btc-icon {
-	height: 22px;
-	width: 22px;
-	margin: -2px 2px 0 0;
-	vertical-align: middle;
-}
-
 /* popups */
 
 .popup {
@@ -704,9 +577,9 @@ body.touch-device #shortcuts-tab {display: none}
 #region li .flag {
 	background: url(../img/flags.png) no-repeat 0 20px;
 	
-	-webkit-background-size: 20px 1060px;
-	   -moz-background-size: 20px 1060px;
-	        background-size: 20px 1060px;
+	-webkit-background-size: 20px 1180px;
+	   -moz-background-size: 20px 1180px;
+	        background-size: 20px 1180px;
 }
 
 #region li.highlight {
@@ -823,12 +696,14 @@ body.touch-device #shortcuts-tab {display: none}
 
 /*--SHAREBOX--*/
 
-#share-box {
-	width: 302px;
+#share {
+	width: 304px;
 	height: 32px;
 	bottom: 25px;
-	left: 25px;
+	left: 50%;
+	margin-left: -152px;
 	padding: 6px;
+	text-align: left;
 	background: #fff;
 	white-space: nowrap;
 	overflow: hidden;
@@ -844,78 +719,65 @@ body.touch-device #shortcuts-tab {display: none}
 
 .share-button, .share-count {
 	height: 20px;
-	padding: 3px 6px;
-	font: 600 11px/120% "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 3px 5px;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 120%;
+	letter-spacing: -0.25px;
 	color: #fff;
-	background: #1b95e0;
+	background: #111;
 	position: relative;
-	display: inline-block;
 	vertical-align: top;
+	display: inline-block;
 
 	border-radius: 3px;
 }
 
-.twitter-button .share-button:hover {
-	background: #0c7abf;
-}
+.twitter-button .share-button {background: #1b95e0;}
+.twitter-button .share-button:hover {background: #0c7abf;}
 
-.facebook-button .share-button {
-	padding: 3px 6px 3px 4px;
-	text-shadow: 0 -1px 0 #354c8c;
-	background: #4c69ba;
-
-	background: -webkit-linear-gradient(#4c69ba, #3b55a0);
-	   background: -moz-linear-gradient(#4c69ba, #3b55a0);
-	        background: linear-gradient(#4c69ba, #3b55a0);
-}
-
-.facebook-button .share-button:hover {
-	background: -webkit-linear-gradient(#5c7cd1, #4a68b2);
-	   background: -moz-linear-gradient(#5c7cd1, #4a68b2);
-	        background: linear-gradient(#5c7cd1, #4a68b2);
-}
+.facebook-button .share-button {background: #4267b2;}
+.facebook-button .share-button:hover {background: #365899;}
 
 .github-button .share-button {
-	padding: 2px 6px 2px 4px;
 	color: #333;
 	text-shadow: 0 1px 0 #fff;
-	border: 1px solid #d5d5d5;
 	background: #eee;
+	
+	-webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset;
+	   -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset;
+	        box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset;
 
 	background: -webkit-linear-gradient(#fff, #eee);
 	   background: -moz-linear-gradient(#fff, #eee);
 	        background: linear-gradient(#fff, #eee);
 }
 
-.share-button .share-icon {
+.github-button .share-button:hover {
+	-webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.3) inset;
+	   -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.3) inset;
+	        box-shadow: 0 0 0 1px rgba(0,0,0,.3) inset;
+}
+
+.share-button svg {
 	height: 14px;
 	width: 14px;
 	margin-right: 4px;
 	display: inline-block;
 	float: left;
-	position: relative;
-}
-
-.share-button .share-icon svg {
-	bottom: 0;
-	left: 0;
-	position: absolute;
 }
 
 .share-count {
-	margin: 0 1px 0 2px;
-	padding: 2px 4px;
-	font-weight: 500;
-	color: #666;
+	margin: 0 2px;
+	padding: 2px 3px;
+	font-weight: 600;
+	color: #555;
 	border: 1px solid #bbb;
-	background: none;
+	background: #fff;
 }
 
-.facebook-button .share-count {
-	border-color: #999;
-}
-
-.github-button .share-count {
+.share-count:hover {
+	border-color: #aaa;
 	color: #333;
 }
 
@@ -929,8 +791,9 @@ body.touch-device #shortcuts-tab {display: none}
 	margin-top: -3px;
 	background: #bbb;
 	position: absolute;
+	z-index: -1;
 
-	border-radius: 1px;
+	border-radius: 0px 100% 0px 1px;
 
 	-webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
@@ -941,6 +804,7 @@ body.touch-device #shortcuts-tab {display: none}
 .share-count:after {
 	left: -2px;
 	background: #fff;
+	z-index: 1;
 }
 
 /*--DETAILS--*/
@@ -1275,7 +1139,7 @@ body.no-js #info,
 body.no-js #region,
 body.no-js #options,
 body.no-js #details,
-body.no-js #share-box {
+body.no-js #share {
 	display: none;
 }
 
@@ -1296,22 +1160,10 @@ body.no-js #share-box {
 		font-size: 36px;
 		margin-top: -18px;
 	}
-
-	#data {
-		display: none !important;
-	}
 	
-	#share-box {
+	#share {
 		left: 50%;
-	    margin-left: -151px;
-	}
-	
-	#crypto-button {
-		bottom: 67px;
-		right: 50%;
-	    margin-right: -62px;
-		position: fixed;
-		z-index: 500;
+	    margin-left: -152px;
 	}
 
 }
@@ -1321,6 +1173,10 @@ body.no-js #share-box {
 	h1 {
 		font-size: 28px;
 		margin-top: -14px;
+	}
+
+	#data {
+		display: none !important;
 	}
 	
 	#bulk {
@@ -1337,21 +1193,9 @@ body.no-js #share-box {
 
 @media (max-width: 480px) {
 	
-	.popover, .cryptocard, #tabs {
+	.popover, #tabs {
 		width: 100% !important;
 		border-radius: 0;
-	}
-	
-	#crypto {
-		padding: 10%;
-	}
-
-}
-
-@media (max-width: 375px) {
-	
-	.cryptocard .crypto-qr {
-		display: none;
 	}
 
 }

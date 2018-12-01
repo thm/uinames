@@ -111,18 +111,21 @@
 		<a role="button" class="icon info popover-trigger" href="#info" title="More Information" aria-label="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></a>
 	</div>
 	
-	<div id="crypto-button">
-		<a href="#crypto" class="popover-trigger"><?php echo file_get_contents('assets/img/btc-icon.svg'); ?> Donate BTC</a>
-	</div>
-	
-	<div id="crypto" class="popover clearfix">
-		<div class="crypto-info">
-			<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
-			<h2>Support Development</h2>
-			<p>Keeping this site running smoothly roughly costs me $100/year and several weekends of work. Consider donating some BTC if you find this site useful! 😃</p>
-			<div class="crypto-qr"><div></div></div>
-			<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
-		</div>
+	<div id="share">
+		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-tw.svg'); ?>Tweet</span>
+			<span class="share-count">1.9k</span>
+		</a>
+		
+		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-fb.svg'); ?>Share</span>
+			<span class="share-count">1.5k</span>
+		</a>
+		
+		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-gh.svg'); ?>Star</span>
+			<span class="share-count">0.4k</span>
+		</a>
 	</div>
 	
 	<div id="info" class="popover clearfix">
@@ -142,7 +145,7 @@
 			<p>Message <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> if you have feedback.</p>
 			
 			<h2>Contribute</h2>
-			<p>Contribute to the project through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! This collection of names wouldn’t have been as complete without the help of these wonderful people:</p>
+			<p>Contribute to the project through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! This collection of names would not have been as complete without the help of these wonderful people:</p>
 			<p class="clearfix">
 				<?php
 					// render github contributors
@@ -232,14 +235,6 @@
 			<p><code>0</code> to view the info panel</p>
 			<p><code>Esc</code> to close the current panel</p>
 		</div>
-		<div class="cryptocard">
-			<div class="crypto-info">
-				<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
-				Consider donating some BTC if you find this site useful! 😃
-				<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
-			</div>
-			<div class="crypto-qr"><div></div></div>
-		</div>
 	</div>
 
 	<div id="region" class="popover clearfix">
@@ -252,7 +247,7 @@
 			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
-				$newRegions = ["Bulgaria", "Costa Rica", "Nepal", "Saudi Arabia"];
+				$newRegions = ["Costa Rica", "Indonesia", "Croatia", "Czech Republic", "Ireland", "Kyrgyz Republic", "Tunisia"];
 				$favRegions = ["United States", "Germany", "France", "Russia", "India"];
 				
 				$total = count($names);
@@ -280,23 +275,6 @@
 	</div>
 	
 	<div id="overlay"></div>
-	
-	<div id="share-box">
-		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-fb.svg'); ?></span>Share</span>
-			<span class="share-count">1.5k</span>
-		</a>
-		
-		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-gh.svg'); ?></span>Star</span>
-			<span class="share-count">397</span>
-		</a>
-
-		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-tw.svg'); ?></span>Tweet</span>
-			<span class="share-count">1.9k</span>
-		</a>
-	</div>
 	
 	<script><?php echo file_get_contents('assets/js/jquery.min.js'); ?></script>
 	<script><?php echo file_get_contents('assets/js/site.min.js'); ?></script>
