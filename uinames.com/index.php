@@ -25,7 +25,7 @@
 
 	<meta charset="utf-8" />
 	
-	<title>uinames.com: Randomly Generate Fake Names</title>
+	<title>Generate Random Fake Names</title>
 	<meta name="description" content="Generate random fake names for use in designs and mockups. Supports 50+ regions with more than 1.2 million possible combinations. Completely open-source." />
 	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name, personas" />
 	
@@ -114,17 +114,19 @@
 	<div id="share">
 		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
 			<span class="share-button"><?php echo file_get_contents('assets/img/share-tw.svg'); ?>Tweet</span>
-			<span class="share-count">1.9k</span>
+			<span class="share-count">2.1k</span>
+			<!-- Extrapolated (read: most conservative guess) based on increased FB count: (1.7/1.5) * 1.9 -->
 		</a>
 		
 		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
 			<span class="share-button"><?php echo file_get_contents('assets/img/share-fb.svg'); ?>Share</span>
-			<span class="share-count">1.5k</span>
+			<span class="share-count">1.7k</span>
+			<!-- Source (Dec 5, 2018): https://graph.facebook.com/?id=http://uinames.com + https://graph.facebook.com/?id=https://uinames.com -->
 		</a>
 		
 		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
 			<span class="share-button"><?php echo file_get_contents('assets/img/share-gh.svg'); ?>Star</span>
-			<span class="share-count">0.4k</span>
+			<span class="share-count">0.5k</span>
 		</a>
 	</div>
 	
