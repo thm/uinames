@@ -50,7 +50,7 @@ For JSONP, specify a callback function to wrap results in:
 
 #### Extra Data
 Additional random data is served to requests passing an `ext` parameter. However, response times may be slower, especially when requesting larger quantities of data.
-All photos are hand-picked from [https://unsplash.com](unsplash.com) ([https://unsplash.com/license](license)):
+All photos are hand-picked from [unsplash.com](https://unsplash.com) ([license](https://unsplash.com/license)):
 <pre>
 https://uinames.com/api/<strong>?ext</strong>
 ---
