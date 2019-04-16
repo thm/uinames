@@ -6,7 +6,7 @@
 // ini_set('display_errors', DEBUGGING ? 'On' : 'Off');
 // if (!DEBUGGING) ob_start();
 
-const ANY = NULL;
+const ANY = null;
 
 function sanitize($database) {
 	static $defaultValues = [
