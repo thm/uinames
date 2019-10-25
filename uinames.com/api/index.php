@@ -88,7 +88,7 @@ function generate_ext_result($result) {
 	} else {
 		$email = strtolower($name . $separation[rand(0,3)] . $surname);
 	}
-	$result['email'] = "$email@example.com";
+	$result['email'] = str_replace(" ", $separation[rand(0,3)], $email) . "@example.com";
 	
 	// password
 	$signs = ['!','@','#','$','%','^','&','*','(',')','{','}','~','+','=','_',''];
