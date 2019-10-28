@@ -92,7 +92,7 @@
     },
     {
         "region":"Croatia",
-        "male":["Ante","Marko","Mario","Tomislav","Goran","Robert","Kristijan","Matej","Stjepan","Andrej","Branimir","Milan"],
+        "male":["Ante","Marko","Mario","Tomislav","Goran","Robert","Kristijan","Matej","Stjepan","Andrej","Branimir","Milan", "Matija"],
         "female":["Maja","Ana","Ivana","Petra","Tamara","Marija","Mateja","Anita","Lidija","Martina","Ines","Barbara","Monika","Željka","Bojana","Marta"],
         "surnames":["Perić","Matić","Mesić","Grgić","Kovačević","Brlić","Dujmović","Krznarić","Bulić","Marić","Mišić","Lisak","Gotovac"]
     },
