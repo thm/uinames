@@ -18,21 +18,21 @@ function selectThis(elem) {
 	}
 }
 
+function randomNum(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 (function() {
 	var $body = $('body'),
 		$genderToggles = $('#genderSelect'),
 		$regionToggle = $('.icon.region:first'),
 		$bulkToggle = $('#bulk .icon'),
 		$infoToggle = $('.info:first'),
-		$cryptoToggle = $('#crypto-button a:first'),
 		$regionPopup = $('#region'),
 		$searchInput = $regionPopup.find('input:first'),
 		$availableRegions = $regionPopup.find('li'),
-		$name = $('#name'),
-		$specs = $('#data');
-	
-	// add any click-to-select listeners
-	$('.click-to-select').click(selectThis);
+		$dataContainer = $('#data'),
+		$tips = $('#help p');
 	
 	// MOUSE DETECTION
 	$body.on('mousedown keydown', function(e) {
@@ -92,49 +92,39 @@ function selectThis(elem) {
 		
 		// function that injects all the data on the page
 		function injectData(data, offset) {
-			// insert name into page
-			$name.html('<h1>' + data[offset]['name'] + ' ' + data[offset]['surname'] + '</h1>');
 			
-			// insert additional data into page
-			var specsData = '';
+			// secondary data
+			var printPhoto = '<div id="photo-container"><a href="' + data[offset]['photo'] + '" class="photo" target="_blank"><img src="' + data[offset]['photo'].replace(/http:\/\/uinames\.com\//, '') + '" /></a><a role="button" class="icon refresh active" title="Refresh" aria-label="Refresh" aria-pressed="true"><span class="r1"></span><span class="r2"></span><span class="r3"></span><span class="r4"></span><span class="r5"></span><span class="r6"></span><span class="r7"></span></a></div>',
+				printName = '<h1 id="name" class="click-to-select">' + data[offset]['name'] + ' ' + data[offset]['surname'] + '</h1>',
+				printData = '';
+			
 			$.each({
-					'Gender': capitalize(data[offset]['gender']),
-					'Region': data[offset]['region'],
-					'Phone': data[offset]['phone'],
-					'Birthday': data[offset]['birthday']['dmy'],
-					'Email': data[offset]['email'],
-					'Password': data[offset]['password']
+					'👤': capitalize(data[offset]['gender']),
+					'🌐': data[offset]['region'],
+					'📞': data[offset]['phone'],
+					'🎂': data[offset]['birthday']['dmy'],
+					'✉️': data[offset]['email'],
+					'🔑': data[offset]['password']
 				}, function(key, val) {
-				specsData += '<li><span class="label">' + key + ':</span> <span class="click-to-select">' + val + '</span></li>';
+				printData += '<li>' + key + '&nbsp;&nbsp;<span class="click-to-select">' + val + '</span></li>';
 			});
 			
-			var photo = '<div class="photo-container"><a href="' + data[offset]['photo'] + '" target="_blank" class="photo"><img src="' + data[offset]['photo'].replace(/http:\/\/uinames\.com\//, '') + '" /></a><a class="photo-more-link" href="https://unsplash.com/search/photos/people" target="_blank">More</a><a href="https://unsplash.com/license" target="_blank">License</a></div>';
-			
-			$specs.html('<a id="data-open">Show Details</a><div>' + photo + '<ul>' + specsData + '</ul><a id="data-exit"></a></div>');
-			
-			$('.click-to-select').click(selectThis);
-			
-			$('#data-exit').click(function() {
-				$specs.find('div').fadeOut(250);
-				$('#data-open').delay(250).fadeIn(250);
-			});
-			
-			$('#data-open').click(function() {
-				$('#data-open').fadeOut(250);
-				$specs.find('div').delay(250).fadeIn(250);
-			});
+			// print all onto page
+			$dataContainer.html('<div>' + printPhoto + printName + '<ul class="printData">' + printData + '</ul></div>');
+			if (!$body.hasClass('touch-device')) {
+				$tips.hide().parent().find('.tip-' + randomNum(1,$tips.length)).show();
+			}
 			
 			// if bulk mode, add the other 24
 			if ($bulkToggle.hasClass('active')) {
-				$specs.fadeOut(250);
 				$body.addClass('bulk bulkPause'); // 'bulkPause' pauses requests to stop overly excited users
 				
 				// inject names, genders and regions into page
 				var bulkNames = '';
 				for (var i = 0; i < maxNamesRequested; i++) {
-					bulkNames += '<h1>' + data[i]['name'] + ' ' + data[i]['surname'] + '</h1><p>' + capitalize(data[i]['gender']) + ' from ' + data[i]['region'] + '</p>';
+					bulkNames += '<h1 class="click-to-select">' + data[i]['name'] + ' ' + data[i]['surname'] + '</h1><p><span class="click-to-select">' + capitalize(data[i]['gender']) + '</span> from <span class="click-to-select">' + data[i]['region'] + '</span></p>';
 				}
-				$name.html(bulkNames);
+				$dataContainer.html(bulkNames);
 
 				// bulk toggle count-down
 				var bulkToggleCache = $bulkToggle.html(),
@@ -145,27 +135,18 @@ function selectThis(elem) {
 							$bulkToggle.html(bulkToggleCache).css({lineHeight: ''});
 							clearInterval(bulkCountDown);
 						} else {
-							$bulkToggle.html(count--).css({lineHeight: '200%'});
+							$bulkToggle.html(count--).css({lineHeight: '237.5%'});
 						}
 					}, 650);
 			} else {
 				$body.removeClass('bulk');
-				$specs.fadeIn(250);
 			}
 			
-			$name
-				.show()
-				.find('h1').click(selectThis)
-				.on('touchend', function() {
-					getName();
-				});
-			
-			// count generated name
-			/*
-			var getJSON = new XMLHttpRequest();
-			getJSON.open('POST', 'api/counter.php', true);
-			getJSON.send();
-			*/
+			// enable any selectable elements
+			$('.click-to-select').click(selectThis);
+			$('#photo-container .refresh').click(function() {
+				getName();
+			});
 		}
 		
 		function injectNewData() {
@@ -335,10 +316,10 @@ function selectThis(elem) {
 	$(window).keyup(function(e) {
 		var n = e.which || e.keyCode || 0;
 		
-		if (!$('#region').hasClass('visible') || n == 27) {	
+		if (!$('.popover').is(':visible') || n == 27) {	
 			if (n == 27) {
 				closePopup();
-			} else if (n == 32 && !$('.popover').hasClass('visible') && !$body.hasClass('bulkPause')) {
+			} else if (n == 32 && !$body.hasClass('bulkPause')) {
 				getName();
 			} else if (n == 48) {
 				$infoToggle.click();
@@ -352,23 +333,63 @@ function selectThis(elem) {
 				$regionToggle.click();
 			} else if (n == 53) {
 				$bulkToggle.click();
-			} else if (n == 67 && !$body.hasClass('touch-device') && !$body.hasClass('bulk') && $name.find('em').length == 0) {
-				selectThis($name[0]);
+			} else if (n == 67 && !$body.hasClass('touch-device') && !$body.hasClass('bulk') && $dataContainer.find('em').length == 0) {
+				$dataContainer.find('#name').click();
 			}
 		}
 	});
 	
-	$name.on('touchend', function() {
+	$('#name').on('touchend', function() {
 		getName();
 	});
 	
 })();
 
+// SNOW
 (function() {
-
-	var title = document.title;
-	$(window).on('blur focus', function() {
-		document.title = document.hidden ? '👀 ' + title : title;
-	});
+	
+	var particles = 5, // max visible particles at any given moment
+		particleLife = 5000, // in ms
+		$confetti = $('<div/>');
+	
+	$confetti
+		.appendTo('body')
+		.css({
+			'top': 0,
+			'right': 0,
+			'bottom': 0,
+			'left': 0,
+			'position': 'absolute',
+			'z-index': -1,
+			'overflow': 'hidden'
+		});
+	
+	setInterval(function() {
+		$confetti.find('div:hidden').remove();
+		
+		var dimensions = Math.random() < .5 ? 5 : 10;
+		
+		$('<div/>')
+			.appendTo($confetti)
+			.css({
+				'top': Math.round(Math.random() * 100) + '%',
+				'left': Math.round(Math.random() * 100) + '%',
+				'background-color': '#fff',
+				'position': 'absolute',
+				'border-radius': '100%',
+				'z-index': Math.random() < .3 ? 1 : -1
+			})
+			.animate({
+				'height': dimensions + 'px',
+				'width': dimensions + 'px',
+				'margin': '-' + dimensions / 2 + 'px'
+			}, 250)
+			.css({
+				'transform': 'translate(' + randomNum(-200,-150) + 'px, ' + randomNum(150,200) + 'px)',
+				'transition': 'transform ' + particleLife/1000 + 's linear'
+			})
+			.delay(particleLife*0.85)
+			.fadeOut();
+	}, particleLife / particles);
 
 })();

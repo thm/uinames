@@ -3,7 +3,7 @@ any code not covered by this license is published under exclusive copyright.
 
 MIT License
 
-Copyright (c) 2017 Thom van der Weerd
+Copyright (c) 2019 Thom van der Weerd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

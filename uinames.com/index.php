@@ -25,13 +25,11 @@
 
 	<meta charset="utf-8" />
 	
-	<title>uinames.com: Randomly Generate Fake Names</title>
+	<title>Generate Random Fake Names</title>
 	<meta name="description" content="Generate random fake names for use in designs and mockups. Supports 50+ regions with more than 1.2 million possible combinations. Completely open-source." />
 	<meta name="keywords" content="uinames, dummy, random, names, fake, generator, name, personas" />
 	
 	<link rel="shortcut icon" href="assets/img/favicon@2x.ico" />
-	
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	
@@ -47,7 +45,7 @@
 	<!--Facebook Card-->
 	<meta property="og:title" content="Randomly Generate Fake Names" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="http://cl.ly/1o2k1Z422Z2T/icon-250.png" />
+	<meta property="og:image" content="https://cl.ly/1o2k1Z422Z2T/icon-250.png" />
 	<meta property="og:url" content="https://uinames.com" />
 	<meta property="og:description" content="Generate random fake names for use in designs and mockups. Supports 48+ regions with over 1.2 million possible combinations. Completely open-source." />
 	
@@ -56,14 +54,14 @@
 	<meta name="twitter:site" content="@thomweerd" />
 	<meta name="twitter:title" content="Randomly Generate Fake Names" />
 	<meta name="twitter:description" content="Generate random fake names for use in designs and mockups. Supports 48+ regions with over 1.2 million possible combinations. Completely open-source." />
-	<meta name="twitter:image" content="http://cl.ly/1o2k1Z422Z2T/icon-250.png" />
+	<meta name="twitter:image" content="https://cl.ly/1o2k1Z422Z2T/icon-250.png" />
 
 </head>
 
 <body class="no-js">
 	<script>
-		var body = document.getElementsByTagName('body')[0],
-			action = 'Press Spacebar';
+		var body = document.getElementsByTagName('body')[0]
+			action = 'Press Spacebar', c = 'CTRL+C';
 		
 		body.className = body.className.replace(/no\-js/, '');
 		
@@ -72,13 +70,16 @@
 			action = 'Tap here';
 		}
 		
-		/*if (window.devicePixelRatio > 1 || (window.matchMedia && window.matchMedia("(-webkit-min-device-pixel-ratio: 1.5),(-moz-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)").matches)) {
-			body.className += ' retina';
-		}*/
+		if (navigator.appVersion.indexOf('Mac')!=-1) {
+			c = '&#8984;+C';
+		}
 	</script>
 
-	<div id="name" aria-live="polite" aria-atomic="true"><h1><script>document.write(action)</script></h1></div>
-	<div id="data" style="display: none;"></div>
+	<div id="data" aria-live="polite" aria-atomic="true">
+		<div>
+			<h1 id="name"><script>document.write(action)</script></h1>
+		</div>
+	</div>
 	
 	<p class="ac" id="destination" tabindex="-1">In options menu</p>
 	
@@ -93,36 +94,56 @@
 			<a role="button" class="icon female" href="#female" title="Gender: Female" aria-label="Gender: Female" aria-pressed="false">
 				<span class="f1"></span><span class="f2"></span><span class="f3"></span>
 			</a>
+			<span class="label">Gender</span>
 		</span>
 		<span id="regionSelect">
 			<a class="icon region active popover-trigger" href="#region" title="Select Region">
 				<span class="flag"><img src="assets/img/flag-random.gif" /></span>
 				<b class="ac">Random region selected</b>
 			</a>
+			<span class="label">Region</span>
 		</span>
 		<span id="bulk">
 			<a role="button" class="icon bulk" href="#bulk" title="Bulk mode" aria-label="Bulk mode" aria-pressed="false">
 				<span class="b1"></span><span class="b2"></span><span class="b3"></span>
 			</a>
+			<span class="label">Bulk</span>
 		</span>
 	</div>
 	
 	<div id="details">
-		<a role="button" class="icon info popover-trigger" href="#info" title="More Information" aria-label="More Information"><span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span></a>
+		<a role="button" class="icon info popover-trigger" href="#info" title="More Information" aria-label="More Information">
+			<span class="i1"></span><span class="i2"></span><span class="i3"></span><span class="i4"></span>
+		</a>
+		<span class="label">Info</span>
 	</div>
 	
-	<div id="crypto-button">
-		<a href="#crypto" class="popover-trigger"><?php echo file_get_contents('assets/img/btc-icon.svg'); ?> Donate BTC</a>
+	<div id="help">
+		<p class="tip-1">Share = ❤️</p>
+		<p class="tip-2">Press <strong>C</strong>, then <strong><script>document.write(c)</script></strong> to easily copy names! 😎</p>
+		<p class="tip-3">All results, including <a href="https://unsplash.com/license" target="_blank">photos</a>, are free for all purposes. 🤘</p>
+		<p class="tip-4">Send <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> your feedback. 👋️</p>
+		<p class="tip-5">Contribute through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! 👋</p>
+		<p class="tip-6"><a href="https://paypal.me/thomweerd" target="_blank">Donate</a> if this site is useful! 💸</p>
 	</div>
 	
-	<div id="crypto" class="popover clearfix">
-		<div class="crypto-info">
-			<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
-			<h2>Support Development</h2>
-			<p>Keeping this site running smoothly roughly costs me $100/year and several weekends of work. Consider donating some BTC if you find this site useful! 😃</p>
-			<div class="crypto-qr"><div></div></div>
-			<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
-		</div>
+	<div id="share">
+		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-tw.svg'); ?>Tweet</span>
+			<span class="share-count">2.1k</span>
+			<!-- Conservative guess based on increased FB count: (NewFB/oldFB) * oldTw or (1.7/1.5) * 1.9 -->
+		</a>
+		
+		<a href="https://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-fb.svg'); ?>Share</span>
+			<span class="share-count">1.7k</span>
+			<!-- Source (Dec 5, 2018): https://graph.facebook.com/?id=http://uinames.com + https://graph.facebook.com/?id=https://uinames.com -->
+		</a>
+		
+		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
+			<span class="share-button"><?php echo file_get_contents('assets/img/share-gh.svg'); ?>Star</span>
+			<span class="share-count">0.5k</span>
+		</a>
 	</div>
 	
 	<div id="info" class="popover clearfix">
@@ -136,13 +157,10 @@
 			<p><a href="https://uinames.com">uinames.com</a> is a simple tool to generate fake names for use in designs and mockups. Made by <a href="https://twitter.com/thomweerd" target="_blank">Thom</a>.</p>
 			
 			<h2>Elsewhere</h2>
-			<p>Numerous blogs and websites have published about the project including <a href="http://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="https://speckyboy.com/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="https://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="http://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="http://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="http://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="http://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
-			
-			<h2>Feedback</h2>
-			<p>Message <a href="https://twitter.com/thomweerd" target="_blank">@thomweerd</a> if you have feedback.</p>
+			<p>Many have published about the project, including <a href="https://tympanus.net/codrops/collective/collective-96/" target="_blank">Codrops</a>, <a href="https://speckyboy.com/40-tiny-web-based-apps-tools-web-designers/" target="_blank">Speckyboy</a>, <a href="https://www.smashingmagazine.com/smashing-newsletter-issue-new-year-special-edition-2013/" target="_blank">Smashing Magazine</a>, <a href="https://sidebar.io/2013/12/26" target="_blank">Sidebar</a>, <a href="https://www.webdesignerdepot.com/2014/02/whats-new-for-designers-february-2014/" target="_blank">Webdesigner Depot</a>, <a href="https://www.producthunt.com/tech/uinames" target="_blank">Product Hunt</a>, <a href="https://news.layervault.com/stories/12511-ui-names" target="_blank">LayerVault</a>, <a href="https://oozled.com/resources/just-handy" target="_blank">Oozled</a> and <a href="https://thenextweb.com/dd/2015/02/18/300-awesome-free-things-massive-list-free-resources-know/" target="_blank">The Next Web</a>.</p>
 			
 			<h2>Contribute</h2>
-			<p>Contribute to the project through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! This collection of names wouldn’t have been as complete without the help of these wonderful people:</p>
+			<p>Contribute to the project through <a href="https://github.com/thm/uinames" target="_blank">Github</a>! This collection of names would not have been as complete without these wonderful people:</p>
 			<p class="clearfix">
 				<?php
 					// render github contributors
@@ -186,7 +204,7 @@
 			<pre><span>https://uinames.com/api/</span>?region=switzerland&amp;language=german</pre>
 			-->
 			<h2>Extra Data</h2>
-			<p>Additional random data is served to requests passing an <code>ext</code> parameter. As larger amounts of data require more bandwidth and processing power, please use this functionality sparingly.</p>
+			<p>Additional random data is served to requests passing an <code>ext</code> parameter. However, response times may be slower, especially when requesting larger quantities of data.</p>
 			<p>All photos are hand-picked from <a href="https://unsplash.com" target="_blank">Unsplash</a> (<a href="https://unsplash.com/license" target="_blank">license</a>):</p>
 <pre><span>https://uinames.com/api/</span>?ext
 <span>---</span>
@@ -232,14 +250,6 @@
 			<p><code>0</code> to view the info panel</p>
 			<p><code>Esc</code> to close the current panel</p>
 		</div>
-		<div class="cryptocard">
-			<div class="crypto-info">
-				<?php echo file_get_contents('assets/img/btc-icon.svg'); ?>
-				Consider donating some BTC if you find this site useful! 😃
-				<code class="crypto-address click-to-select" title="Click to select">141yZvVAmrvkWff5Vh2kVnJ47rRc5mZViC</span></code>
-			</div>
-			<div class="crypto-qr"><div></div></div>
-		</div>
 	</div>
 
 	<div id="region" class="popover clearfix">
@@ -252,7 +262,7 @@
 			<li id="region-0" role="option" tabindex="-1"><span class="flag"><img src="assets/img/flag-random.gif" /></span><span class="region-label">Random</span></li>
 			<?php
 				
-				$newRegions = ["Bulgaria", "Costa Rica", "Nepal", "Saudi Arabia"];
+				$newRegions = ["Costa Rica", "Indonesia", "Croatia", "Czech Republic", "Ireland", "Kyrgyz Republic", "Tunisia"];
 				$favRegions = ["United States", "Germany", "France", "Russia", "India"];
 				
 				$total = count($names);
@@ -273,7 +283,7 @@
 			<span class="contribute" style="display: none;">
 				<a href="https://github.com/thm/uinames" target="_blank" class="clearfix">
 					<?php echo file_get_contents('assets/img/crying-octocat.svg'); ?>
-					<p>No region could be found. Consider contributing on Github!</p>
+					<p>No such region found. Consider contributing through Github!</p>
 				</a>
 			</span>
 		</ul>
@@ -281,25 +291,8 @@
 	
 	<div id="overlay"></div>
 	
-	<div id="share-box">
-		<a href="http://www.facebook.com/sharer/sharer.php?u=https://uinames.com" class="facebook-button" onclick="window.open(this.href, 'Share', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-fb.svg'); ?></span>Share</span>
-			<span class="share-count">1.5k</span>
-		</a>
-		
-		<a href="https://github.com/thm/uinames/" class="github-button" target="_blank">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-gh.svg'); ?></span>Star</span>
-			<span class="share-count">397</span>
-		</a>
-
-		<a href="https://twitter.com/share?text=Generate%20random%20names%20for%20use%20in%20designs%20and%20mockups%20on&url=https://uinames.com&via=thomweerd&related=thomweerd" class="twitter-button" onclick="window.open(this.href, 'Tweet', 'scrollbars=no,width=500,height=280'); return false;">
-			<span class="share-button"><span class="share-icon"><?php echo file_get_contents('assets/img/share-tw.svg'); ?></span>Tweet</span>
-			<span class="share-count">1.9k</span>
-		</a>
-	</div>
-	
 	<script><?php echo file_get_contents('assets/js/jquery.min.js'); ?></script>
-	<script><?php echo file_get_contents('assets/js/site.min.js'); ?></script>
+	<script><?php echo file_get_contents('assets/js/site.js'); ?></script>
 
 </body>
 </html>
