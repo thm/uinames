@@ -1,11 +1,17 @@
-Header add Access-Control-Allow-Origin "*"
-Header add Access-Control-Allow-Methods: "GET"
-
 RewriteEngine On
 
 # prevent directory listing
 Options -Indexes
 
-# redirect www domain to the non-www domain
+# set default index-page
+DirectoryIndex index.php home.php about.php index.html maintenance.html
+
 RewriteCond %{HTTP_HOST} ^www\.uinames\.com$ [NC]
-RewriteRule ^(.*)$ http://uinames.com/$1 [R=301,L]
+RewriteRule (.*) https://uinames.com/$1 [R=301,L]
+
+# rewrite www to https
+# RewriteCond %{HTTP_HOST} ^www\.
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{HTTP_HOST} !=localhost
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

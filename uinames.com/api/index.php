@@ -10,11 +10,11 @@ const ANY = NULL;
 
 function sanitize($database) {
 	static $defaultValues = [
-		'male'			  => [],
-		'female'			=> [],
-		'surname'		   => [],
-		'exceptions'		=> [],
-		'male_exceptions'   => [],
+		'male' => [],
+		'female'	 => [],
+		'surname' => [],
+		'exceptions' => [],
+		'male_exceptions' => [],
 		'female_exceptions' => []
 	];
 
@@ -102,7 +102,7 @@ function generate_ext_result($result) {
 	
 	// photo
 	$photos = ($gender == 'male') ? glob('photos/male/*.jpg') : glob('photos/female/*.jpg');
-	$result['photo'] = 'http://uinames.com/api/' . $photos[array_rand($photos)];
+	$result['photo'] = 'https://uinames.com/api/' . $photos[array_rand($photos)];
 	
 	return $result;
 }
@@ -213,6 +213,7 @@ function send($content, $code = 200) {
 	echo empty($_GET['callback']) ? $output : $_GET['callback'] . "($output);";
 	
 	// it only counts if names are actually served
+	/*
 	if ($code == 200) {
 		$stats = json_decode(file_get_contents('stats.json'));
 		if (isset($stats->api)) {
@@ -220,6 +221,7 @@ function send($content, $code = 200) {
 			file_put_contents('stats.json', json_encode($stats));
 		}
 	}
+	*/
 	exit;
 }
 
